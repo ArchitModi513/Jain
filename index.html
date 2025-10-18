@@ -22,7 +22,7 @@
         #audioPlayerContainer {
             transition: all 0.4s ease-in-out;
             transform: translateY(100%);
-            max-height: 80px; /* Default height */
+            max-height: 95px; /* Default height */
         }
         #audioPlayerContainer.visible {
             transform: translateY(0);
@@ -42,6 +42,7 @@
         #audioPlayerContainer.expanded #scriptContent {
             height: 180px; /* Adjust as needed */
             opacity: 1;
+            margin-bottom: 1rem;
         }
 
         /* Active navigation tab */
@@ -138,23 +139,32 @@
     <!-- Footer -->
     <footer class="bg-gray-200 text-gray-700 text-sm text-center py-6">
         <div class="container mx-auto">
-            <p class="font-bold">Made by TechSon Inc.</p>
+            <p class="font-bold">Made by TechSon</p>
             <p>Contact:</p>
-            <p>Phone: +91 9000090000 | Email: abc@mail.com</p>
+            <p>Phone: +91 7021769798 | Email: archit.modi13@outlook.com</p>
         </div>
     </footer>
 
     <!-- Fixed Audio Player at the bottom -->
     <div id="audioPlayerContainer" class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl rounded-t-lg z-30 p-4 border-t border-gray-200">
+        <!-- Close button for the player -->
+        <button id="closePlayerBtn" class="absolute top-2 right-2 control-btn">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
         <!-- Script Area -->
-        <div id="scriptContent" class="mb-4 p-3 bg-gray-100 rounded-md border text-sm text-gray-700">
+        <div id="scriptContent" class="p-3 bg-gray-100 rounded-md border text-sm text-gray-700">
             <!-- Script will be injected here -->
         </div>
         <!-- Player Controls -->
         <div class="container mx-auto flex items-center justify-between">
-            <div class="w-1/3">
-                <h3 id="currentTrackTitle" class="font-bold text-lg truncate">Select an audio</h3>
-                <p id="currentTrackArtist" class="text-gray-500 text-sm">Jain Spiritual Audios</p>
+            <div class="w-1/3 flex items-center">
+                <div>
+                    <h3 id="currentTrackTitle" class="font-bold text-lg truncate">Select an audio</h3>
+                    <p id="currentTrackArtist" class="text-gray-500 text-sm">Jain Spiritual Audios</p>
+                </div>
+                <button id="toggleScriptBtn" class="control-btn ml-2">
+                    <svg id="toggleScriptIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
             </div>
             <!-- Custom Controls -->
             <div class="flex items-center justify-center">
@@ -180,13 +190,13 @@
             const audioData = {
                 pachchkaan: [
                     { title: 'Navkarsi Pachchkaan', description: 'For fasting from sunrise until 48 minutes after.', audioSrc: 'https://architmodi513.github.io/Jain/audios/navkarsi.m4a', script: 'Uggae sure namukkara-sahiam...' },
-                    { title: 'Porsi Pachchkaan', description: 'Fasting for one prahar (approx. 3 hours) after sunrise.', audioSrc: '#', script: 'Sure uggae porisim...' },
+                    { title: 'Porsi Pachchkaan', description: 'Fasting for one prahar (approx. 3 hours) after sunrise.', audioSrc: 'https://architmodi513.github.io/Jain/audios/porshi.m4a', script: 'Sure uggae porisim...' },
                     { title: 'Chauvihar Upvas', description: 'A complete fast for the day without food or water.', audioSrc: 'https://architmodi513.github.io/Jain/audios/Chauvihaar-Upwas.m4a', script: 'Chauviharam pi aharam...' },
-                    { title: 'Tivihar Upvas', description: 'A fast where only boiled water is consumed.', audioSrc: '#', script: 'Placeholder script for Tivihar Upvas...' },
-                    { title: 'Ekasanu', description: 'Eating a single meal in one sitting during the day.', audioSrc: '#', script: 'Placeholder script for Ekasanu...' },
-                    { title: 'Biyasanu', description: 'Eating two meals in two sittings during the day.', audioSrc: '#', script: 'Placeholder script for Biyasanu...' },
+                    { title: 'Tivihar Upvas', description: 'A fast where only boiled water is consumed.', audioSrc: 'https://architmodi513.github.io/Jain/audios/upwas.m4a', script: 'Placeholder script for Tivihar Upvas...' },
+                    { title: 'Ekasanu', description: 'Eating a single meal in one sitting during the day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/ekasna.m4a', script: 'Placeholder script for Ekasanu...' },
+                    { title: 'Biyasanu', description: 'Eating two meals in two sittings during the day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/beasna.m4a', script: 'Placeholder script for Biyasanu...' },
                     { title: 'Ayambil', description: 'Eating boiled, unseasoned food once a day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/aayambil.m4a', script: 'Placeholder script for Ayambil...' },
-                    { title: 'Raatri Bhojan Tyag', description: 'Oath to abstain from eating after sunset.', audioSrc: '#', script: 'Placeholder script for Raatri Bhojan Tyag...' }
+                    { title: 'Raatri Bhojan Tyag', description: 'Oath to abstain from eating after sunset.', audioSrc: 'https://architmodi513.github.io/Jain/audios/ratri-bhojan-tyaag.m4a', script: 'Placeholder script for Raatri Bhojan Tyag...' }
                 ],
                 bhajans: [
                     { title: 'Mahavir Swami Bhajan', description: 'A devotional song for Lord Mahavir.', audioSrc: '#', script: 'Hey Mahavir, karu Vandan...'},
@@ -215,8 +225,14 @@
             const playPauseIcon = document.getElementById('playPauseIcon');
             const backwardBtn = document.getElementById('backwardBtn');
             const forwardBtn = document.getElementById('forwardBtn');
+            const closePlayerBtn = document.getElementById('closePlayerBtn');
+            const toggleScriptBtn = document.getElementById('toggleScriptBtn');
+            const toggleScriptIcon = document.getElementById('toggleScriptIcon');
+
             const playIconPath = `<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/>`;
             const pauseIconPath = `<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>`;
+            const chevronDownIconPath = `<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>`;
+            const chevronUpIconPath = `<path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path>`;
 
             let favorites = JSON.parse(localStorage.getItem('jainAudioFavorites')) || [];
             let currentTab = 'pachchkaan';
@@ -372,6 +388,7 @@
                             scriptContent.textContent = item.script || 'No script available for this audio.';
                             audioPlayer.play();
                             audioPlayerContainer.classList.add('visible', 'expanded');
+                            toggleScriptIcon.innerHTML = chevronUpIconPath;
                         } else {
                             alert('Audio for "' + title + '" is not available yet.');
                         }
@@ -391,7 +408,6 @@
                     }
                     localStorage.setItem('jainAudioFavorites', JSON.stringify(favorites));
 
-                    // Refresh favorites view if it's the current tab
                     if (currentTab === 'favorites') {
                          const favoriteItems = getAllAudioItems().filter(item => favorites.includes(item.title));
                          renderGrid(document.getElementById('favoritesGrid'), favoriteItems);
@@ -406,6 +422,20 @@
                 } else {
                     audioPlayer.pause();
                 }
+            });
+            
+            closePlayerBtn.addEventListener('click', () => {
+                audioPlayer.pause();
+                audioPlayer.src = '';
+                audioPlayerContainer.classList.remove('visible', 'expanded');
+                currentTrackTitle.textContent = 'Select an audio';
+                scriptContent.textContent = '';
+            });
+
+            toggleScriptBtn.addEventListener('click', () => {
+                audioPlayerContainer.classList.toggle('expanded');
+                const isExpanded = audioPlayerContainer.classList.contains('expanded');
+                toggleScriptIcon.innerHTML = isExpanded ? chevronUpIconPath : chevronDownIconPath;
             });
 
             backwardBtn.addEventListener('click', () => {
