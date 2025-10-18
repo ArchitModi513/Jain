@@ -62,6 +62,34 @@
         .favorite-btn.favorited {
             fill: #f59e0b; /* Amber/selected */
         }
+        
+        /* Custom audio controls */
+        .control-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #4b5563; /* gray-600 */
+        }
+        .control-btn:hover {
+            color: #1d4ed8; /* blue-700 */
+        }
+        .play-pause-btn {
+            background-color: #3b82f6; /* blue-500 */
+            color: white;
+            border-radius: 9999px;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+        }
+        .play-pause-btn:hover {
+            background-color: #2563eb; /* blue-600 */
+            color: white;
+        }
+
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
@@ -124,13 +152,24 @@
         </div>
         <!-- Player Controls -->
         <div class="container mx-auto flex items-center justify-between">
-            <div>
-                <h3 id="currentTrackTitle" class="font-bold text-lg">Select an audio</h3>
+            <div class="w-1/3">
+                <h3 id="currentTrackTitle" class="font-bold text-lg truncate">Select an audio</h3>
                 <p id="currentTrackArtist" class="text-gray-500 text-sm">Jain Spiritual Audios</p>
             </div>
-            <audio id="audioPlayer" controls class="w-1/2 sm:w-auto">
-                Your browser does not support the audio element.
-            </audio>
+            <!-- Custom Controls -->
+            <div class="flex items-center justify-center">
+                <button id="backwardBtn" class="control-btn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M8.445 14.832A1 1 0 0010 14.03V5.969a1 1 0 00-1.555-.832L2.48 9.168a1 1 0 000 1.664l5.965 4.001zM11.555 14.832a1 1 0 001.555-.832V5.969a1 1 0 00-1.555-.832l-5.965 4.001a1 1 0 000 1.664l5.965 4.001z"/></svg>
+                </button>
+                <button id="playPauseBtn" class="control-btn play-pause-btn">
+                    <svg id="playPauseIcon" class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/></svg>
+                </button>
+                <button id="forwardBtn" class="control-btn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M11.555 5.168A1 1 0 0010 5.969v8.062a1 1 0 001.555.832l5.965-4.001a1 1 0 000-1.664l-5.965-4.001zM4.445 5.168A1 1 0 003 5.969v8.062a1 1 0 001.555.832l5.965-4.001a1 1 0 000-1.664L4.445 5.168z"/></svg>
+                </button>
+            </div>
+            <div class="w-1/3"><!-- This is an empty div for spacing, to balance the layout --></div>
+            <audio id="audioPlayer" class="hidden"></audio>
         </div>
     </div>
 
@@ -146,7 +185,7 @@
                     { title: 'Tivihar Upvas', description: 'A fast where only boiled water is consumed.', audioSrc: '#', script: 'Placeholder script for Tivihar Upvas...' },
                     { title: 'Ekasanu', description: 'Eating a single meal in one sitting during the day.', audioSrc: '#', script: 'Placeholder script for Ekasanu...' },
                     { title: 'Biyasanu', description: 'Eating two meals in two sittings during the day.', audioSrc: '#', script: 'Placeholder script for Biyasanu...' },
-                    { title: 'Ayambil', description: 'Eating boiled, unseasoned food once a day.', audioSrc: '#', script: 'Placeholder script for Ayambil...' },
+                    { title: 'Ayambil', description: 'Eating boiled, unseasoned food once a day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/aayambil.m4a', script: 'Placeholder script for Ayambil...' },
                     { title: 'Raatri Bhojan Tyag', description: 'Oath to abstain from eating after sunset.', audioSrc: '#', script: 'Placeholder script for Raatri Bhojan Tyag...' }
                 ],
                 bhajans: [
@@ -170,9 +209,25 @@
             const currentTrackTitle = document.getElementById('currentTrackTitle');
             const scriptContent = document.getElementById('scriptContent');
             const searchInput = document.getElementById('searchInput');
+            
+            // Custom Controls
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const playPauseIcon = document.getElementById('playPauseIcon');
+            const backwardBtn = document.getElementById('backwardBtn');
+            const forwardBtn = document.getElementById('forwardBtn');
+            const playIconPath = `<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/>`;
+            const pauseIconPath = `<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>`;
+
             let favorites = JSON.parse(localStorage.getItem('jainAudioFavorites')) || [];
             let currentTab = 'pachchkaan';
 
+            function createAudioCard(item, isFavorited) { /* ... existing code ... */ }
+            function renderGrid(container, items) { /* ... existing code ... */ }
+            function setActiveTab(key) { /* ... existing code ... */ }
+            function getAllAudioItems() { /* ... existing code ... */ }
+            function handleSearch() { /* ... existing code ... */ }
+            function createSection(key, title, description) { /* ... existing code ... */ }
+            
             // --- Function to Create Audio Cards ---
             function createAudioCard(item, isFavorited) {
                 const favoritedClass = isFavorited ? 'favorited' : '';
@@ -342,6 +397,31 @@
                          renderGrid(document.getElementById('favoritesGrid'), favoriteItems);
                     }
                 }
+            });
+
+            // --- Custom Audio Control Listeners ---
+            playPauseBtn.addEventListener('click', () => {
+                if (audioPlayer.paused) {
+                    audioPlayer.play();
+                } else {
+                    audioPlayer.pause();
+                }
+            });
+
+            backwardBtn.addEventListener('click', () => {
+                audioPlayer.currentTime -= 10;
+            });
+
+            forwardBtn.addEventListener('click', () => {
+                audioPlayer.currentTime += 10;
+            });
+
+            audioPlayer.addEventListener('play', () => {
+                playPauseIcon.innerHTML = pauseIconPath;
+            });
+
+            audioPlayer.addEventListener('pause', () => {
+                playPauseIcon.innerHTML = playIconPath;
             });
 
             // --- Set Initial State ---
