@@ -3,224 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jain Spiritual Audios</title>
+    <title>The Jain Path | A Digital Sanctuary</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ArchitModi513/Jain/main/images/jain-logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
+            background-color: #FDFBF8; /* Muted Ivory White */
+            color: #3D3D3D; /* Warm Charcoal */
             font-family: 'Inter', sans-serif;
+            /* New soft parchment/noise texture */
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXVAAAAacXJUPEBFQkZKaSJMbk83Nzg3NzeLi4tVVj9gYGCCH3s8Pj9lZ2ZJYn93d3d2dnbLi4uFe3t2d3d9fX1wcPBOQAAAAD5JREFUSMft1EcOQDQERCfz3927d7v/8egUjSe/91t7V0f//3wM5w/8A/8B/4B/4B/4B/8B/4B/4B/wH/gP/Af+A/8B/4B/8B/4B/4B/4B/wH/gP/Af+A/8B/4B/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/4B/4B/8B/wH/gP/Af+A/8B/4B/4B/4B/4B/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/4B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8/z+3vBnh4j4wAAAAAElFTkSuQmCC');
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+        .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .text-deep-blue { color: #2A3A5B; }
+        .text-rustic-gold { color: #B08D57; }
+        .bg-deep-blue { background-color: #2A3A5B; }
+        .bg-rustic-gold { background-color: #B08D57; }
+        .border-deep-blue { border-color: #2A3A5B; }
+        .border-rustic-gold { border-color: #B08D57; }
+        
+        .nav-btn.active {
+            color: #B08D57; /* Rustic Gold */
+            border-bottom-color: #B08D57;
+            font-weight: 600;
+        }
+        .nav-btn {
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
 
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(42, 58, 91, 0.1);
+        }
+
+        .action-btn {
+            transition: all 0.3s ease;
+        }
+        .action-btn:hover {
+            background-color: #2A3A5B;
+            border-color: #2A3A5B;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42, 58, 91, 0.15);
+        }
+        
         /* Audio Player transitions */
         #audioPlayerContainer {
             transition: all 0.4s ease-in-out;
             transform: translateY(100%);
-            max-height: 95px; /* Default height */
+            max-height: 120px; /* Default height */
         }
-        #audioPlayerContainer.visible {
-            transform: translateY(0);
-        }
-        #audioPlayerContainer.expanded {
-            max-height: 300px; /* Expanded height for script */
-        }
+        #audioPlayerContainer.visible { transform: translateY(0); }
+        #audioPlayerContainer.expanded { max-height: 320px; }
         
-        /* Script display area */
         #scriptContent {
             height: 0;
             opacity: 0;
             overflow-y: auto;
             transition: all 0.4s ease-in-out;
-            transition-delay: 0.1s;
         }
         #audioPlayerContainer.expanded #scriptContent {
-            height: 180px; /* Adjust as needed */
+            height: 180px;
             opacity: 1;
-            margin-bottom: 1rem;
-        }
-
-        /* Active navigation tab */
-        .nav-btn.active {
-            border-bottom-color: #2563eb;
-            color: #2563eb;
-            font-weight: 600;
-        }
-
-        /* Favorite button style */
-        .favorite-btn {
-            fill: #d1d5db; /* Gray/unselected */
-            transition: all 0.2s ease;
-        }
-        .favorite-btn:hover {
-            fill: #fcd34d; /* Yellow on hover */
-        }
-        .favorite-btn.favorited {
-            fill: #f59e0b; /* Amber/selected */
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
         }
         
         /* Custom audio controls */
-        .control-btn {
-            background: transparent;
-            border: none;
+        .control-btn { transition: color 0.2s ease, transform 0.2s ease; }
+        .control-btn:hover { transform: scale(1.1); }
+        .play-pause-btn { transition: background-color 0.2s ease, box-shadow 0.3s ease; }
+        .play-pause-btn:hover { box-shadow: 0 0 15px rgba(176, 141, 87, 0.4); }
+        
+        #progressBarContainer {
+            background-color: rgba(176, 141, 87, 0.2);
             cursor: pointer;
-            padding: 0.5rem;
-            color: #4b5563; /* gray-600 */
         }
-        .control-btn:hover {
-            color: #1d4ed8; /* blue-700 */
-        }
-        .play-pause-btn {
-            background-color: #3b82f6; /* blue-500 */
-            color: white;
-            border-radius: 9999px;
-            width: 3.5rem;
-            height: 3.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 1rem;
-        }
-        .play-pause-btn:hover {
-            background-color: #2563eb; /* blue-600 */
-            color: white;
+        #progressBar {
+            background-color: #B08D57; /* Rustic Gold */
+            transition: width 0.1s linear;
         }
 
+        .footer-bg {
+             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23B08D57' fill-opacity='0.06'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm-9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm-9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm-9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm-9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0h1v5h5v1H6v5H5V6H0V5h5V0h1v5h94v1H6v94H5V6H0V5h5V0h1v5h94V0h1v5h-5v1h5v5h1V6h5V5h-5V0h1v5h-5v1h5v94h-1V6h-94v1h94v94h-1V6h-5v1h5v5h1V6h5V5h-5V0h1v5h-5v1h5v94h1V6h-94v1h94v94h1V6h-5v1h5v5h1V6h5V5h-5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen">
 
-    <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-20">
+    <!-- Header --><header class="bg-transparent backdrop-blur-sm sticky top-0 z-20 border-b border-rustic-gold/20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-3">
-                    <!-- Jain Symbol SVG -->
-                    <svg class="w-10 h-10 text-blue-600" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 0 L100 50 L50 100 L0 50 Z" fill="#F0F0F0" stroke="#000" stroke-width="1"/>
-                        <circle cx="50" cy="15" r="5" fill="#FF9933"/>
-                        <path d="M40 25 H60 M50 25 V45" stroke="#000" stroke-width="2"/>
-                        <path d="M30 50 C40 40, 60 40, 70 50" stroke="#138808" stroke-width="2" fill="none"/>
-                        <path d="M30 50 C40 60, 60 60, 70 50" stroke="#138808" stroke-width="2" fill="none"/>
-                        <circle cx="50" cy="70" r="10" stroke="#000080" stroke-width="2" fill="none"/>
-                        <path d="M50 85 L60 95 L40 95 Z" fill="#FF9933"/>
-                    </svg>
-                    <h1 class="text-2xl font-bold text-blue-700">Jain Audios</h1>
+                <!-- Left Side: Logo and Styled Name --><div class="flex items-center space-x-4 flex-shrink-0">
+                    <img src="https://raw.githubusercontent.com/ArchitModi513/Jain/main/images/jain-logo.png" alt="The Jain Path Logo" class="h-12 w-12">
+                    <div class="border-2 border-deep-blue p-1 text-center">
+                         <p class="font-serif text-xs leading-tight tracking-widest text-deep-blue">THE</p>
+                         <p class="font-serif text-xs leading-tight tracking-widest text-deep-blue">JAIN</p>
+                         <p class="font-serif text-xs leading-tight tracking-widest text-deep-blue">PATH</p>
+                     </div>
                 </div>
-                <!-- Search Bar -->
-                <div class="relative w-full max-w-xs">
-                    <input type="text" id="searchInput" placeholder="Search audios..." class="w-full pl-10 pr-4 py-2 border rounded-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
+
+                <!-- Center: Desktop Navigation --><div class="hidden md:flex flex-grow justify-center">
+                    <nav class="bg-transparent">
+                        <div id="nav-container-desktop" class="flex items-center justify-center space-x-4 lg:space-x-8">
+                             <!-- Nav buttons will be dynamically inserted here --></div>
+                    </nav>
+                </div>
+
+                <!-- Right Side: Search --><div class="hidden md:flex flex-shrink-0">
+                     <input type="text" id="searchInputDesktop" placeholder="Search..." class="w-full px-4 py-2 bg-transparent border border-rustic-gold/30 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-rustic-gold">
                 </div>
             </div>
         </div>
-        <!-- Category Navigation -->
-        <nav class="bg-white shadow-inner">
-            <div id="nav-container" class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-start space-x-4 sm:space-x-8 overflow-x-auto pb-px">
-                 <!-- Nav buttons will be dynamically inserted here -->
-            </div>
+        <!-- Mobile Navigation --><nav class="md:hidden bg-white/50 shadow-inner">
+            <div id="nav-container-mobile" class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-start space-x-4 sm:space-x-8 overflow-x-auto pb-px">
+                 <!-- Nav buttons will be dynamically inserted here --></div>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="container mx-auto p-4 sm:p-6 lg:p-8 flex-grow">
-        <!-- Content sections will be dynamically inserted here -->
-    </main>
+    <!-- Main Content --><main id="main-content" class="flex-grow">
+        <!-- Homepage content will be injected here if no category is active --><!-- Content sections for each category will be dynamically inserted here --></main>
     
-    <!-- Footer -->
-    <footer class="bg-gray-200 text-gray-700 text-sm text-center py-6">
-        <div class="container mx-auto">
-            <p class="font-bold">Made by TechSon</p>
-            <p>Contact:</p>
-            <p>Phone: +91 7021769798 | Email: archit.modi13@outlook.com</p>
+    <!-- Footer --><footer class="footer-bg bg-ivory text-center py-8 border-t border-rustic-gold/20 mt-16">
+        <div class="container mx-auto text-sm text-gray-500">
+            <p class="font-bold text-deep-blue">Made by TechSon</p>
+            <p>Contact: +91 9000090000 | abc@mail.com</p>
         </div>
     </footer>
 
-    <!-- Fixed Audio Player at the bottom -->
-    <div id="audioPlayerContainer" class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl rounded-t-lg z-30 p-4 border-t border-gray-200">
-        <!-- Close button for the player -->
-        <button id="closePlayerBtn" class="absolute top-2 right-2 control-btn">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </button>
-        <!-- Script Area -->
-        <div id="scriptContent" class="p-3 bg-gray-100 rounded-md border text-sm text-gray-700">
-            <!-- Script will be injected here -->
-        </div>
-        <!-- Player Controls -->
-        <div class="container mx-auto flex items-center justify-between">
-            <div class="w-1/3 flex items-center">
-                <div>
-                    <h3 id="currentTrackTitle" class="font-bold text-lg truncate">Select an audio</h3>
-                    <p id="currentTrackArtist" class="text-gray-500 text-sm">Jain Spiritual Audios</p>
+    <!-- Fixed Audio Player at the bottom --><div id="audioPlayerContainer" class="fixed bottom-0 left-0 right-0 bg-[#FDFBF8]/80 backdrop-blur-lg shadow-2xl rounded-t-lg z-30 p-4 border-t border-rustic-gold/20">
+        <button id="closePlayerBtn" class="absolute top-3 right-3 control-btn text-gray-400 hover:text-deep-blue"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+        
+        <div class="container mx-auto">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div>
+                        <h3 id="currentTrackTitle" class="font-serif font-bold text-lg truncate text-deep-blue">Select an audio</h3>
+                    </div>
+                    <button id="toggleScriptBtn" class="control-btn ml-2 text-gray-400 hover:text-deep-blue"><svg id="toggleScriptIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
                 </div>
-                <button id="toggleScriptBtn" class="control-btn ml-2">
-                    <svg id="toggleScriptIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </button>
+                <div class="flex items-center justify-center space-x-4">
+                    <button id="backwardBtn" class="control-btn text-gray-500 hover:text-deep-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                        </svg>
+                    </button>
+                    <button id="playPauseBtn" class="control-btn play-pause-btn bg-deep-blue hover:bg-rustic-gold w-14 h-14 rounded-full flex items-center justify-center"><svg id="playPauseIcon" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/></svg></button>
+                    <button id="forwardBtn" class="control-btn text-gray-500 hover:text-deep-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
+                        </svg>
+                    </button>
+                </div>
+                 <div class="w-32"><!-- Spacer --></div>
             </div>
-            <!-- Custom Controls -->
-            <div class="flex items-center justify-center">
-                <button id="backwardBtn" class="control-btn">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M8.445 14.832A1 1 0 0010 14.03V5.969a1 1 0 00-1.555-.832L2.48 9.168a1 1 0 000 1.664l5.965 4.001zM11.555 14.832a1 1 0 001.555-.832V5.969a1 1 0 00-1.555-.832l-5.965 4.001a1 1 0 000 1.664l5.965 4.001z"/></svg>
-                </button>
-                <button id="playPauseBtn" class="control-btn play-pause-btn">
-                    <svg id="playPauseIcon" class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/></svg>
-                </button>
-                <button id="forwardBtn" class="control-btn">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M11.555 5.168A1 1 0 0010 5.969v8.062a1 1 0 001.555.832l5.965-4.001a1 1 0 000-1.664l-5.965-4.001zM4.445 5.168A1 1 0 003 5.969v8.062a1 1 0 001.555.832l5.965-4.001a1 1 0 000-1.664L4.445 5.168z"/></svg>
-                </button>
+            <!-- Progress Bar --><div class="flex items-center gap-3 mt-2">
+                <span id="currentTime" class="text-xs text-gray-500 w-12 text-center">00:00</span>
+                <div id="progressBarContainer" class="w-full h-1.5 rounded-full overflow-hidden">
+                    <div id="progressBar" class="h-full w-0"></div>
+                </div>
+                <span id="duration" class="text-xs text-gray-500 w-12 text-center">00:00</span>
             </div>
-            <div class="w-1/3"><!-- This is an empty div for spacing, to balance the layout --></div>
-            <audio id="audioPlayer" class="hidden"></audio>
         </div>
+        
+        <div id="scriptContent" class="p-3 bg-gray-500/5 rounded-md border border-rustic-gold/20 text-sm text-gray-600 container mx-auto"></div>
+        <audio id="audioPlayer" class="hidden"></audio>
     </div>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- DATA FOR ALL CATEGORIES ---
             const audioData = {
                 pachchkaan: [
                     { title: 'Navkarsi Pachchkaan', description: 'For fasting from sunrise until 48 minutes after.', audioSrc: 'https://architmodi513.github.io/Jain/audios/navkarsi.m4a', script: 'Uggae sure namukkara-sahiam...' },
-                    { title: 'Porshi Pachchkaan', description: 'Fasting for one prahar (approx. 3 hours) after sunrise.', audioSrc: 'https://architmodi513.github.io/Jain/audios/porshi.m4a', script: 'Sure uggae porisim...' },
+                    { title: 'Porsi Pachchkaan', description: 'Fasting for one prahar (approx. 3 hours) after sunrise.', audioSrc: 'https://architmodi513.github.io/Jain/audios/porshi.m4a', script: 'Sure uggae porisim...' },
                     { title: 'Chauvihar Upvas', description: 'A complete fast for the day without food or water.', audioSrc: 'https://architmodi513.github.io/Jain/audios/Chauvihaar-Upwas.m4a', script: 'Chauviharam pi aharam...' },
-                    { title: 'Upvas', description: 'A fast where only boiled water is consumed.', audioSrc: 'https://architmodi513.github.io/Jain/audios/upwas.m4a', script: 'Placeholder script for Tivihar Upvas...' },
-                    { title: 'Ekasana', description: 'Eating a single meal in one sitting during the day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/ekasna.m4a', script: 'Placeholder script for Ekasanu...' },
-                    { title: 'Biyasana', description: 'Eating two meals in two sittings during the day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/beasna.m4a', script: 'Placeholder script for Biyasanu...' },
+                    { title: 'Tivihar Upvas', description: 'A fast where only boiled water is consumed.', audioSrc: 'https://architmodi513.github.io/Jain/audios/upwas.m4a', script: 'Placeholder script for Tivihar Upvas...' },
+                    { title: 'Ekasanu', description: 'Eating a single meal in one sitting during the day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/ekasna.m4a', script: 'Placeholder script for Ekasanu...' },
+                    { title: 'Biyasanu', description: 'Eating two meals in two sittings during the day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/beasna.m4a', script: 'Placeholder script for Biyasanu...' },
                     { title: 'Ayambil', description: 'Eating boiled, unseasoned food once a day.', audioSrc: 'https://architmodi513.github.io/Jain/audios/aayambil.m4a', script: 'Placeholder script for Ayambil...' },
-                    { title: 'Ratri Bhojan Tyaag', description: 'Oath to abstain from eating after sunset.', audioSrc: 'https://architmodi513.github.io/Jain/audios/ratri-bhojan-tyaag.m4a', script: 'Placeholder script for Raatri Bhojan Tyag...' }
+                    { title: 'Raatri Bhojan Tyag', description: 'Oath to abstain from eating after sunset.', audioSrc: 'https://architmodi513.github.io/Jain/audios/ratri-bhojan-tyaag.m4a', script: 'Placeholder script for Raatri Bhojan Tyag...' }
                 ],
-                bhajans: [
-                    { title: 'Mahavir Swami Bhajan', description: 'A devotional song for Lord Mahavir.', audioSrc: '#', script: 'Hey Mahavir, karu Vandan...'},
-                    { title: 'Navkar Mantra Jaap', description: 'Chanting of the sacred Navkar Mantra.', audioSrc: '#', script: 'Namo Arihantanam, Namo Siddhanam...'}
-                ],
+                bhajans: [{ title: 'Mahavir Swami Bhajan', description: 'A devotional song for Lord Mahavir.', audioSrc: '#', script: 'Hey Mahavir, karu Vandan...'}, { title: 'Navkar Mantra Jaap', description: 'Chanting of the sacred Navkar Mantra.', audioSrc: '#', script: 'Namo Arihantanam, Namo Siddhanam...'}],
                 sutras: [
-                    { title: 'Bhaktamar Stotra', description: 'A famous Jain hymn composed by Acharya Manatunga.', audioSrc: '#', script: 'Bhaktamara-pranata-mauli-mani-prabhanam...'}
+                    { title: 'Nandi Sutra', description: 'An Agama scripture providing an account of the Tirthankaras and their teachings.', youtubeVideoUrl: 'https://www.youtube.com/watch?v=Q1isTFKJAbw&pp=ygULbmFuZGkgc3V0cmE%3D', youtubePlaylistUrl: 'https://www.youtube.com/watch?v=nSmn6jR0xHA&list=PLM86g5mXBrl-0IQntnEpRd_ZtecnoRu-N', script: 'Explore the teachings of the Nandi Sutra.'},
+                    { title: 'Sutrakritang Sutra', description: 'The second Agama, dealing with conduct, knowledge, and liberation.', youtubePlaylistUrl: 'https://www.youtube.com/playlist?list=PLM86g5mXBrl995-SBNcGG15gTuY5HtjbM&si=TdWLWej5AlQfR-Ww', script: 'Explore the teachings of the Sutrakritang Sutra.'},
+                    { title: 'Tatvarth Sutra', description: 'A foundational text providing an outline of the Jain path to liberation.', youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLM86g5mXBrl8zxv_fgUtXEyft1eG9OJxy&si=1RLDmD5s2Ym3TUPa', script: 'Explore the teachings of the Tatvarth Sutra.'},
+                    { title: 'Uttaradhyayan Sutra Adhyay 33: Karma Prakriti', description: 'A chapter from Uttaradhyayan Sutra focusing on the nature of Karma.', youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLM86g5mXBrl9WzMT5KC3St-ZWd4qWim1M&si=EOlUMrevlhCZlp48', script: 'Explore Uttaradhyayan Sutra Adhyay 33.'},
+                    { title: 'Uttaradhyayan Sutra Adhyay Samyyaktva Parakram', description: 'A chapter from Uttaradhyayan Sutra on the strength of right faith.', youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLM86g5mXBrl9j9OO3PVzzhcsMK-rb8x9z&si=oLL-ow30US-cWhe3', script: 'Explore Uttaradhyayan Sutra Adhyay Samyyaktva Parakram.'},
+                    { title: 'Antagad Sutra', description: 'Narratives of individuals who attained liberation in their last birth.', youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLvedDtsDxQmCbH8158WECvGswa6cDuo4n&si=wKV5taRTR4rsVvVV', script: 'Explore the teachings of the Antagad Sutra.'}
                 ],
-                lectures: [{ title: 'Lecture on Ahimsa', description: 'Discourse on the principle of non-violence.', audioSrc: '#', script: 'Ahimsa Paramo Dharma...' }],
-                mangalik: [{ title: 'Mangal Path', description: 'Auspicious verses for blessings and well-being.', audioSrc: '#', script: 'Chattari Mangalam...'}],
+                lectures: [
+                    { title: 'Lectures on Leshya', description: 'A series of lectures exploring the concept of Leshya (soul coloring).', youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLvedDtsDxQmDFbXhZE6Cw81mU2-G726W0&si=2VBA2u91ax8PRS5y' },
+                    { title: 'Lecture on the Art of Dying - Samadhi Sharan', description: 'Discourses on the profound practice of Samadhi Sharana (a peaceful death).', youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLvedDtsDxQmD6FTR8pIGmIZK3i-pZS4gN&si=WMTRBt7IM2RI4x0s' },
+                    { title: 'Samosharan Meditation', description: 'A guided meditation on the Samosharan, the divine preaching hall of the Tirthankaras.', youtubeUrl: 'https://www.youtube.com/live/35srPh0IZV8?si=LuKZIJatWL1ree3v' }
+                ],
+                mangalik: [{ title: 'Mangal Path', description: 'Auspicious verses for blessings and well-being.', audioSrc: 'https://architmodi513.github.io/Jain/audios/Mangalik.m4a', script: 'Chattari Mangalam...'}],
                 pratikraman: [{ title: 'Devasi Pratikraman', description: 'The ritual of evening repentance.', audioSrc: '#', script: 'Ichchhami khamasamano...'}],
-                samayik: [{ title: 'Samayik Path', description: 'The practice of equanimity for 48 minutes.', audioSrc: '#', script: 'Karemi Bhante Samaiyam...'}],
-                favorites: [] // This will be populated from localStorage
+                samayik: [{ title: 'Samayik Path', description: 'The practice of equanimity for 48 minutes.', audioSrc: '#', script: 'Karemi Bhante Samaiyam...'}]
             };
 
             const mainContent = document.getElementById('main-content');
-            const navContainer = document.getElementById('nav-container');
+            const navContainerDesktop = document.getElementById('nav-container-desktop');
+            const navContainerMobile = document.getElementById('nav-container-mobile');
             const audioPlayerContainer = document.getElementById('audioPlayerContainer');
             const audioPlayer = document.getElementById('audioPlayer');
             const currentTrackTitle = document.getElementById('currentTrackTitle');
             const scriptContent = document.getElementById('scriptContent');
-            const searchInput = document.getElementById('searchInput');
             
-            // Custom Controls
             const playPauseBtn = document.getElementById('playPauseBtn');
             const playPauseIcon = document.getElementById('playPauseIcon');
             const backwardBtn = document.getElementById('backwardBtn');
@@ -229,207 +227,348 @@
             const toggleScriptBtn = document.getElementById('toggleScriptBtn');
             const toggleScriptIcon = document.getElementById('toggleScriptIcon');
 
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const progressBarContainer = document.getElementById('progressBarContainer');
+            const progressBar = document.getElementById('progressBar');
+
             const playIconPath = `<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/>`;
             const pauseIconPath = `<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>`;
             const chevronDownIconPath = `<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>`;
             const chevronUpIconPath = `<path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path>`;
 
-            let favorites = JSON.parse(localStorage.getItem('jainAudioFavorites')) || [];
-            let currentTab = 'pachchkaan';
+            let currentTab = null;
 
-            function createAudioCard(item, isFavorited) { /* ... existing code ... */ }
-            function renderGrid(container, items) { /* ... existing code ... */ }
-            function setActiveTab(key) { /* ... existing code ... */ }
-            function getAllAudioItems() { /* ... existing code ... */ }
-            function handleSearch() { /* ... existing code ... */ }
-            function createSection(key, title, description) { /* ... existing code ... */ }
-            
-            // --- Function to Create Audio Cards ---
-            function createAudioCard(item, isFavorited) {
-                const favoritedClass = isFavorited ? 'favorited' : '';
+            function formatTime(seconds) {
+                if (isNaN(seconds)) return '00:00';
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            function createAudioCard(item) {
+                let buttonHtml = '';
+                if (item.audioSrc && item.audioSrc !== '#') {
+                    buttonHtml = `<button data-title="${item.title}" class="play-btn action-btn w-full mt-auto bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm">
+                                      Listen Now
+                                  </button>`;
+                } else if (item.youtubeVideoUrl || item.youtubePlaylistUrl) {
+                    buttonHtml = `
+                        <div class="flex flex-col space-y-2 mt-auto">
+                            ${item.youtubeVideoUrl ? `<a href="${item.youtubeVideoUrl}" target="_blank" rel="noopener noreferrer" class="action-btn w-full bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm text-center">
+                                Play on YouTube
+                            </a>` : ''}
+                            ${item.youtubePlaylistUrl ? `<a href="${item.youtubePlaylistUrl}" target="_blank" rel="noopener noreferrer" class="action-btn w-full bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm text-center">
+                                Explore Learning Playlist
+                            </a>` : ''}
+                        </div>
+                    `;
+                } else if (item.youtubeUrl) { // Fallback for single youtube link
+                     buttonHtml = `<a href="${item.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="action-btn w-full mt-auto bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm text-center">
+                                      Play on YouTube
+                                   </a>`;
+                }
+                 else {
+                     buttonHtml = `<button class="w-full mt-auto bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-lg cursor-not-allowed text-sm" disabled>
+                                      Not Available
+                                  </button>`;
+                }
+
                 return `
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white/40 border border-rustic-gold/20 rounded-lg overflow-hidden card-hover-effect">
                         <div class="p-6 flex flex-col h-full">
-                            <div class="flex justify-between items-start">
-                                <h3 class="text-xl font-semibold mb-2 pr-2">${item.title}</h3>
-                                <button class="favorite-btn p-1 flex-shrink-0" data-title="${item.title}">
-                                    <svg class="w-6 h-6 ${favoritedClass}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                </button>
-                            </div>
-                            <p class="text-gray-600 mb-4 flex-grow">${item.description}</p>
-                            <button data-title="${item.title}" class="play-btn w-full mt-auto bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-colors duration-300">
-                                Play Audio
-                            </button>
+                            <h3 class="font-serif text-xl font-semibold mb-2 text-deep-blue">${item.title}</h3>
+                            <p class="text-gray-600 mb-4 flex-grow text-sm">${item.description}</p>
+                            ${buttonHtml}
                         </div>
                     </div>
                 `;
             }
 
-            // --- Function to Render a Grid of Cards ---
             function renderGrid(container, items) {
                 if (items.length === 0) {
                     container.innerHTML = `<p class="text-gray-500 col-span-full">No items found.</p>`;
                     return;
                 }
-                container.innerHTML = items.map(item => {
-                    const isFavorited = favorites.includes(item.title);
-                    return createAudioCard(item, isFavorited);
-                }).join('');
+                container.innerHTML = items.map(item => createAudioCard(item)).join('');
             }
             
-            // --- Function to Change Active Tab ---
             function setActiveTab(key) {
                 currentTab = key;
-                searchInput.value = ''; // Clear search on tab change
+                
                 document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-                document.querySelector(`.nav-btn[data-target="${key}"]`).classList.add('active');
+                if (key) {
+                    document.querySelectorAll(`.nav-btn[data-target="${key}"]`).forEach(btn => btn.classList.add('active'));
+                } else {
+                     document.querySelectorAll(`.nav-btn[data-target=""]`).forEach(btn => btn.classList.add('active'));
+                }
                 
-                document.querySelectorAll('.category-section').forEach(sec => sec.style.display = 'none');
-                document.getElementById(`${key}-section`).style.display = 'block';
-
-                if (key === 'favorites') {
-                    const favoriteItems = getAllAudioItems().filter(item => favorites.includes(item.title));
-                    renderGrid(document.getElementById('favoritesGrid'), favoriteItems);
+                document.querySelectorAll('.page-section').forEach(sec => sec.style.display = 'none');
+                
+                if (key) {
+                    document.getElementById(`${key}-section`).style.display = 'block';
+                } else {
+                    document.getElementById('homepage-section').style.display = 'block';
                 }
             }
 
-            // --- Get all audio items from all categories ---
             function getAllAudioItems() {
-                return Object.keys(audioData)
-                    .filter(k => k !== 'favorites')
-                    .flatMap(key => audioData[key]);
-            }
-            
-            // --- Search Functionality ---
-            function handleSearch() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const allItems = getAllAudioItems();
-                const results = allItems.filter(item => 
-                    item.title.toLowerCase().includes(searchTerm) || 
-                    item.description.toLowerCase().includes(searchTerm)
-                );
-
-                // Hide all tab sections and show a unified search result view
-                document.querySelectorAll('.category-section').forEach(sec => sec.style.display = 'none');
-                let searchSection = document.getElementById('search-section');
-                if (!searchSection) {
-                    searchSection = createSection('search', 'Search Results', `Showing results for "${searchInput.value}"`);
-                    mainContent.appendChild(searchSection);
-                }
-                searchSection.querySelector('h2').textContent = 'Search Results';
-                searchSection.querySelector('p').textContent = `Showing results for "${searchInput.value}"`;
-                searchSection.style.display = 'block';
-                renderGrid(document.getElementById('searchGrid'), results);
-                
-                if (!searchTerm) {
-                    searchSection.style.display = 'none';
-                    setActiveTab(currentTab);
-                }
+                return Object.keys(audioData).flatMap(key => audioData[key]);
             }
 
-            // --- Function to Create a Content Section ---
             function createSection(key, title, description) {
                 const section = document.createElement('section');
                 section.id = `${key}-section`;
-                section.classList.add('category-section');
+                section.classList.add('page-section', 'container', 'mx-auto', 'p-4', 'sm:p-6', 'lg:p-8');
                 section.style.display = 'none';
                 section.innerHTML = `
-                    <h2 class="text-3xl font-bold mb-2">${title}</h2>
-                    <p class="text-gray-600 mb-6">${description}</p>
+                    <div class="text-center mb-12">
+                        <h2 class="font-serif text-4xl lg:text-5xl font-bold text-deep-blue mb-2">${title}</h2>
+                        <p class="text-gray-500 max-w-2xl mx-auto">${description}</p>
+                    </div>
                     <div id="${key}Grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
                 `;
                 return section;
+            }
+
+            function createHomepage() {
+                const homepageSection = document.createElement('div');
+                homepageSection.id = 'homepage-section';
+                homepageSection.classList.add('page-section');
+                
+                homepageSection.innerHTML = `
+                    <!-- Hero Section --><div class="text-center py-20 lg:py-32 bg-ivory relative overflow-hidden">
+                        <div class="absolute inset-0 bg-repeat bg-center opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\\"100\\" height=\\"100\\" viewBox=\\"0 0 100 100\\" xmlns=\\"http://www.w3.org/2000/svg\\"%3E%3Cpath d=\\"M11 18.273l8.445 13.727 15.11-21.9L21.828 0h-9.273L0 18.273h11zm32.14 27.455L21.282 23.82l-4.41 6.38 12.727 18.44-14.14 20.56 6.38-4.41L32.14 45.727zm-32.14 0L21.828 100h9.273L46.212 81.73l-11-16-14.14 20.56h-9.273zm90.445-45.455L88.9 2.05l-4.41 6.38L97.218 26.87l-14.14 20.56 6.38-4.41L100 26.87zm-14.14 45.455l11-16 11 16-15.11 21.9h-9.273L78.172 72.273zM50 54.273l-11-16-11 16 11 16 11-16z\\" fill=\\"%23B08D57\\" fill-opacity=\\"0.1\\" fill-rule=\\"nonzero\\"%3E%3C/path%3E%3C/svg%3E')"></div>
+                        <div class="container mx-auto px-4 relative">
+                            <div class="inline-block border-2 border-deep-blue py-4 px-10">
+                                <h1 class="font-serif text-5xl md:text-7xl font-bold text-deep-blue">The Jain Path</h1>
+                            </div>
+                            <p class="mt-4 text-lg text-rustic-gold">[A Digital Space for Reflection and Recitation]</p>
+                            <p class="mt-6 max-w-2xl mx-auto text-gray-500">
+                                Discover a serene collection of Pachkaans, Sutras, and devotional audios. A modern sanctuary for daily practice and spiritual exploration, designed for clarity and peace.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Our Mission Section --><div class="container mx-auto p-4 sm:p-6 lg:p-8 my-16 text-center">
+                        <h2 class="font-serif text-4xl font-bold text-deep-blue mb-4">Our Mission</h2>
+                        <p class="max-w-3xl mx-auto text-gray-600">
+                            Our aim is to bring sacred Jain teachings to every screen and every heart. We strive to provide an accessible digital option for young Jains to explore their spirituality, and a convenient, elegant platform for devotees and elders to continue their daily practices with ease.
+                        </p>
+                    </div>
+                    
+                    <!-- Featured Prayers --><div class="container mx-auto p-4 sm:p-6 lg:p-8">
+                         <div class="text-center mb-12">
+                            <h2 class="font-serif text-4xl font-bold text-deep-blue mb-2">Featured Recitations</h2>
+                        </div>
+                        <div id="featuredGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+                    </div>
+                    
+                    <!-- Daily Timings & Festivals --><div class="container mx-auto px-8 my-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-white/40 p-8 rounded-lg border border-rustic-gold/20 text-center">
+                             <h3 class="font-serif text-2xl text-deep-blue mb-4">Daily Timings</h3>
+                             <p class="text-sm text-gray-500 mb-4">(<span id="locationCity">Loading...</span>)</p>
+                             <div class="flex justify-around">
+                                 <div>
+                                     <p class="text-rustic-gold">Sunrise</p>
+                                     <p id="sunriseTime" class="font-bold text-2xl text-deep-blue">--:--</p>
+                                 </div>
+                                 <div>
+                                     <p class="text-rustic-gold">Sunset</p>
+                                     <p id="sunsetTime" class="font-bold text-2xl text-deep-blue">--:--</p>
+                                 </div>
+                             </div>
+                        </div>
+                        <div class="text-left">
+                             <h3 class="font-serif text-3xl text-deep-blue mb-2">Upcoming Holy Days</h3>
+                             <p class="text-gray-500 mb-4">Observe these sacred dates with devotion and mindfulness.</p>
+                             <div class="space-y-3">
+                                <div class="bg-white/40 p-4 rounded-lg border border-rustic-gold/10"><strong>Paryushan Parva:</strong> Aug 27 - Sep 3</div>
+                                <div class="bg-white/40 p-4 rounded-lg border border-rustic-gold/10"><strong>Mahavir Jayanti:</strong> April 21</div>
+                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Us Section --><div class="container mx-auto p-8 my-16">
+                        <div class="text-center mb-12">
+                            <h2 class="font-serif text-4xl font-bold text-deep-blue mb-4">Contact Us</h2>
+                            <p class="max-w-2xl mx-auto text-gray-600">We welcome your feedback and suggestions to improve this digital sanctuary.</p>
+                        </div>
+                        <form class="max-w-xl mx-auto">
+                            <div class="mb-4">
+                                <input type="email" placeholder="Your Email" class="w-full px-4 py-3 bg-white/50 border border-rustic-gold/30 rounded-lg focus:outline-none focus:ring-1 focus:ring-rustic-gold">
+                            </div>
+                            <div class="mb-4">
+                                <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-3 bg-white/50 border border-rustic-gold/30 rounded-lg focus:outline-none focus:ring-1 focus:ring-rustic-gold"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="bg-deep-blue text-white font-semibold py-3 px-8 rounded-lg hover:bg-rustic-gold transition-colors duration-300">Submit Feedback</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Disclaimer Section --><div class="container mx-auto px-8 my-16 text-center text-xs text-gray-400">
+                        <h4 class="font-bold text-gray-500 mb-2">Disclaimer & Acknowledgements</h4>
+                        <p class="max-w-3xl mx-auto">
+                            This platform is created for spiritual and educational purposes only. All audio, video, and textual content is either original, licensed, or believed to be in the public domain. We deeply respect the intellectual property of all creators. No copyright infringement is intended. If you believe any content on this site infringes upon your copyright, please contact us for its immediate removal. We extend our heartfelt gratitude to all the original creators, scholars, and institutions whose work has made this digital sanctuary possible.
+                        </p>
+                    </div>
+                `;
+                mainContent.appendChild(homepageSection);
+
+                const featuredItems = [audioData.pachchkaan[0], audioData.sutras[0], audioData.bhajans[1]];
+                renderGrid(document.getElementById('featuredGrid'), featuredItems);
+                updateSunriseSunset();
+            }
+
+            async function updateSunriseSunset() {
+                const palitanaCoords = { lat: 21.5222, lng: 71.8281 };
+                const locationCityEl = document.getElementById('locationCity');
+                const sunriseTimeEl = document.getElementById('sunriseTime');
+                const sunsetTimeEl = document.getElementById('sunsetTime');
+
+                const fetchAndDisplayTimes = async (lat, lng, city) => {
+                    try {
+                        const response = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`);
+                        const data = await response.json();
+                        if (data.status === 'OK') {
+                            const sunrise = new Date(data.results.sunrise).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+                            const sunset = new Date(data.results.sunset).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+                            locationCityEl.textContent = city;
+                            sunriseTimeEl.textContent = sunrise;
+                            sunsetTimeEl.textContent = sunset;
+                        } else {
+                           throw new Error('Sunrise API error');
+                        }
+                    } catch (error) {
+                        console.error("Could not fetch sunrise/sunset data:", error);
+                        locationCityEl.textContent = 'Palitana, Gujarat';
+                        sunriseTimeEl.textContent = '06:30 AM'; // Fallback display
+                        sunsetTimeEl.textContent = '06:45 PM'; // Fallback display
+                    }
+                };
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const { latitude, longitude } = position.coords;
+                            try {
+                                const geoResponse = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+                                const geoData = await geoResponse.json();
+                                const city = geoData.city || 'Your Location';
+                                fetchAndDisplayTimes(latitude, longitude, city);
+                            } catch (error) {
+                                console.error("Could not fetch city name:", error);
+                                fetchAndDisplayTimes(latitude, longitude, 'Your Location');
+                            }
+                        },
+                        () => {
+                            // User denied location access
+                            fetchAndDisplayTimes(palitanaCoords.lat, palitanaCoords.lng, 'Palitana, Gujarat');
+                        }
+                    );
+                } else {
+                    // Geolocation not supported
+                    fetchAndDisplayTimes(palitanaCoords.lat, palitanaCoords.lng, 'Palitana, Gujarat');
+                }
             }
 
             // --- Initialize UI ---
             const categoryMeta = {
                 pachchkaan: { title: 'Pachchkaan', desc: 'Select a Pachchkaan below to listen to the audio oath for your fast.'},
                 bhajans: { title: 'Bhajans', desc: 'Listen to devotional songs and hymns.'},
-                sutras: { title: 'Sutras', desc: 'Listen to sacred scriptures and texts.'},
+                sutras: { title: 'Sutras', desc: 'Explore the sacred Agamas, the foundational scriptures of Jainism, through recitations and teachings.'},
                 lectures: { title: 'Lectures', desc: 'Listen to spiritual discourses and pravachans.'},
                 mangalik: { title: 'Mangalik', desc: 'Listen to auspicious recitations for blessings.'},
                 pratikraman: { title: 'Pratikraman', desc: 'Audio for the ritual of repentance.'},
-                samayik: { title: 'Samayik', desc: 'Audio for the practice of equanimity.'},
-                favorites: { title: 'Favorites', desc: 'Your saved audios for quick access.'}
+                samayik: { title: 'Samayik', desc: 'Audio for the practice of equanimity.'}
             };
             
+            const homeBtnHTML = `<button class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-rustic-gold hover:border-rustic-gold" data-target="">Home</button>`;
+            navContainerDesktop.innerHTML += homeBtnHTML;
+            navContainerMobile.innerHTML += homeBtnHTML;
+            
+            createHomepage();
+
             for (const key in categoryMeta) {
-                const navBtn = document.createElement('button');
-                navBtn.className = 'nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap';
-                navBtn.textContent = categoryMeta[key].title;
-                navBtn.dataset.target = key;
-                navContainer.appendChild(navBtn);
+                const navBtnHTML = `<button class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-rustic-gold hover:border-rustic-gold" data-target="${key}">${categoryMeta[key].title}</button>`;
+                navContainerDesktop.innerHTML += navBtnHTML;
+                navContainerMobile.innerHTML += navBtnHTML;
                 
                 const section = createSection(key, categoryMeta[key].title, categoryMeta[key].desc);
                 mainContent.appendChild(section);
-
-                if (key !== 'favorites') {
-                    renderGrid(document.getElementById(`${key}Grid`), audioData[key]);
-                }
+                renderGrid(document.getElementById(`${key}Grid`), audioData[key]);
             }
             
             // --- Event Listeners ---
-            navContainer.addEventListener('click', (e) => {
-                if(e.target.classList.contains('nav-btn')) setActiveTab(e.target.dataset.target);
+            [navContainerDesktop, navContainerMobile].forEach(container => {
+                container.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('nav-btn')) {
+                        setActiveTab(e.target.dataset.target || null);
+                    }
+                });
             });
-            searchInput.addEventListener('input', handleSearch);
+
+            const searchInputDesktopElement = document.getElementById('searchInputDesktop');
+            if(searchInputDesktopElement) {
+                 searchInputDesktopElement.addEventListener('input', (event) => {
+                    const searchTerm = event.target.value.toLowerCase();
+                    if (!searchTerm) {
+                        setActiveTab(currentTab); 
+                        return;
+                    }
+                    
+                    const allItems = getAllAudioItems();
+                    const results = allItems.filter(item => 
+                        item.title.toLowerCase().includes(searchTerm) || 
+                        item.description.toLowerCase().includes(searchTerm)
+                    );
+
+                    document.querySelectorAll('.page-section').forEach(sec => sec.style.display = 'none');
+                    let searchSection = document.getElementById('search-section');
+                    if (!searchSection) {
+                        searchSection = createSection('search', 'Search Results', '');
+                        mainContent.appendChild(searchSection);
+                    }
+                    searchSection.querySelector('h2').textContent = `Search Results for "${searchTerm}"`;
+                    searchSection.style.display = 'block';
+                    renderGrid(document.getElementById('searchGrid'), results);
+                });
+            }
+            
 
             mainContent.addEventListener('click', function(e) {
                 const playBtn = e.target.closest('.play-btn');
-                const favBtn = e.target.closest('.favorite-btn');
-
                 if (playBtn) {
                     const title = playBtn.dataset.title;
                     const item = getAllAudioItems().find(i => i.title === title);
-                    if (item) {
-                        if (item.audioSrc && item.audioSrc !== '#') {
-                            audioPlayer.src = item.audioSrc;
-                            currentTrackTitle.textContent = item.title;
-                            scriptContent.textContent = item.script || 'No script available for this audio.';
-                            audioPlayer.play();
-                            audioPlayerContainer.classList.add('visible', 'expanded');
-                            toggleScriptIcon.innerHTML = chevronUpIconPath;
+                    if (item && item.audioSrc !== '#') {
+                        audioPlayer.src = item.audioSrc;
+                        currentTrackTitle.textContent = item.title;
+                        scriptContent.textContent = item.script || 'No script available for this audio.';
+                        audioPlayer.play();
+                        audioPlayerContainer.classList.add('visible');
+                        if (item.script) {
+                           audioPlayerContainer.classList.add('expanded');
+                           toggleScriptIcon.innerHTML = chevronUpIconPath;
                         } else {
-                            alert('Audio for "' + title + '" is not available yet.');
+                           audioPlayerContainer.classList.remove('expanded');
+                           toggleScriptIcon.innerHTML = chevronDownIconPath;
                         }
-                    }
-                }
-
-                if (favBtn) {
-                    const title = favBtn.dataset.title;
-                    const starIcon = favBtn.querySelector('svg');
-                    const index = favorites.indexOf(title);
-                    if (index > -1) {
-                        favorites.splice(index, 1); // Remove from favorites
-                        starIcon.classList.remove('favorited');
                     } else {
-                        favorites.push(title); // Add to favorites
-                        starIcon.classList.add('favorited');
-                    }
-                    localStorage.setItem('jainAudioFavorites', JSON.stringify(favorites));
-
-                    if (currentTab === 'favorites') {
-                         const favoriteItems = getAllAudioItems().filter(item => favorites.includes(item.title));
-                         renderGrid(document.getElementById('favoritesGrid'), favoriteItems);
+                        // Alert for audioSrc only, youtube links handled by 'a' tags now
+                        if(item && item.audioSrc) alert('Audio for "' + title + '" is not available yet.');
                     }
                 }
             });
 
-            // --- Custom Audio Control Listeners ---
-            playPauseBtn.addEventListener('click', () => {
-                if (audioPlayer.paused) {
-                    audioPlayer.play();
-                } else {
-                    audioPlayer.pause();
-                }
-            });
+            playPauseBtn.addEventListener('click', () => audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause());
             
             closePlayerBtn.addEventListener('click', () => {
                 audioPlayer.pause();
                 audioPlayer.src = '';
                 audioPlayerContainer.classList.remove('visible', 'expanded');
                 currentTrackTitle.textContent = 'Select an audio';
-                scriptContent.textContent = '';
             });
 
             toggleScriptBtn.addEventListener('click', () => {
@@ -438,24 +577,29 @@
                 toggleScriptIcon.innerHTML = isExpanded ? chevronUpIconPath : chevronDownIconPath;
             });
 
-            backwardBtn.addEventListener('click', () => {
-                audioPlayer.currentTime -= 10;
+            backwardBtn.addEventListener('click', () => audioPlayer.currentTime -= 10);
+            forwardBtn.addEventListener('click', () => audioPlayer.currentTime += 10);
+
+            audioPlayer.addEventListener('play', () => playPauseIcon.innerHTML = pauseIconPath);
+            audioPlayer.addEventListener('pause', () => playPauseIcon.innerHTML = playIconPath);
+
+            audioPlayer.addEventListener('loadedmetadata', () => {
+                durationEl.textContent = formatTime(audioPlayer.duration);
             });
 
-            forwardBtn.addEventListener('click', () => {
-                audioPlayer.currentTime += 10;
+            audioPlayer.addEventListener('timeupdate', () => {
+                currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+            });
+            
+            progressBarContainer.addEventListener('click', (e) => {
+                const width = progressBarContainer.clientWidth;
+                const clickX = e.offsetX;
+                audioPlayer.currentTime = (clickX / width) * audioPlayer.duration;
             });
 
-            audioPlayer.addEventListener('play', () => {
-                playPauseIcon.innerHTML = pauseIconPath;
-            });
-
-            audioPlayer.addEventListener('pause', () => {
-                playPauseIcon.innerHTML = playIconPath;
-            });
-
-            // --- Set Initial State ---
-            setActiveTab('pachchkaan');
+            setActiveTab(null); // Show homepage initially
         });
     </script>
 
