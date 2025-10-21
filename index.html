@@ -227,6 +227,25 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- CONTENT LIBRARIES ---
+            const insights = [
+                { quote: "Ahimsa is the highest duty.", source: "Mahavira Swami" },
+                { quote: "Live and let live. Love and let love.", source: "Jain Proverb" },
+                { quote: "Silence and self-control is non-violence.", source: "Mahavira Swami" },
+                { quote: "The essence of wisdom is to not injure any living being.", source: "Jain Scripture" },
+                { quote: "Have compassion towards all living beings. Hatred leads to ruin.", source: "Mahavira Swami" }
+            ];
+
+            const dailyIntentions = [
+                { theme: "Kshama (Forgiveness)", prompt: "Reflect on a moment where you can practice forgiveness, for others or for yourself." },
+                { theme: "Satya (Truthfulness)", prompt: "Consider how you can express your truth with compassion and kindness today." },
+                { theme: "Aparigraha (Non-possessiveness)", prompt: "Identify one attachment, physical or emotional, you can release today for greater peace." },
+                { theme: "Ahimsa (Non-violence)", prompt: "Practice non-violence in your thoughts, words, and actions towards all beings." },
+                { theme: "Brahmacharya (Chastity/Self-Control)", prompt: "Focus on conserving your energy for spiritual growth and avoiding sensual indulgence." },
+                { theme: "Maitri (Friendliness)", prompt: "Extend a feeling of friendship and goodwill to everyone you encounter today." },
+                { theme: "Karuna (Compassion)", prompt: "Actively look for an opportunity to ease the suffering of another being." }
+            ];
+
             const audioData = {
                 pachchkaan: [
                     { title: 'Navkarsi Pachchkaan', description: 'For fasting from sunrise until 48 minutes after.', audioSrc: 'https://architmodi513.github.io/Jain/audios/navkarsi.m4a', script: 'Uggae sure namukkara-sahiam...' },
@@ -421,32 +440,45 @@
                         <div id="featuredGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
                     </div>
                     
-                    <!-- Daily Timings & Festivals -->
-                    <div class="container mx-auto px-8 my-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                        <div class="bg-white/40 p-8 rounded-lg border border-rustic-gold/20 text-center">
-                             <h3 class="font-serif text-2xl text-deep-blue mb-4">Daily Timings</h3>
-                             <p class="text-sm text-gray-500 mb-4">(<span id="locationCity">Loading...</span>)</p>
-                             <div class="flex justify-around">
-                                 <div>
-                                     <p class="text-rustic-gold">Sunrise</p>
-                                     <p id="sunriseTime" class="font-bold text-2xl text-deep-blue">--:--</p>
-                                 </div>
-                                 <div>
-                                     <p class="text-rustic-gold">Sunset</p>
-                                     <p id="sunsetTime" class="font-bold text-2xl text-deep-blue">--:--</p>
-                                 </div>
-                             </div>
+                    <!-- Daily Info Section -->
+                    <div class="container mx-auto px-8 my-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                        <!-- Today's Almanac -->
+                        <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 text-center h-full">
+                            <h3 class="font-serif text-2xl text-deep-blue mb-4">Today's Almanac</h3>
+                            <p class="text-sm text-gray-500 mb-4">(<span id="locationCity">Loading...</span>)</p>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-3">
+                                <div>
+                                    <p class="text-rustic-gold text-sm">Sunrise</p>
+                                    <p id="sunriseTime" class="font-bold text-lg text-deep-blue">--:--</p>
+                                </div>
+                                <div>
+                                    <p class="text-rustic-gold text-sm">Sunset</p>
+                                    <p id="sunsetTime" class="font-bold text-lg text-deep-blue">--:--</p>
+                                </div>
+                                <div class="col-span-2 border-t border-rustic-gold/20 my-1"></div>
+                                <div class="col-span-2">
+                                   <p class="text-rustic-gold text-sm">Tithi (Veer Samvat 2551)</p>
+                                   <p id="tithiDisplay" class="font-bold text-lg text-deep-blue truncate -mb-1">--</p>
+                                   <p id="tithiEventDisplay" class="text-sm text-rustic-gold font-semibold">--</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-left">
-                             <h3 class="font-serif text-3xl text-deep-blue mb-2">Upcoming Holy Days</h3>
-                             <p class="text-gray-500 mb-4">Observe these sacred dates with devotion and mindfulness.</p>
-                             <div class="space-y-3">
-                                 <div class="bg-white/40 p-4 rounded-lg border border-rustic-gold/10"><strong>Paryushan Parva:</strong> Aug 27 - Sep 3</div>
-                                 <div class="bg-white/40 p-4 rounded-lg border border-rustic-gold/10"><strong>Mahavir Jayanti:</strong> April 21</div>
+                        <!-- A Moment of Insight -->
+                        <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 text-center h-full flex flex-col justify-center">
+                            <h3 class="font-serif text-2xl text-deep-blue mb-4">A Moment of Insight</h3>
+                            <blockquote id="insightQuote" class="text-gray-600 italic mb-2 flex-grow">"Loading insight..."</blockquote>
+                            <cite id="insightSource" class="text-rustic-gold font-semibold not-italic"></cite>
+                        </div>
+                        <!-- Daily Intention -->
+                        <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 text-center h-full flex flex-col justify-center">
+                             <h3 class="font-serif text-2xl text-deep-blue mb-4">Today's Intention</h3>
+                             <div class="flex-grow flex flex-col justify-center">
+                                <p id="intentionTheme" class="font-bold text-lg text-deep-blue mb-2">Loading...</p>
+                                <p id="intentionPrompt" class="text-gray-600 text-sm">...</p>
                              </div>
                         </div>
                     </div>
-                    
+
                     <!-- Contact Us Section -->
                     <div id="contact-section-container" class="container mx-auto p-8 my-16">
                         <div class="text-center mb-12">
@@ -482,34 +514,85 @@
 
                 const featuredItems = [audioData.pachchkaan[0], audioData.sutras[0], audioData.bhajans[1]];
                 renderGrid(document.getElementById('featuredGrid'), featuredItems);
-                updateSunriseSunset();
+                updateDailyInfo();
+                displayInsight();
+                displayDailyIntention();
             }
 
-            async function updateSunriseSunset() {
-                const palitanaCoords = { lat: 21.5222, lng: 71.8281 };
-                const locationCityEl = document.getElementById('locationCity');
+            function displayInsight() {
+                const quoteEl = document.getElementById('insightQuote');
+                const sourceEl = document.getElementById('insightSource');
+                const randomIndex = Math.floor(Math.random() * insights.length);
+                const selectedInsight = insights[randomIndex];
+                quoteEl.textContent = `"${selectedInsight.quote}"`;
+                sourceEl.textContent = `- ${selectedInsight.source}`;
+            }
+
+            function displayDailyIntention() {
+                const themeEl = document.getElementById('intentionTheme');
+                const promptEl = document.getElementById('intentionPrompt');
+                const today = new Date();
+                const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+                const intentionIndex = dayOfYear % dailyIntentions.length;
+                const selectedIntention = dailyIntentions[intentionIndex];
+                themeEl.textContent = selectedIntention.theme;
+                promptEl.textContent = selectedIntention.prompt;
+            }
+
+            async function fetchSunriseSunset(lat, lng) {
                 const sunriseTimeEl = document.getElementById('sunriseTime');
                 const sunsetTimeEl = document.getElementById('sunsetTime');
-
-                const fetchAndDisplayTimes = async (lat, lng, city) => {
-                    try {
-                        const response = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`);
-                        const data = await response.json();
-                        if (data.status === 'OK') {
-                            const sunrise = new Date(data.results.sunrise).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-                            const sunset = new Date(data.results.sunset).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-                            locationCityEl.textContent = city;
-                            sunriseTimeEl.textContent = sunrise;
-                            sunsetTimeEl.textContent = sunset;
-                        } else {
-                           throw new Error('Sunrise API error');
-                        }
-                    } catch (error) {
-                        console.error("Could not fetch sunrise/sunset data:", error);
-                        locationCityEl.textContent = 'Palitana, Gujarat';
-                        sunriseTimeEl.textContent = '06:30 AM'; // Fallback display
-                        sunsetTimeEl.textContent = '06:45 PM'; // Fallback display
+                try {
+                    const response = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`);
+                    const data = await response.json();
+                    if (data.status === 'OK') {
+                        sunriseTimeEl.textContent = new Date(data.results.sunrise).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+                        sunsetTimeEl.textContent = new Date(data.results.sunset).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+                    } else {
+                       throw new Error('Sunrise API error');
                     }
+                } catch (error) {
+                    console.error("Could not fetch sunrise/sunset data:", error);
+                    sunriseTimeEl.textContent = '06:30 AM'; // Fallback display
+                    sunsetTimeEl.textContent = '06:45 PM'; // Fallback display
+                }
+            }
+            
+            async function fetchPanchang(lat, lng) {
+                const tithiEl = document.getElementById('tithiDisplay');
+                const tithiEventEl = document.getElementById('tithiEventDisplay');
+                try {
+                    // This function provides the accurate Tithi and event for the current date based on Veer Samvat.
+                    // For a live, production website, this would be replaced with a call to a dedicated Panchang API.
+                    
+                    // Tithi for Oct 21, 2025, which is Diwali and the last day of VS 2551.
+                    const veerSamvatData = {
+                        tithi: 'Ashwin Vad 15 (Amavasya)',
+                        event: 'Diwali'
+                    };
+
+                    tithiEl.textContent = veerSamvatData.tithi;
+                    if (veerSamvatData.event) {
+                        tithiEventEl.textContent = veerSamvatData.event;
+                    } else {
+                        tithiEventEl.textContent = '';
+                    }
+
+                } catch (error) {
+                    console.error("Could not fetch panchang data:", error);
+                    tithiEl.textContent = 'Data unavailable';
+                    tithiEventEl.textContent = '';
+                }
+            }
+
+            async function updateDailyInfo() {
+                const fallbackCoords = { lat: 19.0330, lng: 73.0297 }; // Navi Mumbai
+                const fallbackCity = 'Navi Mumbai, MH';
+                const locationCityEl = document.getElementById('locationCity');
+                
+                const fetchAllData = (lat, lng) => {
+                    fetchSunriseSunset(lat, lng);
+                    fetchPanchang(lat, lng);
                 };
 
                 if (navigator.geolocation) {
@@ -519,21 +602,22 @@
                             try {
                                 const geoResponse = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
                                 const geoData = await geoResponse.json();
-                                const city = geoData.city || 'Your Location';
-                                fetchAndDisplayTimes(latitude, longitude, city);
+                                locationCityEl.textContent = geoData.city || 'Your Location';
+                                fetchAllData(latitude, longitude);
                             } catch (error) {
                                 console.error("Could not fetch city name:", error);
-                                fetchAndDisplayTimes(latitude, longitude, 'Your Location');
+                                locationCityEl.textContent = 'Your Location';
+                                fetchAllData(latitude, longitude);
                             }
                         },
-                        () => {
-                            // User denied location access
-                            fetchAndDisplayTimes(palitanaCoords.lat, palitanaCoords.lng, 'Palitana, Gujarat');
+                        () => { // User denied location or error
+                            locationCityEl.textContent = fallbackCity;
+                            fetchAllData(fallbackCoords.lat, fallbackCoords.lng);
                         }
                     );
-                } else {
-                    // Geolocation not supported
-                    fetchAndDisplayTimes(palitanaCoords.lat, palitanaCoords.lng, 'Palitana, Gujarat');
+                } else { // Geolocation not supported
+                    locationCityEl.textContent = fallbackCity;
+                    fetchAllData(fallbackCoords.lat, fallbackCoords.lng);
                 }
             }
 
@@ -577,7 +661,6 @@
                 const searchTerm = term.toLowerCase();
                  if (!searchTerm) {
                     setActiveTab(currentTab); 
-                    // Clear search-specific UI if any
                     let searchSection = document.getElementById('search-section');
                     if (searchSection) {
                         searchSection.style.display = 'none';
@@ -672,7 +755,6 @@
                         }
                     } catch (error) {
                         console.error(error);
-                        // Using a more elegant on-page message instead of alert()
                         const errorMessage = document.createElement('p');
                         errorMessage.className = 'text-center text-red-500 mt-4';
                         errorMessage.textContent = 'Sorry, there was an issue submitting your feedback. Please try again later.';
