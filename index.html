@@ -17,1142 +17,961 @@
             background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXVAAAAacXJUPEBFQkZKaSJMbk83Nzg3NzeLi4tVVj9gYGCCH3s8Pj9lZ2ZJYn93d3d2dnbLi4uFe3t2d3d9fX1wcPBOQAAAAD5JREFUSMft1EcOQDQERCfz3967d7v/8egUjSe/91t7V0f//3wM5w/8A/8B/4B/4B/4B/8B/4B/4B/wH/gP/Af+A/8B/4B/8B/4B/4B/8B/wH/gP/Af+A/8B/4B/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8B/wH/gP/Af+A/8/z+3vBnh4j4wAAAAAElFTkSuQmCC');
         }
         .font-serif { font-family: 'Cormorant Garamond', serif; }
-        .text-deep-blue { color: #2A3A5B; }
+        .text-deep-blue   { color: #2A3A5B; }
         .text-rustic-gold { color: #B08D57; }
-        .bg-deep-blue { background-color: #2A3A5B; }
-        .bg-rustic-gold { background-color: #B08D57; }
-        .border-deep-blue { border-color: #2A3A5B; }
+        .bg-deep-blue     { background-color: #2A3A5B; }
+        .bg-rustic-gold   { background-color: #B08D57; }
+        .border-deep-blue   { border-color: #2A3A5B; }
         .border-rustic-gold { border-color: #B08D57; }
 
-        .nav-btn.active { color: #B08D57; border-bottom-color: #B08D57; font-weight: 600; }
+        /* ── Nav ── */
         .nav-btn { transition: color 0.3s ease, border-color 0.3s ease; }
+        .nav-btn.active { color: #B08D57; border-bottom-color: #B08D57; font-weight: 600; }
+        #nav-bar::-webkit-scrollbar { display: none; }
+        #nav-bar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* ── Cards ── */
         .card-hover-effect { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card-hover-effect:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(42, 58, 91, 0.1); }
-
+        .card-hover-effect:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(42,58,91,.1); }
         .action-btn { transition: all 0.3s ease; }
-        .action-btn:hover { background-color: #2A3A5B; border-color: #2A3A5B; color: white; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(42, 58, 91, 0.15); }
+        .action-btn:hover { background-color:#2A3A5B; border-color:#2A3A5B; color:white; transform:translateY(-2px); box-shadow:0 4px 12px rgba(42,58,91,.15); }
 
         /* ── Audio Player ── */
         #audioPlayerContainer {
             transition: transform 0.4s ease-in-out, max-height 0.4s ease-in-out;
             transform: translateY(100%);
-            max-height: 220px;
+            max-height: 240px;
             overflow: hidden;
         }
         #audioPlayerContainer.visible  { transform: translateY(0); }
-        #audioPlayerContainer.expanded { max-height: 440px; }
+        #audioPlayerContainer.expanded { max-height: 460px; }
+        #scriptContent { height:0; opacity:0; overflow-y:auto; transition: all 0.4s ease-in-out; }
+        #audioPlayerContainer.expanded #scriptContent { height:160px; opacity:1; margin-top:.5rem; margin-bottom:.5rem; }
 
-        #scriptContent {
-            height: 0; opacity: 0; overflow-y: auto;
-            transition: all 0.4s ease-in-out;
-        }
-        #audioPlayerContainer.expanded #scriptContent {
-            height: 160px; opacity: 1;
-            margin-top: 0.5rem; margin-bottom: 0.5rem;
-        }
-
-        .control-btn { transition: color 0.2s ease, transform 0.2s ease; }
+        .control-btn { transition: color .2s ease, transform .2s ease; }
         .control-btn:hover { transform: scale(1.1); }
-        .play-pause-btn { transition: background-color 0.2s ease, box-shadow 0.3s ease; }
-        .play-pause-btn:hover { box-shadow: 0 0 15px rgba(176, 141, 87, 0.4); }
+        .play-pause-btn { transition: background-color .2s ease, box-shadow .3s ease; }
+        .play-pause-btn:hover { box-shadow: 0 0 15px rgba(176,141,87,.4); }
+        #progressBarContainer { background-color: rgba(176,141,87,.2); cursor: pointer; }
+        #progressBar { background-color: #B08D57; transition: width .1s linear; }
 
-        #progressBarContainer { background-color: rgba(176, 141, 87, 0.2); cursor: pointer; }
-        #progressBar { background-color: #B08D57; transition: width 0.1s linear; }
+        /* ── Volume ── */
+        .volume-slider { -webkit-appearance:none; appearance:none; background:rgba(176,141,87,.25); height:4px; border-radius:2px; outline:none; cursor:pointer; }
+        .volume-slider::-webkit-slider-thumb { -webkit-appearance:none; width:12px; height:12px; border-radius:50%; background:#B08D57; cursor:pointer; }
+        .volume-slider::-moz-range-thumb     { width:12px; height:12px; border-radius:50%; background:#B08D57; cursor:pointer; border:none; }
 
-        /* ── Volume Slider ── */
-        .volume-slider {
-            -webkit-appearance: none; appearance: none;
-            background: rgba(176, 141, 87, 0.25);
-            height: 4px; border-radius: 2px; outline: none; cursor: pointer;
-        }
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none; appearance: none;
-            width: 12px; height: 12px;
-            border-radius: 50%; background: #B08D57; cursor: pointer;
-        }
-        .volume-slider::-moz-range-thumb {
-            width: 12px; height: 12px;
-            border-radius: 50%; background: #B08D57; cursor: pointer; border: none;
-        }
+        /* ── Speed ── */
+        .speed-btn { transition: all .2s ease; }
+        .speed-btn.active-speed { border-color:#B08D57!important; color:#B08D57!important; font-weight:600; }
 
-        /* ── Speed Buttons ── */
-        .speed-btn { transition: all 0.2s ease; }
-        .speed-btn.active-speed {
-            border-color: #B08D57 !important;
-            color: #B08D57 !important;
-            font-weight: 600;
-        }
-
-        /* ── Scripture / Article Cards ── */
-        .scripture-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .scripture-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(42, 58, 91, 0.1); }
+        /* ── Scripture cards ── */
+        .scripture-card { transition: transform .3s ease, box-shadow .3s ease; cursor:pointer; }
+        .scripture-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(42,58,91,.1); }
 
         /* ── Article Modal ── */
-        #articleModal { display: none; }
-        #articleModal.open { display: flex; }
+        #articleModal { display:none; }
+        #articleModal.open { display:flex; }
+        .article-content h3 { font-family:'Cormorant Garamond',serif; color:#2A3A5B; font-size:1.2rem; font-weight:700; margin-top:1.5rem; margin-bottom:.5rem; }
+        .article-content p  { margin-bottom:1rem; line-height:1.75; color:#4a4a4a; }
+        .article-content ul { list-style:none; padding-left:0; margin-bottom:1rem; }
+        .article-content ul li { padding-left:1.25rem; position:relative; margin-bottom:.4rem; color:#4a4a4a; }
+        .article-content ul li::before { content:'◆'; position:absolute; left:0; color:#B08D57; font-size:.5rem; top:.35rem; }
+        .article-content blockquote { border-left:3px solid #B08D57; padding:.75rem 1rem; font-style:italic; color:#6b6b6b; margin:1.25rem 0; background:rgba(176,141,87,.05); border-radius:0 6px 6px 0; }
 
-        .article-content h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: #2A3A5B; font-size: 1.2rem; font-weight: 700;
-            margin-top: 1.5rem; margin-bottom: 0.5rem;
-        }
-        .article-content p  { margin-bottom: 1rem; line-height: 1.75; color: #4a4a4a; }
-        .article-content ul { list-style: none; padding-left: 0; margin-bottom: 1rem; }
-        .article-content ul li { padding-left: 1.25rem; position: relative; margin-bottom: 0.4rem; color: #4a4a4a; }
-        .article-content ul li::before { content: '◆'; position: absolute; left: 0; color: #B08D57; font-size: 0.5rem; top: 0.35rem; }
-        .article-content blockquote {
-            border-left: 3px solid #B08D57; padding: 0.75rem 1rem;
-            font-style: italic; color: #6b6b6b; margin: 1.25rem 0;
-            background: rgba(176, 141, 87, 0.05); border-radius: 0 6px 6px 0;
-        }
+        /* ── YouTube Modal ── */
+        #ytModal { display:none; }
+        #ytModal.open { display:flex; }
+
+        /* ── Ritual Divider ── */
+        .ritual-divider { display:flex; align-items:center; gap:1rem; margin:3rem 0 2.5rem; }
+        .ritual-divider .line { flex:1; height:1px; background:linear-gradient(to right,transparent,rgba(176,141,87,.4),transparent); }
+        .ritual-divider .label { font-family:'Cormorant Garamond',serif; color:#B08D57; font-size:1.4rem; font-weight:600; white-space:nowrap; }
 
         /* ── Footer ── */
-        .footer-bg {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23B08D57' fill-opacity='0.06'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm-9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm-9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm-9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
+        .footer-bg { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23B08D57' fill-opacity='0.06'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0v-1h4v-9H0V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h9V0h1v4h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10-10h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
 
-        #mobileSearchOverlay { transition: opacity 0.3s ease-in-out; }
+        #mobileSearchOverlay { transition: opacity .3s ease-in-out; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
-    <header class="bg-transparent backdrop-blur-sm sticky top-0 z-20 border-b border-rustic-gold/20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-4 flex-shrink-0">
-                    <img src="https://raw.githubusercontent.com/ArchitModi513/Jain/main/images/jain-logo.png" alt="The Jain Path Logo" class="h-12 w-12">
-                    <div class="border-2 border-deep-blue p-1 text-center">
-                        <p class="font-serif text-xs leading-tight tracking-widest text-deep-blue">THE</p>
-                        <p class="font-serif text-xs leading-tight tracking-widest text-deep-blue">JAIN</p>
-                        <p class="font-serif text-xs leading-tight tracking-widest text-deep-blue">PATH</p>
-                    </div>
-                </div>
-                <div class="hidden md:flex flex-grow justify-center">
-                    <nav class="bg-transparent">
-                        <div id="nav-container-desktop" class="flex items-center justify-center space-x-4 lg:space-x-6 overflow-x-auto"></div>
-                    </nav>
-                </div>
-                <div class="flex items-center justify-end flex-grow md:flex-grow-0">
-                    <div class="hidden md:flex flex-shrink-0">
-                        <input type="text" id="searchInputDesktop" placeholder="Search prayers..." class="w-full px-4 py-2 bg-transparent border border-rustic-gold/30 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-rustic-gold">
-                    </div>
-                    <div class="md:hidden">
-                        <button id="openMobileSearch" class="p-2 text-deep-blue hover:text-rustic-gold">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        </button>
-                    </div>
+<!-- ═══════════════════════════════ HEADER ══════════════════════════════════ -->
+<header class="bg-[#FDFBF8]/85 backdrop-blur-sm sticky top-0 z-20 border-b border-rustic-gold/20">
+
+    <!-- Row 1: Logo + Search -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <img src="https://raw.githubusercontent.com/ArchitModi513/Jain/main/images/jain-logo.png" alt="The Jain Path" class="h-10 w-10">
+                <div class="border-2 border-deep-blue p-1 text-center">
+                    <p class="font-serif text-[10px] leading-tight tracking-widest text-deep-blue">THE</p>
+                    <p class="font-serif text-[10px] leading-tight tracking-widest text-deep-blue">JAIN</p>
+                    <p class="font-serif text-[10px] leading-tight tracking-widest text-deep-blue">PATH</p>
                 </div>
             </div>
-        </div>
-        <nav class="md:hidden bg-white/50 shadow-inner">
-            <div id="nav-container-mobile" class="container mx-auto px-4 flex items-center justify-start space-x-4 overflow-x-auto pb-px"></div>
-        </nav>
-    </header>
 
-    <!-- ══════════════════════════ MAIN ══════════════════════════════ -->
-    <main id="main-content" class="flex-grow"></main>
-
-    <!-- ═════════════════════════ FOOTER ═════════════════════════════ -->
-    <footer class="footer-bg bg-ivory text-center py-8 border-t border-rustic-gold/20 mt-16">
-        <div class="container mx-auto text-sm text-gray-500">
-            <p class="font-bold text-deep-blue">Made by Archit Modi</p>
-            <p>Contact: +91 7021769798 | archit.modi13@outlook.com</p>
-        </div>
-    </footer>
-
-    <!-- ═══════════════════════ AUDIO PLAYER ═════════════════════════ -->
-    <div id="audioPlayerContainer" class="fixed bottom-0 left-0 right-0 bg-[#FDFBF8]/90 backdrop-blur-lg shadow-2xl rounded-t-lg z-30 p-4 border-t border-rustic-gold/20">
-        <button id="closePlayerBtn" class="absolute top-3 right-3 control-btn text-gray-400 hover:text-deep-blue">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-        </button>
-
-        <div class="container mx-auto">
-            <!-- Row 1: Title + Controls -->
-            <div class="flex items-center justify-between">
-                <div class="flex items-center min-w-0">
-                    <h3 id="currentTrackTitle" class="font-serif font-bold text-lg truncate text-deep-blue">Select an audio</h3>
-                    <button id="toggleScriptBtn" class="control-btn ml-2 flex-shrink-0 text-gray-400 hover:text-deep-blue">
-                        <svg id="toggleScriptIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                    </button>
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:block">
+                    <input type="text" id="searchInputDesktop" placeholder="Search prayers..."
+                        class="w-52 lg:w-64 px-4 py-2 bg-transparent border border-rustic-gold/30 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-rustic-gold">
                 </div>
-                <div class="flex items-center justify-center space-x-4">
-                    <button id="backwardBtn" class="control-btn text-gray-500 hover:text-deep-blue">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/></svg>
-                    </button>
-                    <button id="playPauseBtn" class="control-btn play-pause-btn bg-deep-blue hover:bg-rustic-gold w-14 h-14 rounded-full flex items-center justify-center">
-                        <svg id="playPauseIcon" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/></svg>
-                    </button>
-                    <button id="forwardBtn" class="control-btn text-gray-500 hover:text-deep-blue">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3"/></svg>
-                    </button>
-                </div>
-                <div class="w-32 hidden sm:block"></div>
-            </div>
-
-            <!-- Row 2: Progress Bar -->
-            <div class="flex items-center gap-3 mt-2">
-                <span id="currentTime" class="text-xs text-gray-500 w-12 text-center">00:00</span>
-                <div id="progressBarContainer" class="w-full h-1.5 rounded-full overflow-hidden">
-                    <div id="progressBar" class="h-full w-0"></div>
-                </div>
-                <span id="duration" class="text-xs text-gray-500 w-12 text-center">00:00</span>
-            </div>
-
-            <!-- Row 3: Volume + Speed -->
-            <div class="flex items-center justify-between mt-2 gap-4">
-                <!-- Volume -->
-                <div class="flex items-center gap-2">
-                    <button id="muteBtn" class="control-btn text-gray-400 hover:text-deep-blue flex-shrink-0">
-                        <svg id="volumeIcon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"/></svg>
-                    </button>
-                    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1" class="volume-slider w-20">
-                </div>
-                <!-- Speed -->
-                <div class="flex items-center gap-1">
-                    <span class="text-xs text-gray-400 mr-1 hidden sm:inline">Speed</span>
-                    <button data-speed="0.75" class="speed-btn text-xs px-2 py-0.5 rounded-full border border-rustic-gold/30 text-gray-500">0.75×</button>
-                    <button data-speed="1"    class="speed-btn active-speed text-xs px-2 py-0.5 rounded-full border text-gray-500">1×</button>
-                    <button data-speed="1.25" class="speed-btn text-xs px-2 py-0.5 rounded-full border border-rustic-gold/30 text-gray-500">1.25×</button>
-                    <button data-speed="1.5"  class="speed-btn text-xs px-2 py-0.5 rounded-full border border-rustic-gold/30 text-gray-500">1.5×</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="scriptContent" class="p-3 bg-gray-500/5 rounded-md border border-rustic-gold/20 text-sm text-gray-600 container mx-auto leading-relaxed"></div>
-        <audio id="audioPlayer" class="hidden"></audio>
-    </div>
-
-    <!-- ════════════════════ MOBILE SEARCH OVERLAY ════════════════════ -->
-    <div id="mobileSearchOverlay" class="fixed inset-0 bg-[#FDFBF8]/90 backdrop-blur-lg z-40 p-4 hidden opacity-0">
-        <button id="closeMobileSearch" class="absolute top-6 right-6 text-deep-blue">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <div class="flex flex-col items-center justify-center h-full">
-            <div class="w-full max-w-md">
-                <h2 class="font-serif text-3xl text-center text-deep-blue mb-6">Search the Sanctuary</h2>
-                <input type="text" id="searchInputMobile" placeholder="Search for sutras, bhajans..." class="w-full text-center px-4 py-3 bg-transparent border-b-2 border-rustic-gold/50 text-xl focus:outline-none focus:border-rustic-gold">
-            </div>
-        </div>
-    </div>
-
-    <!-- ═════════════════════ ARTICLE MODAL ══════════════════════════ -->
-    <div id="articleModal" class="fixed inset-0 bg-[#2A3A5B]/60 backdrop-blur-sm z-50 items-start justify-center p-4 pt-16 overflow-y-auto">
-        <div class="bg-[#FDFBF8] max-w-2xl w-full mx-auto rounded-lg shadow-2xl relative">
-            <!-- Gold top-bar accent -->
-            <div class="h-1 bg-gradient-to-r from-transparent via-[#B08D57] to-transparent rounded-t-lg"></div>
-            <div class="p-8">
-                <button id="closeArticleModal" class="absolute top-5 right-5 text-gray-400 hover:text-deep-blue control-btn">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                <button id="openMobileSearch" class="sm:hidden p-2 text-deep-blue hover:text-rustic-gold">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </button>
-                <span id="modalArticleCategory" class="text-xs uppercase tracking-widest text-rustic-gold font-semibold"></span>
-                <h2 id="modalArticleTitle" class="font-serif text-3xl font-bold text-deep-blue mt-1 mb-1 leading-tight"></h2>
-                <p id="modalArticleReadTime" class="text-xs text-gray-400 mb-5"></p>
-                <div class="border-t border-rustic-gold/20 mb-6"></div>
-                <div id="modalArticleContent" class="article-content"></div>
             </div>
         </div>
     </div>
 
-    <!-- ═════════════════════════ SCRIPT ══════════════════════════════ -->
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    <!-- Row 2: Scrollable nav (all screen sizes, no overflow into search) -->
+    <div class="border-t border-rustic-gold/10 bg-white/20">
+        <div id="nav-bar" class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center overflow-x-auto">
+            <!-- injected by JS -->
+        </div>
+    </div>
+</header>
 
-        // ════════════════════════════════════════
-        // CONTENT DATA
-        // ════════════════════════════════════════
+<!-- ═══════════════════════════════ MAIN ════════════════════════════════════ -->
+<main id="main-content" class="flex-grow"></main>
 
-        const insights = [
-            { quote: "Ahimsa is the highest duty.", source: "Mahavira Swami" },
-            { quote: "Live and let live. Love and let love.", source: "Jain Proverb" },
-            { quote: "Silence and self-control is non-violence.", source: "Mahavira Swami" },
-            { quote: "The essence of wisdom is to not injure any living being.", source: "Jain Scripture" },
-            { quote: "Have compassion towards all living beings. Hatred leads to ruin.", source: "Mahavira Swami" }
-        ];
+<!-- ═══════════════════════════════ FOOTER ══════════════════════════════════ -->
+<footer class="footer-bg text-center py-8 border-t border-rustic-gold/20 mt-16">
+    <div class="container mx-auto text-sm text-gray-500">
+        <p class="font-bold text-deep-blue">Made by Archit Modi</p>
+        <p>Contact: +91 7021769798 | archit.modi13@outlook.com</p>
+    </div>
+</footer>
 
-        const dailyIntentions = [
-            { theme: "Kshama (Forgiveness)", prompt: "Reflect on a moment where you can practice forgiveness, for others or for yourself." },
-            { theme: "Satya (Truthfulness)", prompt: "Consider how you can express your truth with compassion and kindness today." },
-            { theme: "Aparigraha (Non-possessiveness)", prompt: "Identify one attachment, physical or emotional, you can release today for greater peace." },
-            { theme: "Ahimsa (Non-violence)", prompt: "Practice non-violence in your thoughts, words, and actions towards all beings." },
-            { theme: "Brahmacharya (Self-Control)", prompt: "Focus on conserving your energy for spiritual growth and avoiding sensual indulgence." },
-            { theme: "Maitri (Friendliness)", prompt: "Extend a feeling of friendship and goodwill to everyone you encounter today." },
-            { theme: "Karuna (Compassion)", prompt: "Actively look for an opportunity to ease the suffering of another being." }
-        ];
+<!-- ════════════════════════════ AUDIO PLAYER ═══════════════════════════════ -->
+<div id="audioPlayerContainer" class="fixed bottom-0 left-0 right-0 bg-[#FDFBF8]/90 backdrop-blur-lg shadow-2xl rounded-t-lg z-30 p-4 border-t border-rustic-gold/20">
+    <button id="closePlayerBtn" class="absolute top-3 right-3 control-btn text-gray-400 hover:text-deep-blue">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+    </button>
 
-        // Approximate dates for Jain festivals VS 2552 (Oct 2025 – Oct 2026)
-        const jainFestivals = [
-            { name: "Jain New Year (VS 2552)",          date: new Date(2025, 9, 24) },
-            { name: "Mahavir Janma Kalyanak",            date: new Date(2026, 3, 10) },
-            { name: "Akshaya Tritiya",                   date: new Date(2026, 3, 29) },
-            { name: "Guru Purnima",                      date: new Date(2026, 6, 21) },
-            { name: "Paryushana Parva (Start)",          date: new Date(2026, 7, 19) },
-            { name: "Samvatsari Pratikraman",            date: new Date(2026, 7, 26) },
-            { name: "Das Lakshan Parva (Start)",         date: new Date(2026, 7, 27) },
-            { name: "Diwali / Nirvan Laddo (VS 2553)",   date: new Date(2026, 9, 8) }
-        ];
+    <div class="container mx-auto">
+        <!-- Row 1: Title + Controls -->
+        <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center min-w-0 flex-1">
+                <h3 id="currentTrackTitle" class="font-serif font-bold text-base sm:text-lg truncate text-deep-blue">Select an audio</h3>
+                <button id="toggleScriptBtn" class="control-btn ml-2 flex-shrink-0 text-gray-400 hover:text-deep-blue">
+                    <svg id="toggleScriptIcon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </button>
+            </div>
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button id="backwardBtn" class="control-btn text-gray-500 hover:text-deep-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/></svg>
+                </button>
+                <button id="playPauseBtn" class="control-btn play-pause-btn bg-deep-blue hover:bg-rustic-gold w-12 h-12 rounded-full flex items-center justify-center">
+                    <svg id="playPauseIcon" class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/></svg>
+                </button>
+                <button id="forwardBtn" class="control-btn text-gray-500 hover:text-deep-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3"/></svg>
+                </button>
+            </div>
+            <div class="w-6 hidden sm:block flex-shrink-0"></div>
+        </div>
 
-        const audioData = {
-            pachchkaan: [
-                { title: 'Navkarsi Pachchkaan',    description: 'For fasting from sunrise until 48 minutes after.',           audioSrc: 'https://architmodi513.github.io/Jain/audios/navkarsi.m4a',              script: 'Uggae sure namukkara-sahiam...' },
-                { title: 'Porsi Pachchkaan',       description: 'Fasting for one prahar (approx. 3 hours) after sunrise.',    audioSrc: 'https://architmodi513.github.io/Jain/audios/porshi.m4a',               script: 'Sure uggae porisim...' },
-                { title: 'Chauvihar Upvas',        description: 'A complete fast for the day without food or water.',         audioSrc: 'https://architmodi513.github.io/Jain/audios/Chauvihaar-Upwas.m4a',     script: 'Chauviharam pi aharam...' },
-                { title: 'Tivihar Upvas',          description: 'A fast where only boiled water is consumed.',               audioSrc: 'https://architmodi513.github.io/Jain/audios/upwas.m4a',                script: 'Placeholder script for Tivihar Upvas...' },
-                { title: 'Ekasanu',                description: 'Eating a single meal in one sitting during the day.',       audioSrc: 'https://architmodi513.github.io/Jain/audios/ekasna.m4a',               script: 'Placeholder script for Ekasanu...' },
-                { title: 'Biyasanu',               description: 'Eating two meals in two sittings during the day.',         audioSrc: 'https://architmodi513.github.io/Jain/audios/beasna.m4a',               script: 'Placeholder script for Biyasanu...' },
-                { title: 'Ayambil',                description: 'Eating boiled, unseasoned food once a day.',               audioSrc: 'https://architmodi513.github.io/Jain/audios/aayambil.m4a',             script: 'Placeholder script for Ayambil...' },
-                { title: 'Raatri Bhojan Tyag',     description: 'Oath to abstain from eating after sunset.',                audioSrc: 'https://architmodi513.github.io/Jain/audios/ratri-bhojan-tyaag.m4a',   script: 'Placeholder script for Raatri Bhojan Tyag...' }
-            ],
-            stotras: [
-                { title: 'Navkar Mantra',          description: 'The fundamental and most revered prayer in Jainism.',       audioSrc: '#',  script: 'Namo Arihtanam, Namo Siddhanam...' }
-            ],
-            sutras: [
-                { title: 'Nandi Sutra',            description: 'An Agama scripture providing an account of the Tirthankaras and their teachings.',       youtubeVideoUrl: 'https://www.youtube.com/watch?v=Q1isTFKJAbw&pp=ygULbmFuZGkgc3V0cmE%3D', youtubePlaylistUrl: 'https://www.youtube.com/watch?v=nSmn6jR0xHA&list=PLM86g5mXBrl-0IQntnEpRd_ZtecnoRu-N', script: 'Explore the teachings of the Nandi Sutra.' },
-                { title: 'Sutrakritang Sutra',     description: 'The second Agama, dealing with conduct, knowledge, and liberation.',                     youtubePlaylistUrl: 'https://www.youtube.com/playlist?list=PLM86g5mXBrl995-SBNcGG15gTuY5HtjbM&si=TdWLWej5AlQfR-Ww', script: 'Explore the teachings of the Sutrakritang Sutra.' },
-                { title: 'Tatvarth Sutra',         description: 'A foundational text providing an outline of the Jain path to liberation.',              youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLM86g5mXBrl8zxv_fgUtXEyft1eG9OJxy&si=1RLDmD5s2Ym3TUPa', script: 'Explore the teachings of the Tatvarth Sutra.' },
-                { title: 'Uttaradhyayan Sutra — Karma Prakriti', description: 'Adhyay 33 focusing on the nature and classification of Karma.',          youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLM86g5mXBrl9WzMT5KC3St-ZWd4qWim1M&si=EOlUMrevlhCZlp48', script: 'Explore Uttaradhyayan Sutra Adhyay 33.' },
-                { title: 'Uttaradhyayan Sutra — Samyyaktva Parakram', description: 'A chapter on the strength and power of right faith.',               youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLM86g5mXBrl9j9OO3PVzzhcsMK-rb8x9z&si=oLL-ow30US-cWhe3', script: 'Explore Uttaradhyayan Sutra Adhyay Samyyaktva Parakram.' },
-                { title: 'Antagad Sutra',          description: 'Narratives of individuals who attained liberation in their final birth.',              youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLvedDtsDxQmCbH8158WECvGswa6cDuo4n&si=wKV5taRTR4rsVvVV', script: 'Explore the teachings of the Antagad Sutra.' }
-            ],
-            lectures: [
-                { title: 'Lectures on Leshya',                    description: 'A series exploring the concept of Leshya — the colouring of the soul.',      youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLvedDtsDxQmDFbXhZE6Cw81mU2-G726W0&si=2VBA2u91ax8PRS5y' },
-                { title: 'The Art of Dying — Samadhi Sharan',     description: 'Discourses on the profound Jain practice of dying with equanimity.',         youtubePlaylistUrl: 'https://youtube.com/playlist?list=PLvedDtsDxQmD6FTR8pIGmIZK3i-pZS4gN&si=WMTRBt7IM2RI4x0s' },
-                { title: 'Samosharan Meditation',                 description: 'A guided meditation on the divine preaching hall of the Tirthankaras.',      youtubeUrl: 'https://www.youtube.com/live/35srPh0IZV8?si=LuKZIJatWL1ree3v' }
-            ],
-            mangalik: [
-                { title: 'Mangal Path',            description: 'Auspicious verses for blessings and well-being.',                           audioSrc: 'https://architmodi513.github.io/Jain/audios/Mangalik.m4a', script: 'Chattari Mangalam...' }
-            ],
-            pratikraman: [
-                { title: 'Devasi Pratikraman',     description: 'The ritual of evening repentance, performed at sunset.',                    audioSrc: '#', script: 'Ichchhami khamasamano...' }
-            ],
-            samayik: [
-                { title: 'Samayik Path',           description: 'The practice of equanimity for 48 minutes.',                               audioSrc: '#', script: 'Karemi Bhante Samaiyam...' }
-            ],
-            stavans: [
-                { title: 'Bhaktamar Stotra',       description: 'One of the most sacred Jain hymns, composed by Acharya Manatunga in praise of Rishabhadeva.', audioSrc: '#', script: 'Bhaktamar Stotra — a devotional masterpiece. Audio coming soon.' },
-                { title: 'Kalyanmandir Stotra',    description: 'A celebrated hymn in praise of Parshvanatha, composed by Kumudchandra Acharya.',             audioSrc: '#', script: 'Kalyanmandir Stotra script — coming soon.' },
-                { title: 'Uvasaggaharam Stotra',   description: 'A powerful prayer to Parshvanatha for protection and removal of obstacles.',                  audioSrc: '#', script: 'Uvasaggaharam Stotra script — coming soon.' },
-                { title: 'Laghu Shanti Stotra',    description: 'A short but potent prayer for peace, well-being, and removal of afflictions.',               audioSrc: '#', script: 'Laghu Shanti Stotra script — coming soon.' },
-                { title: 'Jai Jinendra Stavan',    description: 'A glorious devotional hymn celebrating the Jinas and their infinite virtues.',               audioSrc: '#', script: 'Jai Jinendra Stavan script — coming soon.' },
-                { title: 'Siddha Chakra Stavan',   description: 'A devotional hymn in praise of the Siddha Chakra (Navpad) — the nine supreme beings.',     audioSrc: '#', script: 'Siddha Chakra Stavan — coming soon.' }
-            ],
-            meditation: [
-                { title: 'Samosharan Meditation',              description: 'A guided visualisation of the Samosharan — the cosmic preaching assembly of the Tirthankaras.',  youtubeUrl: 'https://www.youtube.com/live/35srPh0IZV8?si=LuKZIJatWL1ree3v' },
-                { title: 'Preksha Dhyana — Body Perception',  description: 'A foundational Jain meditation practice focusing on body awareness and Kayotsarga.',             audioSrc: '#', script: 'Guided Preksha Dhyana session — audio coming soon.' },
-                { title: 'Anupreksha Meditation',             description: 'Guided contemplation of the 12 Anuprekshas — the reflective meditations for spiritual growth.',   audioSrc: '#', script: 'Anupreksha guided practice — coming soon.' },
-                { title: 'Navkar Mahamantra Dhyana',          description: 'A seated meditation using the Navkar Mantra as the focal point, building concentration and peace.',audioSrc: '#', script: 'Navkar Dhyana guidance — coming soon.' }
-            ]
-        };
+        <!-- Row 2: Progress -->
+        <div class="flex items-center gap-3 mt-2">
+            <span id="currentTime" class="text-xs text-gray-500 w-10 text-center tabular-nums">00:00</span>
+            <div id="progressBarContainer" class="flex-1 h-1.5 rounded-full overflow-hidden">
+                <div id="progressBar" class="h-full w-0"></div>
+            </div>
+            <span id="duration" class="text-xs text-gray-500 w-10 text-center tabular-nums">00:00</span>
+        </div>
 
-        // ── Scriptures & Learning Data ─────────────────────────────────
-        const scripturesData = [
-            {
-                id: 'navkar-mantra',
-                title: 'Navkar Mantra: Gateway to Liberation',
-                category: 'Prayer & Devotion',
-                excerpt: 'The most fundamental prayer in Jainism — unique in that it pays homage not to deities, but to the spiritual qualities of liberated souls.',
-                readTime: '4 min',
-                content: `
-                    <p>The Navkar Mantra, also known as the Namaskar Mantra, is the most sacred prayer in all of Jainism. Its profound uniqueness lies in the fact that it does not petition a deity for personal favours. Instead, it pays homage to the five categories of supreme spiritual beings — the <strong>Panchparmeshthi</strong> — who have attained, or are on the path to, liberation.</p>
-                    <h3>The Five Supreme Beings</h3>
-                    <ul>
-                        <li><strong>Namo Arihtanam</strong> — I bow to the Arihantas: Omniscient Living Tirthankaras who have conquered all inner passions.</li>
-                        <li><strong>Namo Siddhanam</strong> — I bow to the Siddhas: Liberated souls who have shed all karmic matter and reside in eternal, formless bliss.</li>
-                        <li><strong>Namo Ayarianam</strong> — I bow to the Acharyas: The heads of the Jain monastic order, guardians of the fourfold community.</li>
-                        <li><strong>Namo Uvajjhayanam</strong> — I bow to the Upadhyayas: Teachers and scholars of the Jain scriptures.</li>
-                        <li><strong>Namo Loe Savva Sahunam</strong> — I bow to all Sadhus and Sadhvis: All Jain monks and nuns in the world.</li>
-                    </ul>
-                    <h3>The Concluding Verse</h3>
-                    <p>The prayer concludes: <em>"Eso Pancha Namukkaro, Savva Pavappanasano, Mangalanam Cha Savvesim, Padhamam Havai Mangalam"</em> — "This fivefold salutation destroys all sins and is the foremost auspicious thing of all auspicious things."</p>
-                    <h3>The Philosophy Behind the Prayer</h3>
-                    <p>The Navkar Mantra is a meditation on virtue, not a petition to power. By bowing to these five categories, the devotee acknowledges that liberation is achieved through one's own effort — guided by the example of those who have already walked the path. It is a declaration that moksha is universal, available to any soul willing to make the journey.</p>
-                    <h3>When to Recite</h3>
-                    <p>The Navkar Mantra can be recited at any time and in any place — it requires no ritual purity. It is traditionally chanted at dawn during morning Pratikraman, before meals, at the start of any auspicious activity, and as a continuous silent meditation throughout the day. The 108 repetitions using a mala is a beloved devotional practice.</p>
-                    <blockquote>The Navkar Mantra is not merely a prayer — it is a map of the spiritual universe and our place within it.</blockquote>
-                `
-            },
-            {
-                id: 'tattvarthasutra',
-                title: 'Tattvartha Sutra: The Seven Realities',
-                category: 'Agama Studies',
-                excerpt: 'Written by Acharya Umasvati around the 2nd century CE, the Tattvartha Sutra is the only Jain text revered equally by both the Digambara and Shvetambara sects.',
-                readTime: '6 min',
-                content: `
-                    <p>Written by Acharya Umasvati (Umasvami) approximately in the 2nd–5th century CE, the Tattvartha Sutra is the most universally accepted text in Jain philosophy. Its very first sutra states the entire path to liberation in ten words: <em>"Samyag-darsana-jnana-caritrani mokshamargah"</em> — "Right faith, right knowledge, and right conduct constitute the path to liberation."</p>
-                    <h3>The Seven Fundamental Realities (Tattvas)</h3>
-                    <p>The text systematically outlines the seven realities that constitute the Jain understanding of the universe:</p>
-                    <ul>
-                        <li><strong>Jiva</strong> — The living soul, characterised by consciousness (chetana). The soul is eternal, uncreated, and naturally omniscient.</li>
-                        <li><strong>Ajiva</strong> — Non-living substances: matter, space, time, and the mediums of motion and rest.</li>
-                        <li><strong>Asrava</strong> — The influx of karmic matter into the soul, caused by activities of mind, body, and speech.</li>
-                        <li><strong>Bandha</strong> — The actual bonding of karma particles to the soul, determined by the intensity of one's passions.</li>
-                        <li><strong>Samvara</strong> — The cessation of new karmic influx through ethical practice, vows, and meditation.</li>
-                        <li><strong>Nirjara</strong> — The gradual shedding of accumulated karma through austerities and equanimity.</li>
-                        <li><strong>Moksha</strong> — Liberation: the complete shedding of all karma and the soul's rise to its natural state of infinite consciousness, bliss, and energy.</li>
-                    </ul>
-                    <h3>The Three Jewels as Liberation's Path</h3>
-                    <p>The Tattvartha Sutra makes clear that the journey from Jiva to Moksha is navigated by the Three Jewels (Ratnatraya): right faith, right knowledge, and right conduct. Each reinforces the others — none is sufficient in isolation. Right faith without right conduct is incomplete; right conduct without right understanding is blind.</p>
-                    <h3>Its Enduring Significance</h3>
-                    <p>In just 344 aphorisms (sutras), the Tattvartha Sutra maps the entire Jain metaphysical and ethical system with extraordinary precision. It remains the single most studied reference text for any serious student of Jain philosophy — a masterwork of intellectual clarity in service of spiritual liberation.</p>
-                `
-            },
-            {
-                id: 'karma-in-jainism',
-                title: 'Understanding Karma in Jain Philosophy',
-                category: 'Philosophy',
-                excerpt: 'In Jainism, karma is not an abstract moral force — it is a subtle, physical substance that binds itself to the soul through passion and activity.',
-                readTime: '7 min',
-                content: `
-                    <p>In Jain philosophy, karma is understood with a precision unmatched in other traditions. Karma is not an abstract force or divine judgment — it is a subtle, physical substance. Karmic particles (karma varganas) exist throughout the universe and are attracted to the soul through its activities of mind, body, and speech, and particularly through the presence of the passions (kashaya): anger, pride, deceit, and greed.</p>
-                    <h3>The Eight Types of Karma</h3>
-                    <p>Jain philosophy classifies karma into eight distinct types, divided into two broad categories:</p>
-                    <p><strong>Ghati Karma (Destructive)</strong> — These obscure or destroy the soul's natural qualities:</p>
-                    <ul>
-                        <li><strong>Jnanavaraniya</strong> — Knowledge-obscuring karma: veils the soul's natural omniscience.</li>
-                        <li><strong>Darshanavarniya</strong> — Perception-obscuring karma: veils the soul's natural omniscience of vision.</li>
-                        <li><strong>Mohaniya</strong> — Deluding karma: the most powerful and dangerous, it causes delusion about the nature of the self and arouses the passions. It is the primary root of all bondage.</li>
-                        <li><strong>Antaraya</strong> — Obstructing karma: blocks the soul's natural infinite energy, willpower, and capacity for giving.</li>
-                    </ul>
-                    <p><strong>Aghati Karma (Non-Destructive)</strong> — These determine the circumstances of rebirth but do not obscure the soul's qualities:</p>
-                    <ul>
-                        <li><strong>Vedaniya</strong> — Feeling-producing karma: determines the experience of pleasure and pain.</li>
-                        <li><strong>Namakarma</strong> — Body-determining karma: determines the type of body, form, and faculties.</li>
-                        <li><strong>Gotrakarma</strong> — Status-determining karma: determines one's family and social environment.</li>
-                        <li><strong>Ayushyakarma</strong> — Lifespan-determining karma: determines the duration of each life.</li>
-                    </ul>
-                    <h3>The Three Processes of Liberation</h3>
-                    <p>The spiritual path involves three key progressive processes: <strong>Asrava</strong> — understanding how karma enters the soul and taking vows to reduce it; <strong>Samvara</strong> — actively stopping new karma through the five great vows (Mahavratas), mindfulness, and equanimity; and <strong>Nirjara</strong> — burning off existing karma through austerities, penance, and meditation. When all eight types of karma are completely shed, the soul attains Moksha — rising to the apex of the universe (Siddhashila) to reside in eternal consciousness and bliss.</p>
-                    <blockquote>The Jain doctrine of karma is ultimately empowering: you are the sole architect of your own liberation. No deity grants it, and no external force can block it.</blockquote>
-                `
-            },
-            {
-                id: 'dvadasha-anuprekshas',
-                title: 'The Twelve Anuprekshas: Contemplations for Liberation',
-                category: 'Meditation',
-                excerpt: 'The Dvadasha Anuprekshas are twelve systematic themes for reflective meditation, each designed to loosen the soul\'s attachment to the world and kindle the fire of renunciation.',
-                readTime: '8 min',
-                content: `
-                    <p>The Dvadasha Anuprekshas — the Twelve Contemplations, also called Bhavanas — are a central practice across all Jain traditions. By meditating deeply on these twelve themes, the practitioner progressively loosens attachment to the world, diminishes the passions, and develops a profound inner readiness for the path of liberation.</p>
-                    <h3>The Twelve Contemplations</h3>
-                    <ul>
-                        <li><strong>Anitya (Impermanence)</strong> — All worldly things are transient. Wealth, relationships, youth, and even the body — all pass away. What endures is the soul.</li>
-                        <li><strong>Asharana (Helplessness)</strong> — No external being — god, guru, or family — can ultimately protect us from the results of our own karma. True refuge is within.</li>
-                        <li><strong>Samsara (The Cycle)</strong> — The soul has wandered through countless births in all forms of life. The cycle of rebirth is suffering; liberation is the only true goal.</li>
-                        <li><strong>Ekatva (Aloneness)</strong> — The soul is alone in its spiritual journey. It arrived alone, it acts alone, and it bears the fruits of its karma alone.</li>
-                        <li><strong>Anyatva (Otherness)</strong> — The body and the soul are entirely separate entities. The soul's nature is pure consciousness; do not identify with the body.</li>
-                        <li><strong>Ashuchi (Impurity)</strong> — The body, composed of material elements, is inherently impure. To be attached to it or to crave sensory pleasure through it is to invite further bondage.</li>
-                        <li><strong>Asrava (Karmic Influx)</strong> — Reflect on how passions and careless activities draw karmic matter into the soul. Understand the cause to address the root.</li>
-                        <li><strong>Samvara (Karmic Stoppage)</strong> — Contemplate the vows, mindfulness, and practices that stop new karma from entering. This is the active spiritual life.</li>
-                        <li><strong>Nirjara (Karmic Shedding)</strong> — Reflect on how austerities, equanimity, and penance shed existing karma. Every moment of equanimity in hardship is a moment of purification.</li>
-                        <li><strong>Loka (The Universe)</strong> — Meditate on the vast Jain cosmos — the loka akasha — and the soul's tiny place within it. This cultivates cosmic humility.</li>
-                        <li><strong>Bodhi-durlabha (Rarity of Enlightenment)</strong> — Human birth, access to the Dharma, and a rational mind are extraordinarily rare across all of time and space. This opportunity must not be wasted.</li>
-                        <li><strong>Dharma (The True Religion)</strong> — Meditate on the nature of the Jain path itself — ahimsa, truth, non-possessiveness — and on the profound gratitude owed to the Tirthankaras for teaching it.</li>
-                    </ul>
-                    <h3>How to Practice</h3>
-                    <p>The Anuprekshas are traditionally contemplated during Samayik, during meditation after the Navkar Mantra, or in quiet moments of the day. Each contemplation is held in the mind for a sustained period, allowing its truth to penetrate beyond the intellect into the deeper layers of the practitioner's being.</p>
-                `
-            },
-            {
-                id: 'uttaradhyayan-sutra',
-                title: 'Uttaradhyayan Sutra: The Final Teachings',
-                category: 'Agama Studies',
-                excerpt: 'Believed to contain the final discourses of Bhagavan Mahavira, the Uttaradhyayan Sutra is among the most beloved and studied texts in the entire Jain canon.',
-                readTime: '5 min',
-                content: `
-                    <p>The Uttaradhyayana Sutra is one of the most beloved texts in the Shvetambara Jain canon. Comprising 36 chapters (adhyayanas), it is traditionally believed to contain the last teachings of Bhagavan Mahavira — discourses delivered to his disciples during the final hours of his earthly life before his liberation (Nirvana) at Pavapuri.</p>
-                    <h3>The Final Message</h3>
-                    <p>The Uttaradhyayan opens with a powerful urgency: renounce worldly attachments now, pursue the spiritual path without delay. Mahavira's final message was one of immediacy — human life is precious and rare; procrastination on the spiritual journey is itself a form of violence against one's own soul.</p>
-                    <h3>Key Chapters and Themes</h3>
-                    <ul>
-                        <li><strong>Vinaya (Chapter 1: Reverence)</strong> — Deep respect for the Guru and the teaching is the very foundation of all spiritual learning. Without reverence, knowledge cannot take root.</li>
-                        <li><strong>Karma Prakriti (Chapter 33)</strong> — A philosophically rigorous exposition of the eight types of karma, their causes, their durations, and the precise mechanics of how they bind and how they are shed. This chapter alone is a complete manual on the science of karma.</li>
-                        <li><strong>The Tale of King Nami</strong> — A striking narrative in which a king renounces his entire kingdom on the eve of a coronation to pursue liberation. It illustrates that all worldly power, however magnificent, is empty compared to the freedom of the soul.</li>
-                        <li><strong>Samyaktva Parakrama (Right Faith)</strong> — Multiple chapters are devoted to the cultivation of Samyaktva — right faith in the Jain path. Right faith is considered the single most essential prerequisite for all other spiritual progress.</li>
-                    </ul>
-                    <h3>Why It Matters</h3>
-                    <p>The Uttaradhyayan Sutra is simultaneously philosophy and story, doctrine and poetry. Its narrative format makes its deep teachings memorable and human. It remains one of the most assigned and cherished texts for monks, nuns, and serious lay practitioners alike.</p>
-                `
-            },
-            {
-                id: 'anekantavada',
-                title: 'Anekantavada: The Doctrine of Many-Sidedness',
-                category: 'Philosophy',
-                excerpt: 'Perhaps Jainism\'s most unique philosophical gift to the world — the recognition that reality is infinitely complex, and that no single viewpoint can ever capture its complete truth.',
-                readTime: '6 min',
-                content: `
-                    <p>Anekantavada — literally "the doctrine of many-sidedness" or "non-one-sidedness" — is one of Jainism's most sophisticated and distinctive philosophical contributions. It holds that reality is complex and multifaceted, and that no single perspective can ever fully capture its truth. Every description of reality is only partially correct, valid from a specific standpoint.</p>
-                    <h3>The Elephant and the Blind Men</h3>
-                    <p>The classic Jain parable illustrates this beautifully: blind men each touching a different part of an elephant declare with certainty — "It is a rope!" "It is a pillar!" "It is a wall!" — each correct from their own experience, each wrong in claiming complete truth. The liberated Jain sage, by contrast, sees all perspectives simultaneously without contradiction.</p>
-                    <h3>Syadvada: The Logic of Conditionals</h3>
-                    <p>Anekantavada is expressed in practice through <strong>Syadvada</strong> — the doctrine of conditional predication. Every statement about reality must be qualified with "syat" (in some respect / from some perspective). The seven-fold predication (Saptabhangi) provides a rigorous logical structure:</p>
-                    <ul>
-                        <li><em>Syad asti</em> — In some respect, it is.</li>
-                        <li><em>Syad nasti</em> — In some respect, it is not.</li>
-                        <li><em>Syad asti nasti</em> — In some respect, it both is and is not.</li>
-                        <li><em>Syad avaktavyam</em> — In some respect, it is inexpressible.</li>
-                        <li>— and three further combinations of the above.</li>
-                    </ul>
-                    <h3>Nayavada: The Seven Partial Viewpoints</h3>
-                    <p><strong>Nayavada</strong> complements Syadvada by classifying seven primary "nayas" — partial standpoints ranging from the most general (the substantial standpoint: viewing a thing as a whole) to the most specific (the precise standpoint: viewing a thing only in its current actual state). Each naya is valid within its scope; each becomes false when claimed as the whole truth.</p>
-                    <h3>Contemporary Relevance</h3>
-                    <p>In a world of polarised opinion and ideological certainty, Anekantavada offers a profound alternative. The invitation to hold multiple truths simultaneously, to approach every disagreement with intellectual humility and genuine curiosity about the other's perspective, is both ancient wisdom and urgent modern need.</p>
-                    <blockquote>Anekantavada is the epistemological expression of ahimsa — non-violence applied to the realm of thought and discourse.</blockquote>
-                `
-            }
-        ];
+        <!-- Row 3: Volume + Speed -->
+        <div class="flex items-center justify-between mt-2 gap-4 flex-wrap">
+            <div class="flex items-center gap-2">
+                <button id="muteBtn" class="control-btn text-gray-400 hover:text-deep-blue flex-shrink-0">
+                    <svg id="volumeIcon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1" class="volume-slider w-20">
+            </div>
+            <div class="flex items-center gap-1">
+                <span class="text-xs text-gray-400 mr-1 hidden sm:inline">Speed</span>
+                <button data-speed="0.75" class="speed-btn text-xs px-2 py-0.5 rounded-full border border-rustic-gold/30 text-gray-500">0.75×</button>
+                <button data-speed="1"    class="speed-btn active-speed text-xs px-2 py-0.5 rounded-full border text-gray-500">1×</button>
+                <button data-speed="1.25" class="speed-btn text-xs px-2 py-0.5 rounded-full border border-rustic-gold/30 text-gray-500">1.25×</button>
+                <button data-speed="1.5"  class="speed-btn text-xs px-2 py-0.5 rounded-full border border-rustic-gold/30 text-gray-500">1.5×</button>
+            </div>
+        </div>
+    </div>
 
-        // ════════════════════════════════════════
-        // DOM REFERENCES
-        // ════════════════════════════════════════
-        const mainContent              = document.getElementById('main-content');
-        const navContainerDesktop      = document.getElementById('nav-container-desktop');
-        const navContainerMobile       = document.getElementById('nav-container-mobile');
-        const audioPlayerContainer     = document.getElementById('audioPlayerContainer');
-        const audioPlayer              = document.getElementById('audioPlayer');
-        const currentTrackTitle        = document.getElementById('currentTrackTitle');
-        const scriptContent            = document.getElementById('scriptContent');
-        const playPauseBtn             = document.getElementById('playPauseBtn');
-        const playPauseIcon            = document.getElementById('playPauseIcon');
-        const backwardBtn              = document.getElementById('backwardBtn');
-        const forwardBtn               = document.getElementById('forwardBtn');
-        const closePlayerBtn           = document.getElementById('closePlayerBtn');
-        const toggleScriptBtn          = document.getElementById('toggleScriptBtn');
-        const toggleScriptIcon         = document.getElementById('toggleScriptIcon');
-        const currentTimeEl            = document.getElementById('currentTime');
-        const durationEl               = document.getElementById('duration');
-        const progressBarContainer     = document.getElementById('progressBarContainer');
-        const progressBar              = document.getElementById('progressBar');
-        const volumeSlider             = document.getElementById('volumeSlider');
-        const muteBtn                  = document.getElementById('muteBtn');
-        const searchInputDesktop       = document.getElementById('searchInputDesktop');
-        const searchInputMobile        = document.getElementById('searchInputMobile');
-        const openMobileSearchBtn      = document.getElementById('openMobileSearch');
-        const closeMobileSearchBtn     = document.getElementById('closeMobileSearch');
-        const mobileSearchOverlay      = document.getElementById('mobileSearchOverlay');
-        const articleModal             = document.getElementById('articleModal');
-        const closeArticleModalBtn     = document.getElementById('closeArticleModal');
+    <div id="scriptContent" class="p-3 bg-gray-500/5 rounded-md border border-rustic-gold/20 text-sm text-gray-600 container mx-auto leading-relaxed mt-1"></div>
+    <audio id="audioPlayer" class="hidden"></audio>
+</div>
 
-        const playIconPath    = `<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/>`;
-        const pauseIconPath   = `<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>`;
-        const chevronDownPath = `<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>`;
-        const chevronUpPath   = `<path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"/>`;
-        const volOnPath       = `<path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"/>`;
-        const volMutePath     = `<path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/>`;
+<!-- ═══════════════════════════ MOBILE SEARCH OVERLAY ═══════════════════════ -->
+<div id="mobileSearchOverlay" class="fixed inset-0 bg-[#FDFBF8]/90 backdrop-blur-lg z-40 p-4 hidden opacity-0">
+    <button id="closeMobileSearch" class="absolute top-6 right-6 text-deep-blue">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <div class="flex flex-col items-center justify-center h-full">
+        <div class="w-full max-w-md">
+            <h2 class="font-serif text-3xl text-center text-deep-blue mb-6">Search the Sanctuary</h2>
+            <input type="text" id="searchInputMobile" placeholder="Search for sutras, bhajans..."
+                class="w-full text-center px-4 py-3 bg-transparent border-b-2 border-rustic-gold/50 text-xl focus:outline-none focus:border-rustic-gold">
+        </div>
+    </div>
+</div>
 
-        let currentTab = null;
-        let isMuted    = false;
-        let prevVolume = 1;
+<!-- ════════════════════════════ ARTICLE MODAL ══════════════════════════════ -->
+<div id="articleModal" class="fixed inset-0 bg-[#2A3A5B]/60 backdrop-blur-sm z-50 items-start justify-center p-4 pt-16 overflow-y-auto">
+    <div class="bg-[#FDFBF8] max-w-2xl w-full mx-auto rounded-lg shadow-2xl relative">
+        <div class="h-1 bg-gradient-to-r from-transparent via-[#B08D57] to-transparent rounded-t-lg"></div>
+        <div class="p-8">
+            <button id="closeArticleModal" class="absolute top-5 right-5 text-gray-400 hover:text-deep-blue control-btn">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </button>
+            <span id="modalArticleCategory" class="text-xs uppercase tracking-widest text-rustic-gold font-semibold"></span>
+            <h2 id="modalArticleTitle" class="font-serif text-3xl font-bold text-deep-blue mt-1 mb-1 leading-tight"></h2>
+            <p id="modalArticleReadTime" class="text-xs text-gray-400 mb-5"></p>
+            <div class="border-t border-rustic-gold/20 mb-6"></div>
+            <div id="modalArticleContent" class="article-content"></div>
+        </div>
+    </div>
+</div>
 
-        // ════════════════════════════════════════
-        // UTILITY
-        // ════════════════════════════════════════
-        function formatTime(s) {
-            if (isNaN(s)) return '00:00';
-            const m = Math.floor(s / 60), sec = Math.floor(s % 60);
-            return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+<!-- ════════════════════════════ YOUTUBE MODAL ══════════════════════════════ -->
+<div id="ytModal" class="fixed inset-0 bg-[#2A3A5B]/75 backdrop-blur-sm z-50 items-center justify-center p-4">
+    <div class="bg-[#1a1a1a] w-full max-w-3xl rounded-xl shadow-2xl relative overflow-hidden">
+        <div class="h-1 bg-gradient-to-r from-transparent via-[#B08D57] to-transparent"></div>
+        <div class="flex items-center justify-between px-5 py-3">
+            <h3 id="ytModalTitle" class="font-serif text-white text-lg font-semibold truncate pr-4"></h3>
+            <button id="closeYtModal" class="flex-shrink-0 text-gray-400 hover:text-white control-btn">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </button>
+        </div>
+        <div class="relative w-full" style="padding-bottom:56.25%">
+            <iframe id="ytIframe" class="absolute inset-0 w-full h-full" src="" title="YouTube player"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<!-- ═════════════════════════════ SCRIPT ════════════════════════════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ── Quotes & Intentions ─────────────────────────────────────────
+    const insights = [
+        { quote:"Ahimsa is the highest duty.",                                               source:"Mahavira Swami" },
+        { quote:"Live and let live. Love and let love.",                                      source:"Jain Proverb" },
+        { quote:"Silence and self-control is non-violence.",                                  source:"Mahavira Swami" },
+        { quote:"The essence of wisdom is to not injure any living being.",                   source:"Jain Scripture" },
+        { quote:"Have compassion towards all living beings. Hatred leads to ruin.",           source:"Mahavira Swami" }
+    ];
+    const dailyIntentions = [
+        { theme:"Kshama (Forgiveness)",         prompt:"Reflect on a moment where you can practice forgiveness, for others or for yourself." },
+        { theme:"Satya (Truthfulness)",          prompt:"Consider how you can express your truth with compassion and kindness today." },
+        { theme:"Aparigraha (Non-possessiveness)",prompt:"Identify one attachment you can release today for greater peace." },
+        { theme:"Ahimsa (Non-violence)",         prompt:"Practice non-violence in your thoughts, words, and actions towards all beings." },
+        { theme:"Brahmacharya (Self-Control)",   prompt:"Focus on conserving your energy for spiritual growth." },
+        { theme:"Maitri (Friendliness)",         prompt:"Extend a feeling of friendship and goodwill to everyone you encounter today." },
+        { theme:"Karuna (Compassion)",           prompt:"Actively look for an opportunity to ease the suffering of another being." }
+    ];
+
+    // ── Corrected festival calendar ─────────────────────────────────
+    const jainFestivals = [
+        { name:"Jain New Year (VS 2552)",           date: new Date(2025,  9, 24) },
+        { name:"Mahavir Janma Kalyanak",             date: new Date(2026,  2, 31) }, // 31 March 2026
+        { name:"Akshaya Tritiya",                    date: new Date(2026,  3, 29) },
+        { name:"Guru Purnima",                       date: new Date(2026,  6, 21) },
+        { name:"Paryushana Parva (Start)",           date: new Date(2026,  7, 19) },
+        { name:"Samvatsari Pratikraman",             date: new Date(2026,  7, 26) },
+        { name:"Das Lakshan Parva (Start)",          date: new Date(2026,  7, 27) },
+        { name:"Diwali / Nirvan Laddo (VS 2553)",    date: new Date(2026,  9,  8) }
+    ];
+
+    // ── Audio data ──────────────────────────────────────────────────
+    const audioData = {
+        pachchkaan: [
+            { title:'Navkarsi Pachchkaan',  description:'Fasting from sunrise until 48 minutes after.',        audioSrc:'https://architmodi513.github.io/Jain/audios/navkarsi.m4a',            script:'Uggae sure namukkara-sahiam...' },
+            { title:'Porsi Pachchkaan',     description:'Fasting for one prahar (~3 hrs) after sunrise.',      audioSrc:'https://architmodi513.github.io/Jain/audios/porshi.m4a',             script:'Sure uggae porisim...' },
+            { title:'Chauvihar Upvas',      description:'Complete fast — no food or water for the day.',       audioSrc:'https://architmodi513.github.io/Jain/audios/Chauvihaar-Upwas.m4a',   script:'Chauviharam pi aharam...' },
+            { title:'Tivihar Upvas',        description:'Fast where only boiled water is consumed.',           audioSrc:'https://architmodi513.github.io/Jain/audios/upwas.m4a',              script:'Placeholder script for Tivihar Upvas...' },
+            { title:'Ekasanu',              description:'A single meal in one sitting during the day.',        audioSrc:'https://architmodi513.github.io/Jain/audios/ekasna.m4a',             script:'Placeholder script for Ekasanu...' },
+            { title:'Biyasanu',             description:'Two meals in two sittings during the day.',          audioSrc:'https://architmodi513.github.io/Jain/audios/beasna.m4a',             script:'Placeholder script for Biyasanu...' },
+            { title:'Ayambil',              description:'Eating boiled, unseasoned food once a day.',         audioSrc:'https://architmodi513.github.io/Jain/audios/aayambil.m4a',           script:'Placeholder script for Ayambil...' },
+            { title:'Raatri Bhojan Tyag',   description:'Oath to abstain from eating after sunset.',          audioSrc:'https://architmodi513.github.io/Jain/audios/ratri-bhojan-tyaag.m4a', script:'Placeholder script for Raatri Bhojan Tyag...' }
+        ],
+        stavans: [
+            { title:'Bhaktamar Stotra',     description:'One of the most sacred Jain hymns, in praise of Rishabhadeva.',              audioSrc:'#', script:'Coming soon.' },
+            { title:'Kalyanmandir Stotra',  description:'A celebrated hymn in praise of Parshvanatha.',                               audioSrc:'#', script:'Coming soon.' },
+            { title:'Uvasaggaharam Stotra', description:'A powerful prayer to Parshvanatha for protection and removal of obstacles.',  audioSrc:'#', script:'Coming soon.' },
+            { title:'Laghu Shanti Stotra',  description:'A short but potent prayer for peace and removal of afflictions.',            audioSrc:'#', script:'Coming soon.' },
+            { title:'Jai Jinendra Stavan',  description:'A glorious devotional hymn celebrating the Jinas and their virtues.',        audioSrc:'#', script:'Coming soon.' },
+            { title:'Siddha Chakra Stavan', description:'A devotional hymn in praise of the Siddha Chakra — the nine supreme beings.',audioSrc:'#', script:'Coming soon.' }
+        ],
+        sutras: [
+            { title:'Nandi Sutra',           description:'An Agama providing an account of the Tirthankaras and their teachings.',    youtubeVideoUrl:'https://www.youtube.com/watch?v=Q1isTFKJAbw', youtubePlaylistUrl:'https://www.youtube.com/playlist?list=PLM86g5mXBrl-0IQntnEpRd_ZtecnoRu-N' },
+            { title:'Sutrakritang Sutra',     description:'The second Agama, dealing with conduct, knowledge, and liberation.',       youtubePlaylistUrl:'https://www.youtube.com/playlist?list=PLM86g5mXBrl995-SBNcGG15gTuY5HtjbM' },
+            { title:'Tatvarth Sutra',         description:'A foundational text outlining the Jain path to liberation.',              youtubePlaylistUrl:'https://youtube.com/playlist?list=PLM86g5mXBrl8zxv_fgUtXEyft1eG9OJxy' },
+            { title:'Uttaradhyayan — Karma Prakriti', description:'Adhyay 33: rigorous exposition of the eight types of karma.',    youtubePlaylistUrl:'https://youtube.com/playlist?list=PLM86g5mXBrl9WzMT5KC3St-ZWd4qWim1M' },
+            { title:'Uttaradhyayan — Samyyaktva Parakram', description:'A chapter on the power of right faith.',                    youtubePlaylistUrl:'https://youtube.com/playlist?list=PLM86g5mXBrl9j9OO3PVzzhcsMK-rb8x9z' },
+            { title:'Antagad Sutra',          description:'Narratives of individuals who attained liberation in their final birth.', youtubePlaylistUrl:'https://youtube.com/playlist?list=PLvedDtsDxQmCbH8158WECvGswa6cDuo4n' }
+        ],
+        lectures: [
+            { title:'Lectures on Leshya',              description:'A series exploring the concept of Leshya — the colouring of the soul.',    youtubePlaylistUrl:'https://youtube.com/playlist?list=PLvedDtsDxQmDFbXhZE6Cw81mU2-G726W0' },
+            { title:'The Art of Dying — Samadhi Sharan',description:'Discourses on the profound Jain practice of dying with equanimity.',     youtubePlaylistUrl:'https://youtube.com/playlist?list=PLvedDtsDxQmD6FTR8pIGmIZK3i-pZS4gN' },
+            { title:'Samosharan Meditation',            description:'A guided meditation on the divine preaching hall of the Tirthankaras.',   youtubeUrl:'https://www.youtube.com/live/35srPh0IZV8?si=LuKZIJatWL1ree3v' }
+        ],
+        meditation: [
+            { title:'Samosharan Meditation',           description:'Guided visualisation of the cosmic preaching assembly of the Tirthankaras.',  youtubeUrl:'https://www.youtube.com/live/35srPh0IZV8?si=LuKZIJatWL1ree3v' },
+            { title:'Preksha Dhyana — Body Perception',description:'A foundational Jain meditation focusing on body awareness and Kayotsarga.',   audioSrc:'#', script:'Coming soon.' },
+            { title:'Anupreksha Meditation',           description:'Guided contemplation of the 12 Anuprekshas for spiritual growth.',            audioSrc:'#', script:'Coming soon.' },
+            { title:'Navkar Mahamantra Dhyana',        description:'Seated meditation using the Navkar Mantra as the focal point.',               audioSrc:'#', script:'Coming soon.' }
+        ],
+        mangalik: [
+            { title:'Mangal Path', description:'Auspicious verses for blessings and well-being.', audioSrc:'https://architmodi513.github.io/Jain/audios/Mangalik.m4a', script:'Chattari Mangalam...' }
+        ],
+        pratikraman: [
+            { title:'Devasi Pratikraman', description:'Evening repentance ritual, performed at sunset.', audioSrc:'#', script:'Ichchhami khamasamano...' }
+        ],
+        samayik: [
+            { title:'Samayik Path', description:'The practice of equanimity — 48 minutes of stillness and inner peace.', audioSrc:'#', script:'Karemi Bhante Samaiyam...' }
+        ]
+    };
+
+    // ── Scripture articles ──────────────────────────────────────────
+    const scripturesData = [
+        {
+            id:'navkar-mantra', title:'Navkar Mantra: Gateway to Liberation',
+            category:'Prayer & Devotion', readTime:'4 min',
+            excerpt:'The most fundamental prayer in Jainism — unique in that it pays homage not to deities, but to the spiritual qualities of liberated souls.',
+            content:`<p>The Navkar Mantra is the most sacred prayer in all of Jainism. Its profound uniqueness lies in the fact that it does not petition a deity for personal favours. Instead, it pays homage to the five categories of supreme spiritual beings — the <strong>Panchparmeshthi</strong> — who have attained, or are on the path to, liberation.</p>
+            <h3>The Five Supreme Beings</h3><ul>
+            <li><strong>Namo Arihtanam</strong> — I bow to the Arihantas: Omniscient Living Tirthankaras who have conquered all inner passions.</li>
+            <li><strong>Namo Siddhanam</strong> — I bow to the Siddhas: Liberated souls who reside in eternal, formless bliss.</li>
+            <li><strong>Namo Ayarianam</strong> — I bow to the Acharyas: The heads of the Jain monastic order.</li>
+            <li><strong>Namo Uvajjhayanam</strong> — I bow to the Upadhyayas: Teachers and scholars of the Jain scriptures.</li>
+            <li><strong>Namo Loe Savva Sahunam</strong> — I bow to all Sadhus and Sadhvis in the world.</li></ul>
+            <h3>The Concluding Verse</h3><p><em>"Eso Pancha Namukkaro, Savva Pavappanasano, Mangalanam Cha Savvesim, Padhamam Havai Mangalam"</em> — This fivefold salutation destroys all sins and is the foremost auspicious thing of all auspicious things.</p>
+            <h3>The Philosophy Behind the Prayer</h3><p>The Navkar Mantra is a meditation on virtue, not a petition to power. By bowing to these five categories, the devotee acknowledges that liberation is achieved through one's own effort — guided by the example of those who have already walked the path. It is a declaration that moksha is universal, available to any soul willing to make the journey.</p>
+            <blockquote>The Navkar Mantra is not merely a prayer — it is a map of the spiritual universe and our place within it.</blockquote>`
+        },
+        {
+            id:'tattvarthasutra', title:'Tattvartha Sutra: The Seven Realities',
+            category:'Agama Studies', readTime:'6 min',
+            excerpt:'Written by Acharya Umasvati around the 2nd century CE — the only Jain text revered equally by both the Digambara and Shvetambara sects.',
+            content:`<p>Written by Acharya Umasvati approximately in the 2nd–5th century CE, the Tattvartha Sutra is the most universally accepted text in Jain philosophy. Its very first sutra states the path to liberation: <em>"Samyag-darsana-jnana-caritrani mokshamargah"</em> — Right faith, right knowledge, and right conduct constitute the path to liberation.</p>
+            <h3>The Seven Fundamental Realities (Tattvas)</h3><ul>
+            <li><strong>Jiva</strong> — The living soul, characterised by consciousness (chetana).</li>
+            <li><strong>Ajiva</strong> — Non-living substances: matter, space, time, and the mediums of motion and rest.</li>
+            <li><strong>Asrava</strong> — The influx of karmic matter into the soul through activity and passion.</li>
+            <li><strong>Bandha</strong> — The bonding of karma particles to the soul.</li>
+            <li><strong>Samvara</strong> — Cessation of new karmic influx through ethical practice and vows.</li>
+            <li><strong>Nirjara</strong> — Gradual shedding of accumulated karma through austerities and equanimity.</li>
+            <li><strong>Moksha</strong> — Liberation: complete shedding of all karma and the soul's eternal freedom.</li></ul>
+            <h3>Its Enduring Significance</h3><p>In just 344 aphorisms, the Tattvartha Sutra maps the entire Jain metaphysical and ethical system with extraordinary precision. It remains the most studied reference text for any serious student of Jain philosophy.</p>`
+        },
+        {
+            id:'karma-in-jainism', title:'Understanding Karma in Jain Philosophy',
+            category:'Philosophy', readTime:'7 min',
+            excerpt:'In Jainism, karma is not an abstract moral force — it is a subtle, physical substance that binds to the soul through passion and activity.',
+            content:`<p>In Jain philosophy, karma is a subtle, physical substance. Karmic particles exist throughout the universe and are attracted to the soul through its activities of mind, body, and speech — and particularly through the passions (kashaya): anger, pride, deceit, and greed.</p>
+            <h3>The Eight Types of Karma</h3>
+            <p><strong>Ghati Karma (Destructive)</strong> — These obscure or destroy the soul's natural qualities:</p><ul>
+            <li><strong>Jnanavaraniya</strong> — Knowledge-obscuring karma: veils the soul's natural omniscience.</li>
+            <li><strong>Darshanavarniya</strong> — Perception-obscuring karma.</li>
+            <li><strong>Mohaniya</strong> — Deluding karma: the most powerful; the primary root of all bondage.</li>
+            <li><strong>Antaraya</strong> — Obstructing karma: blocks infinite energy and willpower.</li></ul>
+            <p><strong>Aghati Karma (Non-Destructive)</strong> — These determine the circumstances of rebirth:</p><ul>
+            <li><strong>Vedaniya</strong> — Determines the experience of pleasure and pain.</li>
+            <li><strong>Namakarma</strong> — Determines the type of body and faculties.</li>
+            <li><strong>Gotrakarma</strong> — Determines one's family and social environment.</li>
+            <li><strong>Ayushyakarma</strong> — Determines the duration of each life.</li></ul>
+            <blockquote>The Jain doctrine of karma is ultimately empowering: you are the sole architect of your own liberation. No deity grants it, and no external force can block it.</blockquote>`
+        },
+        {
+            id:'dvadasha-anuprekshas', title:'The Twelve Anuprekshas: Contemplations for Liberation',
+            category:'Meditation', readTime:'8 min',
+            excerpt:'Twelve systematic themes for reflective meditation, each designed to loosen the soul\'s attachment to the world and kindle the fire of renunciation.',
+            content:`<p>The Dvadasha Anuprekshas — the Twelve Contemplations — are a central practice across all Jain traditions. By meditating deeply on these twelve themes, the practitioner progressively loosens attachment to the world and develops an inner readiness for liberation.</p>
+            <h3>The Twelve Contemplations</h3><ul>
+            <li><strong>Anitya (Impermanence)</strong> — All worldly things are transient. What endures is the soul.</li>
+            <li><strong>Asharana (Helplessness)</strong> — No external being can protect us from our karma. True refuge is within.</li>
+            <li><strong>Samsara (The Cycle)</strong> — The soul has wandered through countless births. Liberation is the only true goal.</li>
+            <li><strong>Ekatva (Aloneness)</strong> — The soul is alone in its journey and bears its karma alone.</li>
+            <li><strong>Anyatva (Otherness)</strong> — The body and the soul are entirely separate. Do not identify with the body.</li>
+            <li><strong>Ashuchi (Impurity)</strong> — Attachment to the body invites further bondage.</li>
+            <li><strong>Asrava (Karmic Influx)</strong> — Contemplate how passions draw karma into the soul.</li>
+            <li><strong>Samvara (Karmic Stoppage)</strong> — Contemplate the vows and practices that stop new karma.</li>
+            <li><strong>Nirjara (Karmic Shedding)</strong> — Contemplate how austerities and equanimity shed existing karma.</li>
+            <li><strong>Loka (The Universe)</strong> — Meditate on the vast Jain cosmos and the soul's place within it.</li>
+            <li><strong>Bodhi-durlabha (Rarity of Enlightenment)</strong> — Human birth and access to the Dharma are extraordinarily rare. Do not waste this opportunity.</li>
+            <li><strong>Dharma (The True Religion)</strong> — Meditate on the Jain path itself and gratitude to the Tirthankaras.</li></ul>`
+        },
+        {
+            id:'uttaradhyayan-sutra', title:'Uttaradhyayan Sutra: The Final Teachings',
+            category:'Agama Studies', readTime:'5 min',
+            excerpt:'Believed to contain the final discourses of Bhagavan Mahavira — among the most beloved and studied texts in the entire Jain canon.',
+            content:`<p>The Uttaradhyayana Sutra comprises 36 chapters traditionally believed to contain the last teachings of Bhagavan Mahavira — discourses delivered to his disciples before his liberation (Nirvana) at Pavapuri.</p>
+            <h3>Key Chapters and Themes</h3><ul>
+            <li><strong>Vinaya (Reverence)</strong> — Deep respect for the Guru is the foundation of all spiritual learning.</li>
+            <li><strong>Karma Prakriti (Ch. 33)</strong> — A rigorous exposition of the eight types of karma, their causes, durations, and how they are shed.</li>
+            <li><strong>The Tale of King Nami</strong> — A king renounces his kingdom on the eve of coronation to pursue liberation. All worldly power is empty compared to the freedom of the soul.</li>
+            <li><strong>Samyaktva Parakrama</strong> — Multiple chapters devoted to cultivating right faith — the single most essential prerequisite for all other spiritual progress.</li></ul>
+            <h3>Why It Matters</h3><p>The Uttaradhyayan Sutra is simultaneously philosophy and story, doctrine and poetry. It remains one of the most cherished texts for monks, nuns, and serious lay practitioners alike.</p>`
+        },
+        {
+            id:'anekantavada', title:'Anekantavada: The Doctrine of Many-Sidedness',
+            category:'Philosophy', readTime:'6 min',
+            excerpt:'Perhaps Jainism\'s most unique philosophical gift to the world — the recognition that no single viewpoint can ever capture reality\'s complete truth.',
+            content:`<p>Anekantavada — "the doctrine of many-sidedness" — holds that reality is complex and multifaceted, and that no single perspective can fully capture its truth. Every description of reality is only partially correct, valid from a specific standpoint.</p>
+            <h3>The Elephant and the Blind Men</h3><p>The classic Jain parable: blind men each touching a different part of an elephant declare with certainty what it is — each correct from their own experience, each wrong in claiming complete truth. The liberated Jain sage sees all perspectives simultaneously without contradiction.</p>
+            <h3>Syadvada: The Logic of Conditionals</h3><p>Anekantavada is expressed through <strong>Syadvada</strong> — conditional predication. Every statement must be qualified with "syat" (in some respect). The seven-fold predication (Saptabhangi) provides a rigorous logical structure for this.</p>
+            <h3>Contemporary Relevance</h3><p>In a world of polarised opinion and ideological certainty, Anekantavada offers a profound alternative — the invitation to hold multiple truths simultaneously, to approach every disagreement with intellectual humility.</p>
+            <blockquote>Anekantavada is the epistemological expression of ahimsa — non-violence applied to the realm of thought and discourse.</blockquote>`
         }
+    ];
 
-        // ════════════════════════════════════════
-        // TITHI / PANCHANG CALCULATION
-        // ════════════════════════════════════════
-        function getJulianDay(date) {
-            const y = date.getFullYear(), m = date.getMonth() + 1, d = date.getDate();
-            const A = Math.floor(y / 100);
-            const B = 2 - A + Math.floor(A / 4);
-            return Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + d + B - 1524.5;
-        }
+    // ── DOM refs ────────────────────────────────────────────────────
+    const mainContent          = document.getElementById('main-content');
+    const navBar               = document.getElementById('nav-bar');
+    const audioPlayerContainer = document.getElementById('audioPlayerContainer');
+    const audioPlayer          = document.getElementById('audioPlayer');
+    const currentTrackTitle    = document.getElementById('currentTrackTitle');
+    const scriptContent        = document.getElementById('scriptContent');
+    const playPauseBtn         = document.getElementById('playPauseBtn');
+    const playPauseIcon        = document.getElementById('playPauseIcon');
+    const backwardBtn          = document.getElementById('backwardBtn');
+    const forwardBtn           = document.getElementById('forwardBtn');
+    const closePlayerBtn       = document.getElementById('closePlayerBtn');
+    const toggleScriptBtn      = document.getElementById('toggleScriptBtn');
+    const toggleScriptIcon     = document.getElementById('toggleScriptIcon');
+    const currentTimeEl        = document.getElementById('currentTime');
+    const durationEl           = document.getElementById('duration');
+    const progressBarContainer = document.getElementById('progressBarContainer');
+    const progressBar          = document.getElementById('progressBar');
+    const volumeSlider         = document.getElementById('volumeSlider');
+    const muteBtn              = document.getElementById('muteBtn');
+    const searchInputDesktop   = document.getElementById('searchInputDesktop');
+    const searchInputMobile    = document.getElementById('searchInputMobile');
+    const openMobileSearchBtn  = document.getElementById('openMobileSearch');
+    const closeMobileSearchBtn = document.getElementById('closeMobileSearch');
+    const mobileSearchOverlay  = document.getElementById('mobileSearchOverlay');
+    const articleModal         = document.getElementById('articleModal');
+    const closeArticleModalBtn = document.getElementById('closeArticleModal');
+    const ytModal              = document.getElementById('ytModal');
+    const ytIframe             = document.getElementById('ytIframe');
+    const ytModalTitle         = document.getElementById('ytModalTitle');
+    const closeYtModalBtn      = document.getElementById('closeYtModal');
 
-        function calculateTithiData(date) {
-            const JD = getJulianDay(date);
-            const T  = (JD - 2451545.0) / 36525;
+    // ── Icon paths ──────────────────────────────────────────────────
+    const playIconPath    = `<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.001v3.998a1 1 0 001.555.832l3.001-2a1 1 0 000-1.664l-3.001-2z" clip-rule="evenodd"/>`;
+    const pauseIconPath   = `<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>`;
+    const chevronDownPath = `<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>`;
+    const chevronUpPath   = `<path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"/>`;
+    const volOnPath       = `<path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"/>`;
+    const volMutePath     = `<path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/>`;
 
-            // Sun
-            const L0     = (280.46646 + 36000.76983 * T) % 360;
-            const M_s    = ((357.52911 + 35999.05029 * T) % 360) * Math.PI / 180;
-            const C_s    = (1.914602 - 0.004817 * T) * Math.sin(M_s) + 0.019993 * Math.sin(2 * M_s) + 0.000289 * Math.sin(3 * M_s);
-            const sunLng = (L0 + C_s + 360) % 360;
+    let currentTab = null, isMuted = false, prevVolume = 1;
 
-            // Moon (simplified)
-            const Lm     = (218.3165 + 481267.8813 * T) % 360;
-            const Mm_r   = ((134.9634 + 477198.8676 * T) % 360) * Math.PI / 180;
-            const D_r    = ((297.8502 + 445267.1115 * T) % 360) * Math.PI / 180;
-            const F_r    = ((93.2720  + 483202.0175 * T) % 360) * Math.PI / 180;
-            const moonLng = (Lm
-                + 6.289 * Math.sin(Mm_r)
-                + 1.274 * Math.sin(2 * D_r - Mm_r)
-                + 0.658 * Math.sin(2 * D_r)
-                + 0.214 * Math.sin(2 * Mm_r)
-                - 0.186 * Math.sin(M_s)
-                - 0.114 * Math.sin(2 * F_r) + 360) % 360;
+    // ── Utilities ───────────────────────────────────────────────────
+    const formatTime = s => isNaN(s) ? '00:00' : `${String(Math.floor(s/60)).padStart(2,'0')}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 
-            const elongation  = (moonLng - sunLng + 360) % 360;
-            const tithiIndex  = Math.floor(elongation / 12); // 0–29
+    function getAllAudioItems() { return Object.values(audioData).flat(); }
 
-            const names = ['Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi'];
-            const paksha      = tithiIndex < 15 ? 'Shukla' : 'Krishna';
-            const idxInPaksha = tithiIndex < 15 ? tithiIndex : tithiIndex - 15;
-            let   tithiName;
+    /** Convert any YouTube URL → embed URL */
+    function toEmbedUrl(url) {
+        if (!url) return null;
+        try {
+            const u = new URL(url);
+            const list = u.searchParams.get('list');
+            let vid = u.searchParams.get('v');
+            if (!vid) { const m = u.pathname.match(/\/(live|embed)\/([^/?]+)/); if (m) vid = m[2]; }
+            if (!vid) { const m = u.pathname.match(/\/shorts\/([^/?]+)/);       if (m) vid = m[1]; }
+            if (list && !vid) return `https://www.youtube.com/embed/videoseries?list=${list}&autoplay=1`;
+            if (vid && list)  return `https://www.youtube.com/embed/${vid}?list=${list}&autoplay=1`;
+            if (vid)          return `https://www.youtube.com/embed/${vid}?autoplay=1`;
+        } catch {}
+        return null;
+    }
 
-            if      (tithiIndex === 14) tithiName = 'Purnima';
-            else if (tithiIndex === 29) tithiName = 'Amavasya';
-            else                        tithiName = names[idxInPaksha];
+    // ── YouTube Modal ───────────────────────────────────────────────
+    function openYtModal(url, title) {
+        const embed = toEmbedUrl(url);
+        if (!embed) { window.open(url, '_blank'); return; }
+        ytIframe.src = embed;
+        ytModalTitle.textContent = title || '';
+        ytModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeYtModal() {
+        ytModal.classList.remove('open');
+        ytIframe.src = '';
+        document.body.style.overflow = '';
+    }
+    closeYtModalBtn.addEventListener('click', closeYtModal);
+    ytModal.addEventListener('click', e => { if (e.target === ytModal) closeYtModal(); });
 
-            return { paksha, tithiName };
-        }
+    // ── Article Modal ───────────────────────────────────────────────
+    function openArticleModal(article) {
+        document.getElementById('modalArticleCategory').textContent = article.category;
+        document.getElementById('modalArticleTitle').textContent    = article.title;
+        document.getElementById('modalArticleReadTime').textContent = `${article.readTime} read`;
+        document.getElementById('modalArticleContent').innerHTML    = article.content;
+        articleModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        articleModal.scrollTop = 0;
+    }
+    function closeArticleModal() { articleModal.classList.remove('open'); document.body.style.overflow = ''; }
+    closeArticleModalBtn.addEventListener('click', closeArticleModal);
+    articleModal.addEventListener('click', e => { if (e.target === articleModal) closeArticleModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeArticleModal(); closeYtModal(); } });
 
-        function getVeerSamvatYear() {
-            const today = new Date();
-            // Approximate: Jain New Year follows Diwali (~mid-Oct each year)
-            const diwaliCutoff = new Date(today.getFullYear(), 9, 15);
-            return today >= diwaliCutoff ? today.getFullYear() + 527 : today.getFullYear() + 526;
-        }
+    // ── Panchang ────────────────────────────────────────────────────
+    function getJulianDay(d) {
+        const y=d.getFullYear(),m=d.getMonth()+1,dd=d.getDate(),A=Math.floor(y/100),B=2-A+Math.floor(A/4);
+        return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+dd+B-1524.5;
+    }
+    function calculateTithiData(date) {
+        const JD=getJulianDay(date),T=(JD-2451545.0)/36525;
+        const L0=(280.46646+36000.76983*T)%360;
+        const Ms=((357.52911+35999.05029*T)%360)*Math.PI/180;
+        const Cs=(1.914602-0.004817*T)*Math.sin(Ms)+0.019993*Math.sin(2*Ms);
+        const sunLng=(L0+Cs+360)%360;
+        const Lm=(218.3165+481267.8813*T)%360;
+        const Mm=((134.9634+477198.8676*T)%360)*Math.PI/180;
+        const Dr=((297.8502+445267.1115*T)%360)*Math.PI/180;
+        const Fr=((93.2720+483202.0175*T)%360)*Math.PI/180;
+        const moonLng=(Lm+6.289*Math.sin(Mm)+1.274*Math.sin(2*Dr-Mm)+0.658*Math.sin(2*Dr)+0.214*Math.sin(2*Mm)-0.186*Math.sin(Ms)-0.114*Math.sin(2*Fr)+360)%360;
+        const elong=(moonLng-sunLng+360)%360;
+        const ti=Math.floor(elong/12);
+        const names=['Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi'];
+        const paksha=ti<15?'Shukla':'Krishna';
+        const idx=ti<15?ti:ti-15;
+        const tithiName=ti===14?'Purnima':ti===29?'Amavasya':names[idx];
+        return {paksha,tithiName};
+    }
+    function getVeerSamvatYear() {
+        const t=new Date();
+        return t>=new Date(t.getFullYear(),9,15)?t.getFullYear()+527:t.getFullYear()+526;
+    }
+    function getUpcomingFestival() {
+        const today=new Date();today.setHours(0,0,0,0);
+        return jainFestivals.filter(f=>f.date>=today).sort((a,b)=>a.date-b.date)[0]||null;
+    }
 
-        function getUpcomingFestival() {
-            const today = new Date(); today.setHours(0,0,0,0);
-            return jainFestivals
-                .filter(f => f.date >= today)
-                .sort((a, b) => a.date - b.date)[0] || null;
-        }
-
-        // ════════════════════════════════════════
-        // RENDER FUNCTIONS
-        // ════════════════════════════════════════
-        function createAudioCard(item) {
-            let buttonHtml = '';
-            if (item.audioSrc && item.audioSrc !== '#') {
-                buttonHtml = `<button data-title="${item.title}" class="play-btn action-btn w-full mt-auto bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm">Listen Now</button>`;
-            } else if (item.youtubeVideoUrl || item.youtubePlaylistUrl) {
-                buttonHtml = `<div class="flex flex-col space-y-2 mt-auto">
-                    ${item.youtubeVideoUrl    ? `<a href="${item.youtubeVideoUrl}"    target="_blank" rel="noopener noreferrer" class="action-btn w-full bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm text-center">Play on YouTube</a>` : ''}
-                    ${item.youtubePlaylistUrl ? `<a href="${item.youtubePlaylistUrl}" target="_blank" rel="noopener noreferrer" class="action-btn w-full bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm text-center">Explore Playlist</a>` : ''}
-                </div>`;
-            } else if (item.youtubeUrl) {
-                buttonHtml = `<a href="${item.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="action-btn w-full mt-auto bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm text-center">Play on YouTube</a>`;
-            } else {
-                buttonHtml = `<button class="w-full mt-auto bg-gray-200 text-gray-500 font-semibold py-2 px-4 rounded-lg cursor-not-allowed text-sm" disabled>Coming Soon</button>`;
-            }
-            return `<div class="bg-white/40 border border-rustic-gold/20 rounded-lg overflow-hidden card-hover-effect">
-                <div class="p-6 flex flex-col h-full">
-                    <h3 class="font-serif text-xl font-semibold mb-2 text-deep-blue">${item.title}</h3>
-                    <p class="text-gray-600 mb-4 flex-grow text-sm">${item.description}</p>
-                    ${buttonHtml}
-                </div>
+    // ── Card factories ──────────────────────────────────────────────
+    function createAudioCard(item) {
+        let btn='';
+        if (item.audioSrc && item.audioSrc!=='#') {
+            btn=`<button data-title="${item.title}" class="play-btn action-btn w-full mt-auto bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm">▶ Listen Now</button>`;
+        } else if (item.youtubeVideoUrl||item.youtubePlaylistUrl||item.youtubeUrl) {
+            const primary=item.youtubeVideoUrl||item.youtubeUrl||item.youtubePlaylistUrl;
+            btn=`<div class="flex flex-col space-y-2 mt-auto">
+                ${(item.youtubeVideoUrl||item.youtubeUrl)?`<button data-yt-url="${primary}" data-yt-title="${item.title}" class="yt-embed-btn action-btn w-full bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm">▶ Watch Here</button>`:''}
+                ${item.youtubePlaylistUrl?`<button data-yt-url="${item.youtubePlaylistUrl}" data-yt-title="${item.title} — Full Playlist" class="yt-embed-btn action-btn w-full bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm">▶ Full Playlist</button>`:''}
             </div>`;
+        } else {
+            btn=`<button class="w-full mt-auto bg-gray-200 text-gray-400 font-semibold py-2 px-4 rounded-lg cursor-not-allowed text-sm" disabled>Coming Soon</button>`;
         }
+        return `<div class="bg-white/40 border border-rustic-gold/20 rounded-lg overflow-hidden card-hover-effect">
+            <div class="p-6 flex flex-col h-full">
+                <h3 class="font-serif text-xl font-semibold mb-2 text-deep-blue leading-snug">${item.title}</h3>
+                <p class="text-gray-600 mb-4 flex-grow text-sm leading-relaxed">${item.description}</p>
+                ${btn}
+            </div>
+        </div>`;
+    }
 
-        function createScriptureCard(item) {
-            return `<div class="bg-white/40 border border-rustic-gold/20 rounded-lg overflow-hidden scripture-card cursor-pointer">
-                <div class="p-6 flex flex-col h-full">
-                    <span class="text-xs uppercase tracking-widest text-rustic-gold font-semibold mb-3 block">${item.category}</span>
-                    <h3 class="font-serif text-xl font-semibold mb-2 text-deep-blue leading-tight">${item.title}</h3>
-                    <p class="text-gray-600 mb-5 flex-grow text-sm leading-relaxed">${item.excerpt}</p>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-xs text-gray-400">${item.readTime} read</span>
-                        <button data-article-id="${item.id}" class="read-article-btn action-btn bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm">Read Article</button>
-                    </div>
+    function createScriptureCard(item) {
+        return `<div class="bg-white/40 border border-rustic-gold/20 rounded-lg overflow-hidden scripture-card">
+            <div class="p-6 flex flex-col h-full">
+                <span class="text-xs uppercase tracking-widest text-rustic-gold font-semibold mb-3 block">${item.category}</span>
+                <h3 class="font-serif text-xl font-semibold mb-2 text-deep-blue leading-tight">${item.title}</h3>
+                <p class="text-gray-600 mb-5 flex-grow text-sm leading-relaxed">${item.excerpt}</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-xs text-gray-400">${item.readTime} read</span>
+                    <button data-article-id="${item.id}" class="read-article-btn action-btn bg-transparent border border-rustic-gold text-rustic-gold font-semibold py-2 px-4 rounded-lg text-sm">Read Article</button>
                 </div>
-            </div>`;
-        }
+            </div>
+        </div>`;
+    }
 
-        function renderGrid(container, items, cardFactory) {
-            const factory = cardFactory || createAudioCard;
-            if (!container || !items) return;
-            if (items.length === 0) {
-                container.innerHTML = `<p class="text-gray-500 col-span-full">No items found.</p>`;
-                return;
+    function renderGrid(container, items, factory) {
+        if (!container || !items) return;
+        container.innerHTML = items.length
+            ? items.map(factory || createAudioCard).join('')
+            : `<p class="text-gray-500 col-span-full">No items found.</p>`;
+    }
+
+    // ── Section builder ─────────────────────────────────────────────
+    function createSection(key, title, desc) {
+        const s=document.createElement('section');
+        s.id=`${key}-section`;
+        s.classList.add('page-section','container','mx-auto','p-4','sm:p-6','lg:p-8');
+        s.style.display='none';
+        s.innerHTML=`<div class="text-center mb-12">
+            <h2 class="font-serif text-4xl lg:text-5xl font-bold text-deep-blue mb-2">${title}</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">${desc}</p>
+        </div>
+        <div id="${key}Grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>`;
+        return s;
+    }
+
+    /** Merged Pratikraman + Samayik section */
+    function createRitualsSection() {
+        const s=document.createElement('section');
+        s.id='rituals-section';
+        s.classList.add('page-section','container','mx-auto','p-4','sm:p-6','lg:p-8');
+        s.style.display='none';
+        s.innerHTML=`
+            <div class="text-center mb-10">
+                <h2 class="font-serif text-4xl lg:text-5xl font-bold text-deep-blue mb-2">Pratikraman</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">The daily ritual of repentance and reflection — returning to the self.</p>
+            </div>
+            <div id="pratikramanGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <div class="ritual-divider">
+                <div class="line"></div>
+                <div class="text-center px-6">
+                    <div class="text-rustic-gold text-xl mb-1">✦</div>
+                    <span class="label">Samayik</span>
+                </div>
+                <div class="line"></div>
+            </div>
+
+            <p class="text-gray-500 max-w-2xl mx-auto text-center mb-10">The practice of equanimity — 48 minutes of perfect stillness and inner peace.</p>
+            <div id="samayikGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>`;
+        return s;
+    }
+
+    // ── Active tab ──────────────────────────────────────────────────
+    function setActiveTab(key) {
+        currentTab=key;
+        document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll(`.nav-btn[data-target="${key||''}"]`).forEach(b=>b.classList.add('active'));
+        document.querySelectorAll('.page-section').forEach(s=>s.style.display='none');
+        const sec=document.getElementById(key?`${key}-section`:'homepage-section');
+        if (sec) sec.style.display='block';
+        const activeBtn=navBar.querySelector('.nav-btn.active');
+        if (activeBtn) activeBtn.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+    }
+
+    const makeNavBtn=(target,label)=>
+        `<button class="nav-btn py-3 px-3 border-b-2 border-transparent text-gray-500 hover:text-rustic-gold hover:border-rustic-gold whitespace-nowrap text-sm flex-shrink-0" data-target="${target}">${label}</button>`;
+
+    // ── Daily info ──────────────────────────────────────────────────
+    function displayInsight() {
+        const i=insights[Math.floor(Math.random()*insights.length)];
+        document.getElementById('insightQuote').textContent=`"${i.quote}"`;
+        document.getElementById('insightSource').textContent=`— ${i.source}`;
+    }
+    function displayDailyIntention() {
+        const today=new Date();
+        const doy=Math.floor((today-new Date(today.getFullYear(),0,0))/86400000);
+        const intent=dailyIntentions[doy%dailyIntentions.length];
+        document.getElementById('intentionTheme').textContent=intent.theme;
+        document.getElementById('intentionPrompt').textContent=intent.prompt;
+    }
+    async function fetchSunriseSunset(lat,lng) {
+        const sr=document.getElementById('sunriseTime'),ss=document.getElementById('sunsetTime'),
+              nk=document.getElementById('navkarshiTime'),pr=document.getElementById('pratikramanTime');
+        try {
+            const res=await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`);
+            const d=await res.json();
+            if (d.status==='OK') {
+                const sunrise=new Date(d.results.sunrise),sunset=new Date(d.results.sunset);
+                const fmt=t=>t.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true});
+                sr.textContent=fmt(sunrise); ss.textContent=fmt(sunset);
+                if(nk)nk.textContent=fmt(new Date(sunrise.getTime()+48*60000));
+                if(pr)pr.textContent=fmt(sunset);
+            } else throw 0;
+        } catch {
+            sr.textContent='06:30 AM'; ss.textContent='06:45 PM';
+            if(nk)nk.textContent='07:18 AM'; if(pr)pr.textContent='06:45 PM';
+        }
+    }
+    function updatePanchang() {
+        try {
+            const {paksha,tithiName}=calculateTithiData(new Date());
+            const el=id=>document.getElementById(id);
+            if(el('vsYear'))       el('vsYear').textContent=getVeerSamvatYear();
+            if(el('tithiPaksha'))  el('tithiPaksha').textContent=`${paksha} Paksha`;
+            if(el('tithiDisplay')) el('tithiDisplay').textContent=tithiName;
+            const f=getUpcomingFestival();
+            if(f){
+                if(el('nextFestivalName'))el('nextFestivalName').textContent=f.name;
+                if(el('nextFestivalDate'))el('nextFestivalDate').textContent=f.date.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
             }
-            container.innerHTML = items.map(item => factory(item)).join('');
-        }
-
-        function setActiveTab(key) {
-            currentTab = key;
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            const target = key || '';
-            document.querySelectorAll(`.nav-btn[data-target="${target}"]`).forEach(btn => btn.classList.add('active'));
-            document.querySelectorAll('.page-section').forEach(sec => sec.style.display = 'none');
-            const section = document.getElementById(key ? `${key}-section` : 'homepage-section');
-            if (section) section.style.display = 'block';
-        }
-
-        function getAllAudioItems() {
-            return Object.keys(audioData).flatMap(key => audioData[key]);
-        }
-
-        function createSection(key, title, description) {
-            const s = document.createElement('section');
-            s.id = `${key}-section`;
-            s.classList.add('page-section', 'container', 'mx-auto', 'p-4', 'sm:p-6', 'lg:p-8');
-            s.style.display = 'none';
-            s.innerHTML = `
-                <div class="text-center mb-12">
-                    <h2 class="font-serif text-4xl lg:text-5xl font-bold text-deep-blue mb-2">${title}</h2>
-                    <p class="text-gray-500 max-w-2xl mx-auto">${description}</p>
-                </div>
-                <div id="${key}Grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>`;
-            return s;
-        }
-
-        // ════════════════════════════════════════
-        // ARTICLE MODAL
-        // ════════════════════════════════════════
-        function openArticleModal(article) {
-            document.getElementById('modalArticleCategory').textContent  = article.category;
-            document.getElementById('modalArticleTitle').textContent     = article.title;
-            document.getElementById('modalArticleReadTime').textContent  = `${article.readTime} read`;
-            document.getElementById('modalArticleContent').innerHTML     = article.content;
-            articleModal.classList.add('open');
-            document.body.style.overflow = 'hidden';
-            articleModal.scrollTop = 0;
-        }
-
-        function closeArticleModal() {
-            articleModal.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        closeArticleModalBtn.addEventListener('click', closeArticleModal);
-        articleModal.addEventListener('click', (e) => { if (e.target === articleModal) closeArticleModal(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeArticleModal(); });
-
-        // ════════════════════════════════════════
-        // HOMEPAGE
-        // ════════════════════════════════════════
-        function createHomepage() {
-            const hp = document.createElement('div');
-            hp.id = 'homepage-section';
-            hp.classList.add('page-section');
-            hp.innerHTML = `
-                <!-- Hero -->
-                <div class="text-center py-20 lg:py-32 relative overflow-hidden" style="background: radial-gradient(ellipse at center, rgba(176,141,87,0.15), transparent 70%);">
-                    <div class="absolute inset-0 opacity-5" style="background-image:url('data:image/svg+xml,%3Csvg width%3D%22100%22 height%3D%22100%22 viewBox%3D%220 0 100 100%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath d%3D%22M11 18.273l8.445 13.727 15.11-21.9L21.828 0h-9.273L0 18.273h11zm32.14 27.455L21.282 23.82l-4.41 6.38 12.727 18.44-14.14 20.56 6.38-4.41L32.14 45.727zm-32.14 0L21.828 100h9.273L46.212 81.73l-11-16-14.14 20.56h-9.273z%22 fill%3D%22%23B08D57%22 fill-opacity%3D%220.1%22%2F%3E%3C%2Fsvg%3E')"></div>
-                    <div class="container mx-auto px-4 relative">
-                        <div class="inline-block border-2 border-deep-blue py-4 px-10">
-                            <h1 class="font-serif text-5xl md:text-7xl font-bold text-deep-blue">The Jain Path</h1>
-                        </div>
-                        <p class="mt-4 text-lg text-rustic-gold">Your Daily Moment of Peace. Timeless Wisdom for the Modern Devotee.</p>
-                        <p class="mt-6 max-w-2xl mx-auto text-gray-500">Discover a serene collection of Pachkaans, Sutras, and devotional audios. A modern sanctuary for daily practice and spiritual exploration, designed for clarity and peace.</p>
-                    </div>
-                </div>
-
-                <!-- Our Mission -->
-                <div class="container mx-auto p-4 sm:p-6 lg:p-8 my-16 text-center">
-                    <h2 class="font-serif text-4xl font-bold text-deep-blue mb-4">Our Mission</h2>
-                    <p class="max-w-3xl mx-auto text-gray-600">Our aim is to bring sacred Jain teachings to every screen and every heart. We strive to provide an accessible digital option for young Jains to explore their spirituality, and a convenient, elegant platform for devotees and elders to continue their daily practices with ease.</p>
-                </div>
-
-                <!-- Featured -->
-                <div class="container mx-auto p-4 sm:p-6 lg:p-8">
-                    <div class="text-center mb-12">
-                        <h2 class="font-serif text-4xl font-bold text-deep-blue mb-2">Featured Recitations</h2>
-                    </div>
-                    <div id="featuredGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-                </div>
-
-                <!-- Daily Info -->
-                <div class="container mx-auto px-4 sm:px-8 my-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-
-                    <!-- Almanac -->
-                    <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 flex flex-col">
-                        <h3 class="font-serif text-2xl text-deep-blue mb-1 text-center">Today's Almanac</h3>
-                        <p class="text-xs text-gray-400 text-center mb-5">(<span id="locationCity">Detecting...</span>)</p>
-                        <div class="grid grid-cols-2 gap-x-6 gap-y-4">
-                            <div>
-                                <p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Sunrise</p>
-                                <p id="sunriseTime" class="font-bold text-base text-deep-blue">--:--</p>
-                            </div>
-                            <div>
-                                <p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Sunset</p>
-                                <p id="sunsetTime" class="font-bold text-base text-deep-blue">--:--</p>
-                            </div>
-                            <div>
-                                <p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Navkarshi</p>
-                                <p id="navkarshiTime" class="font-bold text-base text-deep-blue">--:--</p>
-                                <p class="text-xs text-gray-400">Sunrise + 48 min</p>
-                            </div>
-                            <div>
-                                <p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Devasi Pratikraman</p>
-                                <p id="pratikramanTime" class="font-bold text-base text-deep-blue">--:--</p>
-                                <p class="text-xs text-gray-400">At sunset</p>
-                            </div>
-                        </div>
-                        <div class="border-t border-rustic-gold/20 my-4"></div>
-                        <div>
-                            <p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Tithi — Veer Samvat <span id="vsYear">2552</span></p>
-                            <p id="tithiPaksha" class="text-sm text-gray-500">— Paksha</p>
-                            <p id="tithiDisplay" class="font-bold text-base text-deep-blue">—</p>
-                        </div>
-                        <div class="border-t border-rustic-gold/20 my-4"></div>
-                        <div>
-                            <p class="text-rustic-gold text-xs uppercase tracking-wider mb-1">Next Jain Festival</p>
-                            <p id="nextFestivalName" class="font-semibold text-sm text-deep-blue">—</p>
-                            <p id="nextFestivalDate" class="text-xs text-gray-500">—</p>
-                        </div>
-                    </div>
-
-                    <!-- Insight -->
-                    <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 flex flex-col justify-center text-center">
-                        <h3 class="font-serif text-2xl text-deep-blue mb-6">A Moment of Insight</h3>
-                        <blockquote id="insightQuote" class="text-gray-600 italic mb-3 text-lg leading-relaxed flex-grow flex items-center justify-center">"Loading insight..."</blockquote>
-                        <cite id="insightSource" class="text-rustic-gold font-semibold not-italic text-sm"></cite>
-                    </div>
-
-                    <!-- Intention -->
-                    <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 flex flex-col justify-center text-center">
-                        <h3 class="font-serif text-2xl text-deep-blue mb-6">Today's Intention</h3>
-                        <div class="flex-grow flex flex-col justify-center">
-                            <p id="intentionTheme" class="font-bold text-lg text-deep-blue mb-3">Loading...</p>
-                            <p id="intentionPrompt" class="text-gray-600 text-sm leading-relaxed">...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact -->
-                <div id="contact-section-container" class="container mx-auto p-8 my-16">
-                    <div class="text-center mb-12">
-                        <h2 class="font-serif text-4xl font-bold text-deep-blue mb-4">Contact Us</h2>
-                        <p class="max-w-2xl mx-auto text-gray-600">We welcome your feedback and suggestions to improve this digital sanctuary.</p>
-                    </div>
-                    <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="max-w-xl mx-auto">
-                        <input type="hidden" name="form-name" value="contact"/>
-                        <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field"/></label></p>
-                        <div class="mb-4">
-                            <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-3 bg-white/50 border border-rustic-gold/30 rounded-lg focus:outline-none focus:ring-1 focus:ring-rustic-gold" required>
-                        </div>
-                        <div class="mb-4">
-                            <textarea name="message" placeholder="Your Message" rows="4" class="w-full px-4 py-3 bg-white/50 border border-rustic-gold/30 rounded-lg focus:outline-none focus:ring-1 focus:ring-rustic-gold" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="bg-deep-blue text-white font-semibold py-3 px-8 rounded-lg hover:bg-rustic-gold transition-colors duration-300">Submit Feedback</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Disclaimer -->
-                <div class="container mx-auto px-8 my-16 text-center text-xs text-gray-400">
-                    <h4 class="font-bold text-gray-500 mb-2">Disclaimer & Acknowledgements</h4>
-                    <p class="max-w-3xl mx-auto">This platform is created for spiritual and educational purposes only. All audio, video, and textual content is either original, licensed, or believed to be in the public domain. No copyright infringement is intended. We extend our heartfelt gratitude to all the original creators, scholars, and institutions whose work has made this digital sanctuary possible. We are thankful to Pa. Pu. Sayyam Pritiji Ma. Sa. for her guidance and support, and to all Gurujis and Gurunijis for their blessings.</p>
-                </div>`;
-
-            mainContent.appendChild(hp);
-
-            const featuredItems = [audioData.pachchkaan[0], audioData.sutras[0], audioData.stotras[0]];
-            renderGrid(document.getElementById('featuredGrid'), featuredItems);
-            updateDailyInfo();
-            displayInsight();
-            displayDailyIntention();
-        }
-
-        // ════════════════════════════════════════
-        // DAILY INFO
-        // ════════════════════════════════════════
-        function displayInsight() {
-            const idx = Math.floor(Math.random() * insights.length);
-            document.getElementById('insightQuote').textContent  = `"${insights[idx].quote}"`;
-            document.getElementById('insightSource').textContent = `— ${insights[idx].source}`;
-        }
-
-        function displayDailyIntention() {
-            const today     = new Date();
-            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-            const intention = dailyIntentions[dayOfYear % dailyIntentions.length];
-            document.getElementById('intentionTheme').textContent  = intention.theme;
-            document.getElementById('intentionPrompt').textContent = intention.prompt;
-        }
-
-        async function fetchSunriseSunset(lat, lng) {
-            const srEl  = document.getElementById('sunriseTime');
-            const ssEl  = document.getElementById('sunsetTime');
-            const nkEl  = document.getElementById('navkarshiTime');
-            const prEl  = document.getElementById('pratikramanTime');
-            try {
-                const res  = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`);
-                const data = await res.json();
-                if (data.status === 'OK') {
-                    const sr = new Date(data.results.sunrise);
-                    const ss = new Date(data.results.sunset);
-                    const fmt = d => d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-                    srEl.textContent = fmt(sr);
-                    ssEl.textContent = fmt(ss);
-                    if (nkEl) nkEl.textContent = fmt(new Date(sr.getTime() + 48 * 60 * 1000));
-                    if (prEl) prEl.textContent = fmt(ss);
-                } else throw new Error('API error');
-            } catch {
-                srEl.textContent = '06:30 AM';
-                ssEl.textContent = '06:45 PM';
-                if (nkEl) nkEl.textContent = '07:18 AM';
-                if (prEl) prEl.textContent = '06:45 PM';
-            }
-        }
-
-        function updatePanchang() {
-            const tithiPakshaEl     = document.getElementById('tithiPaksha');
-            const tithiEl           = document.getElementById('tithiDisplay');
-            const vsYearEl          = document.getElementById('vsYear');
-            const festivalNameEl    = document.getElementById('nextFestivalName');
-            const festivalDateEl    = document.getElementById('nextFestivalDate');
-
-            try {
-                const { paksha, tithiName } = calculateTithiData(new Date());
-                if (vsYearEl)       vsYearEl.textContent       = getVeerSamvatYear();
-                if (tithiPakshaEl)  tithiPakshaEl.textContent  = `${paksha} Paksha`;
-                if (tithiEl)        tithiEl.textContent        = tithiName;
-
-                const festival = getUpcomingFestival();
-                if (festival) {
-                    if (festivalNameEl) festivalNameEl.textContent = festival.name;
-                    if (festivalDateEl) festivalDateEl.textContent = festival.date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
-                }
-            } catch (err) {
-                console.error('Panchang calculation error:', err);
-                if (tithiEl) tithiEl.textContent = 'Data unavailable';
-            }
-        }
-
-        async function updateDailyInfo() {
-            const fallback     = { lat: 19.0330, lng: 73.0297 };
-            const fallbackCity = 'Navi Mumbai';
-            const cityEl       = document.getElementById('locationCity');
-
-            updatePanchang(); // Always compute immediately
-
-            const proceed = (lat, lng) => fetchSunriseSunset(lat, lng);
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    async ({ coords: { latitude, longitude } }) => {
-                        try {
-                            const r    = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
-                            const data = await r.json();
-                            if (cityEl) cityEl.textContent = data.city || 'Your Location';
-                        } catch { if (cityEl) cityEl.textContent = 'Your Location'; }
-                        proceed(latitude, longitude);
-                    },
-                    () => {
-                        if (cityEl) cityEl.textContent = fallbackCity;
-                        proceed(fallback.lat, fallback.lng);
-                    }
-                );
-            } else {
-                if (cityEl) cityEl.textContent = fallbackCity;
-                proceed(fallback.lat, fallback.lng);
-            }
-        }
-
-        // ════════════════════════════════════════
-        // INIT — NAV + SECTIONS
-        // ════════════════════════════════════════
-        const categoryMeta = {
-            pachchkaan:  { title: 'Pachchkaan',          desc: 'Select a Pachchkaan to listen to the audio oath for your chosen fast.',                                   type: 'audio' },
-            stotras:     { title: 'Stotras',             desc: 'Listen to sacred hymns and devotional prayers.',                                                         type: 'audio' },
-            stavans:     { title: 'Stavans & Bhajans',   desc: 'Devotional hymns and songs in praise of the Jinas and the liberated ones.',                             type: 'audio' },
-            sutras:      { title: 'Sutras',              desc: 'Explore the sacred Agamas — the foundational scriptures of Jainism — through recitations and teachings.',type: 'audio' },
-            lectures:    { title: 'Lectures',            desc: 'Spiritual discourses and pravachans on Jain philosophy and practice.',                                   type: 'audio' },
-            meditation:  { title: 'Meditation',          desc: 'Guided Jain meditation practices — from Preksha Dhyana to Samosharan visualisation.',                    type: 'audio' },
-            scriptures:  { title: 'Scriptures & Learning', desc: 'In-depth articles and lessons on the Agamas, Jain philosophy, and the path to liberation.',           type: 'scripture' },
-            mangalik:    { title: 'Mangalik',            desc: 'Auspicious recitations for blessings and well-being.',                                                   type: 'audio' },
-            pratikraman: { title: 'Pratikraman',         desc: 'Audio for the daily and periodic rituals of repentance and reflection.',                                 type: 'audio' },
-            samayik:     { title: 'Samayik',             desc: 'Audio for the practice of equanimity — 48 minutes of stillness and inner peace.',                        type: 'audio' }
-        };
-
-        const makeNavBtn = (target, label) =>
-            `<button class="nav-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-rustic-gold hover:border-rustic-gold whitespace-nowrap text-sm" data-target="${target}">${label}</button>`;
-
-        navContainerDesktop.innerHTML += makeNavBtn('', 'Home');
-        navContainerMobile.innerHTML  += makeNavBtn('', 'Home');
-        createHomepage();
-
-        for (const key in categoryMeta) {
-            const meta = categoryMeta[key];
-            navContainerDesktop.innerHTML += makeNavBtn(key, meta.title);
-            navContainerMobile.innerHTML  += makeNavBtn(key, meta.title);
-
-            const section = createSection(key, meta.title, meta.desc);
-            mainContent.appendChild(section);
-
-            const data    = meta.type === 'scripture' ? scripturesData : (audioData[key] || []);
-            const factory = meta.type === 'scripture' ? createScriptureCard : createAudioCard;
-            renderGrid(document.getElementById(`${key}Grid`), data, factory);
-        }
-
-        // ════════════════════════════════════════
-        // EVENT LISTENERS
-        // ════════════════════════════════════════
-
-        // Nav
-        [navContainerDesktop, navContainerMobile].forEach(c => {
-            c.addEventListener('click', (e) => {
-                if (e.target.classList.contains('nav-btn'))
-                    setActiveTab(e.target.dataset.target || null);
-            });
-        });
-
-        // Search
-        function handleSearch(term) {
-            const q = term.toLowerCase().trim();
-            if (!q) {
-                let ss = document.getElementById('search-section');
-                if (ss) ss.style.display = 'none';
-                setActiveTab(currentTab);
-                return;
-            }
-            const results = getAllAudioItems().filter(i =>
-                (i.title || '').toLowerCase().includes(q) ||
-                (i.description || '').toLowerCase().includes(q)
+        } catch(e){console.error(e);}
+    }
+    async function updateDailyInfo() {
+        const fallback={lat:19.0330,lng:73.0297,city:'Navi Mumbai'};
+        const cityEl=document.getElementById('locationCity');
+        updatePanchang();
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(
+                async({coords:{latitude:lat,longitude:lng}})=>{
+                    try{
+                        const r=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`);
+                        const d=await r.json();
+                        if(cityEl)cityEl.textContent=d.city||'Your Location';
+                    }catch{if(cityEl)cityEl.textContent='Your Location';}
+                    fetchSunriseSunset(lat,lng);
+                },
+                ()=>{if(cityEl)cityEl.textContent=fallback.city;fetchSunriseSunset(fallback.lat,fallback.lng);}
             );
-            document.querySelectorAll('.page-section').forEach(s => s.style.display = 'none');
-            let ss = document.getElementById('search-section');
-            if (!ss) { ss = createSection('search', 'Search Results', ''); mainContent.appendChild(ss); }
-            ss.querySelector('h2').textContent = `Search Results for "${term}"`;
-            ss.style.display = 'block';
-            renderGrid(document.getElementById('searchGrid'), results);
+        } else {
+            if(cityEl)cityEl.textContent=fallback.city;
+            fetchSunriseSunset(fallback.lat,fallback.lng);
         }
+    }
 
-        searchInputDesktop.addEventListener('input', e => handleSearch(e.target.value));
-        searchInputMobile.addEventListener('input',  e => handleSearch(e.target.value));
+    // ── Featured (randomised each visit) ───────────────────────────
+    function getRandomFeatured(n) {
+        const pool=getAllAudioItems().filter(i=>(i.audioSrc&&i.audioSrc!=='#')||i.youtubeUrl||i.youtubeVideoUrl||i.youtubePlaylistUrl);
+        return [...pool].sort(()=>Math.random()-.5).slice(0,n);
+    }
 
-        openMobileSearchBtn.addEventListener('click', () => {
-            mobileSearchOverlay.classList.remove('hidden');
-            setTimeout(() => mobileSearchOverlay.classList.add('opacity-100'), 10);
-            searchInputMobile.focus();
-        });
-        closeMobileSearchBtn.addEventListener('click', () => {
-            mobileSearchOverlay.classList.remove('opacity-100');
-            setTimeout(() => mobileSearchOverlay.classList.add('hidden'), 300);
-            handleSearch('');
-        });
+    // ── Homepage ────────────────────────────────────────────────────
+    function createHomepage() {
+        const hp=document.createElement('div');
+        hp.id='homepage-section'; hp.classList.add('page-section');
+        hp.innerHTML=`
+        <!-- Hero -->
+        <div class="text-center py-20 lg:py-32 relative overflow-hidden" style="background:radial-gradient(ellipse at center,rgba(176,141,87,0.15),transparent 70%);">
+            <div class="absolute inset-0 opacity-5" style="background-image:url('data:image/svg+xml,%3Csvg width%3D%22100%22 height%3D%22100%22 viewBox%3D%220 0 100 100%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath d%3D%22M11 18.273l8.445 13.727 15.11-21.9L21.828 0h-9.273L0 18.273h11z%22 fill%3D%22%23B08D57%22 fill-opacity%3D%220.1%22%2F%3E%3C%2Fsvg%3E')"></div>
+            <div class="container mx-auto px-4 relative">
+                <div class="inline-block border-2 border-deep-blue py-4 px-10">
+                    <h1 class="font-serif text-5xl md:text-7xl font-bold text-deep-blue">The Jain Path</h1>
+                </div>
+                <p class="mt-4 text-lg text-rustic-gold">Your Daily Moment of Peace. Timeless Wisdom for the Modern Devotee.</p>
+                <p class="mt-6 max-w-2xl mx-auto text-gray-500">Discover a serene collection of Pachkaans, Sutras, and devotional audios. A modern sanctuary for daily practice and spiritual exploration, designed for clarity and peace.</p>
+            </div>
+        </div>
 
-        // Content area delegated clicks
-        mainContent.addEventListener('click', function(e) {
-            // Audio play
-            const playBtn = e.target.closest('.play-btn');
-            if (playBtn) {
-                const title = playBtn.dataset.title;
-                const item  = getAllAudioItems().find(i => i.title === title);
-                if (item && item.audioSrc !== '#') {
-                    audioPlayer.src = item.audioSrc;
-                    audioPlayer.playbackRate = parseFloat(document.querySelector('.speed-btn.active-speed')?.dataset.speed || 1);
-                    currentTrackTitle.textContent = item.title;
-                    scriptContent.textContent     = item.script || 'No script available.';
-                    audioPlayer.play();
-                    audioPlayerContainer.classList.add('visible');
-                    if (item.script) {
-                        audioPlayerContainer.classList.add('expanded');
-                        toggleScriptIcon.innerHTML = chevronUpPath;
-                    } else {
-                        audioPlayerContainer.classList.remove('expanded');
-                        toggleScriptIcon.innerHTML = chevronDownPath;
-                    }
-                }
-            }
-            // Article read
-            const readBtn = e.target.closest('.read-article-btn');
-            if (readBtn) {
-                const article = scripturesData.find(a => a.id === readBtn.dataset.articleId);
-                if (article) openArticleModal(article);
-            }
-        });
+        <!-- Mission -->
+        <div class="container mx-auto p-4 sm:p-6 lg:p-8 my-16 text-center">
+            <h2 class="font-serif text-4xl font-bold text-deep-blue mb-4">Our Mission</h2>
+            <p class="max-w-3xl mx-auto text-gray-600">Our aim is to bring sacred Jain teachings to every screen and every heart — an accessible digital platform for young Jains to explore their spirituality, and a convenient sanctuary for devotees and elders to continue their daily practices with ease.</p>
+        </div>
 
-        // Contact form
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Submitting...';
-                try {
-                    const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(contactForm)).toString() });
-                    if (r.ok) {
-                        document.getElementById('contact-section-container').innerHTML = `
-                            <div class="text-center py-16">
-                                <h2 class="font-serif text-3xl font-bold text-deep-blue mb-4">Thank You!</h2>
-                                <p class="max-w-md mx-auto text-gray-600">Your feedback has been received. We appreciate you helping us improve this sanctuary.</p>
-                            </div>`;
-                    } else throw new Error('Failed');
-                } catch {
-                    const p = document.createElement('p');
-                    p.className = 'text-center text-red-500 mt-4 text-sm';
-                    p.textContent = 'Sorry, there was an issue. Please try again later.';
-                    contactForm.appendChild(p);
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Feedback';
-                }
-            });
+        <!-- Featured -->
+        <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl font-bold text-deep-blue mb-2">Featured Recitations</h2>
+                <p class="text-xs text-gray-400 tracking-wider uppercase">A fresh selection every visit</p>
+            </div>
+            <div id="featuredGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </div>
+
+        <!-- Daily Info -->
+        <div class="container mx-auto px-4 sm:px-8 my-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            <!-- Almanac -->
+            <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 flex flex-col">
+                <h3 class="font-serif text-2xl text-deep-blue mb-1 text-center">Today's Almanac</h3>
+                <p class="text-xs text-gray-400 text-center mb-5">(<span id="locationCity">Detecting...</span>)</p>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                    <div><p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Sunrise</p><p id="sunriseTime" class="font-bold text-base text-deep-blue">--:--</p></div>
+                    <div><p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Sunset</p><p id="sunsetTime" class="font-bold text-base text-deep-blue">--:--</p></div>
+                    <div><p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Navkarshi</p><p id="navkarshiTime" class="font-bold text-base text-deep-blue">--:--</p><p class="text-xs text-gray-400">Sunrise + 48 min</p></div>
+                    <div><p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Devasi Pratikraman</p><p id="pratikramanTime" class="font-bold text-base text-deep-blue">--:--</p><p class="text-xs text-gray-400">At sunset</p></div>
+                </div>
+                <div class="border-t border-rustic-gold/20 my-4"></div>
+                <div>
+                    <p class="text-rustic-gold text-xs uppercase tracking-wider mb-0.5">Tithi — Veer Samvat <span id="vsYear">2552</span></p>
+                    <p id="tithiPaksha" class="text-sm text-gray-500">— Paksha</p>
+                    <p id="tithiDisplay" class="font-bold text-base text-deep-blue">—</p>
+                </div>
+                <div class="border-t border-rustic-gold/20 my-4"></div>
+                <div>
+                    <p class="text-rustic-gold text-xs uppercase tracking-wider mb-1">Next Jain Festival</p>
+                    <p id="nextFestivalName" class="font-semibold text-sm text-deep-blue">—</p>
+                    <p id="nextFestivalDate" class="text-xs text-gray-500">—</p>
+                </div>
+            </div>
+            <!-- Insight -->
+            <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 flex flex-col justify-center text-center">
+                <h3 class="font-serif text-2xl text-deep-blue mb-6">A Moment of Insight</h3>
+                <blockquote id="insightQuote" class="text-gray-600 italic mb-3 text-lg leading-relaxed flex-grow flex items-center justify-center">"Loading..."</blockquote>
+                <cite id="insightSource" class="text-rustic-gold font-semibold not-italic text-sm"></cite>
+            </div>
+            <!-- Intention -->
+            <div class="bg-white/40 p-6 rounded-lg border border-rustic-gold/20 flex flex-col justify-center text-center">
+                <h3 class="font-serif text-2xl text-deep-blue mb-6">Today's Intention</h3>
+                <div class="flex-grow flex flex-col justify-center">
+                    <p id="intentionTheme" class="font-bold text-lg text-deep-blue mb-3">Loading...</p>
+                    <p id="intentionPrompt" class="text-gray-600 text-sm leading-relaxed">...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div id="contact-section-container" class="container mx-auto p-8 my-16">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl font-bold text-deep-blue mb-4">Contact Us</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">We welcome your feedback and suggestions to improve this digital sanctuary.</p>
+            </div>
+            <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="max-w-xl mx-auto">
+                <input type="hidden" name="form-name" value="contact"/>
+                <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field"/></label></p>
+                <div class="mb-4"><input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-3 bg-white/50 border border-rustic-gold/30 rounded-lg focus:outline-none focus:ring-1 focus:ring-rustic-gold" required></div>
+                <div class="mb-4"><textarea name="message" placeholder="Your Message" rows="4" class="w-full px-4 py-3 bg-white/50 border border-rustic-gold/30 rounded-lg focus:outline-none focus:ring-1 focus:ring-rustic-gold" required></textarea></div>
+                <div class="text-center"><button type="submit" class="bg-deep-blue text-white font-semibold py-3 px-8 rounded-lg hover:bg-rustic-gold transition-colors duration-300">Submit Feedback</button></div>
+            </form>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="container mx-auto px-8 my-16 text-center text-xs text-gray-400">
+            <h4 class="font-bold text-gray-500 mb-2">Disclaimer & Acknowledgements</h4>
+            <p class="max-w-3xl mx-auto">This platform is created for spiritual and educational purposes only. All audio, video, and textual content is either original, licensed, or believed to be in the public domain. No copyright infringement is intended. We extend our heartfelt gratitude to all creators, scholars, and institutions whose work has made this digital sanctuary possible. We are thankful to Pa. Pu. Sayyam Pritiji Ma. Sa. for her guidance, and to all Gurujis and Gurunijis for their blessings.</p>
+        </div>`;
+
+        mainContent.appendChild(hp);
+        renderGrid(document.getElementById('featuredGrid'), getRandomFeatured(3));
+        updateDailyInfo();
+        displayInsight();
+        displayDailyIntention();
+    }
+
+    // ════════════════════════════════════════════
+    //  INIT
+    // ════════════════════════════════════════════
+
+    // Category definitions (no Stotras tab; rituals = merged)
+    const categoryMeta = {
+        pachchkaan : { title:'Pachchkaan',             desc:'Select a Pachchkaan to listen to the audio oath for your chosen fast.',                                  type:'audio' },
+        stavans    : { title:'Stavans & Bhajans',       desc:'Devotional hymns and songs in praise of the Jinas and the liberated ones.',                            type:'audio' },
+        sutras     : { title:'Sutras',                  desc:'Explore the sacred Agamas through recitations and embedded video teachings.',                          type:'audio' },
+        lectures   : { title:'Lectures',                desc:'Spiritual discourses and pravachans on Jain philosophy and practice.',                                 type:'audio' },
+        meditation : { title:'Meditation',              desc:'Guided Jain meditation practices — from Preksha Dhyana to Samosharan visualisation.',                  type:'audio' },
+        reading    : { title:'Sacred Reading',          desc:'In-depth articles and lessons on the Agamas, Jain philosophy, and the path to liberation.',            type:'scripture' },
+        mangalik   : { title:'Mangalik',                desc:'Auspicious recitations for blessings and well-being.',                                                 type:'audio' },
+        rituals    : { title:'Pratikraman & Samayik',  desc:'',                                                                                                     type:'merged' }
+    };
+
+    // Build nav
+    navBar.innerHTML = makeNavBtn('','Home');
+    for (const key in categoryMeta) navBar.innerHTML += makeNavBtn(key, categoryMeta[key].title);
+
+    // Build homepage
+    createHomepage();
+
+    // Build all content sections
+    for (const key in categoryMeta) {
+        const meta=categoryMeta[key];
+        if (meta.type==='merged') {
+            const s=createRitualsSection(); mainContent.appendChild(s);
+            renderGrid(document.getElementById('pratikramanGrid'), audioData.pratikraman);
+            renderGrid(document.getElementById('samayikGrid'),     audioData.samayik);
+        } else if (meta.type==='scripture') {
+            const s=createSection(key,meta.title,meta.desc); mainContent.appendChild(s);
+            renderGrid(document.getElementById(`${key}Grid`), scripturesData, createScriptureCard);
+        } else {
+            const s=createSection(key,meta.title,meta.desc); mainContent.appendChild(s);
+            renderGrid(document.getElementById(`${key}Grid`), audioData[key]||[]);
         }
+    }
 
-        // Audio player controls
-        playPauseBtn.addEventListener('click', () => audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause());
-        backwardBtn.addEventListener('click', () => audioPlayer.currentTime -= 10);
-        forwardBtn.addEventListener('click',  () => audioPlayer.currentTime += 10);
-
-        closePlayerBtn.addEventListener('click', () => {
-            audioPlayer.pause();
-            audioPlayer.src = '';
-            audioPlayerContainer.classList.remove('visible', 'expanded');
-            currentTrackTitle.textContent = 'Select an audio';
-            resetSpeedButtons();
-        });
-
-        toggleScriptBtn.addEventListener('click', () => {
-            audioPlayerContainer.classList.toggle('expanded');
-            toggleScriptIcon.innerHTML = audioPlayerContainer.classList.contains('expanded') ? chevronUpPath : chevronDownPath;
-        });
-
-        audioPlayer.addEventListener('play',  () => playPauseIcon.innerHTML = pauseIconPath);
-        audioPlayer.addEventListener('pause', () => playPauseIcon.innerHTML = playIconPath);
-        audioPlayer.addEventListener('loadedmetadata', () => durationEl.textContent = formatTime(audioPlayer.duration));
-        audioPlayer.addEventListener('timeupdate', () => {
-            currentTimeEl.textContent     = formatTime(audioPlayer.currentTime);
-            progressBar.style.width       = `${(audioPlayer.currentTime / audioPlayer.duration) * 100}%`;
-        });
-
-        progressBarContainer.addEventListener('click', (e) => {
-            audioPlayer.currentTime = (e.offsetX / progressBarContainer.clientWidth) * audioPlayer.duration;
-        });
-
-        // Volume
-        volumeSlider.addEventListener('input', (e) => {
-            const v = parseFloat(e.target.value);
-            audioPlayer.volume = v;
-            isMuted = v === 0;
-            document.getElementById('volumeIcon').innerHTML = isMuted ? volMutePath : volOnPath;
-        });
-
-        muteBtn.addEventListener('click', () => {
-            if (isMuted) {
-                audioPlayer.volume = prevVolume;
-                volumeSlider.value = prevVolume;
-                isMuted = false;
-                document.getElementById('volumeIcon').innerHTML = volOnPath;
-            } else {
-                prevVolume = audioPlayer.volume;
-                audioPlayer.volume = 0;
-                volumeSlider.value = 0;
-                isMuted = true;
-                document.getElementById('volumeIcon').innerHTML = volMutePath;
-            }
-        });
-
-        // Speed
-        function resetSpeedButtons() {
-            document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active-speed'));
-            const oneX = document.querySelector('.speed-btn[data-speed="1"]');
-            if (oneX) oneX.classList.add('active-speed');
-            audioPlayer.playbackRate = 1;
-        }
-
-        document.querySelectorAll('.speed-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active-speed'));
-                btn.classList.add('active-speed');
-                audioPlayer.playbackRate = parseFloat(btn.dataset.speed);
-            });
-        });
-
-        // ── Show homepage on load ──
-        setActiveTab(null);
+    // Nav clicks
+    navBar.addEventListener('click', e => {
+        if (e.target.classList.contains('nav-btn')) setActiveTab(e.target.dataset.target||null);
     });
-    </script>
+
+    // Search
+    function handleSearch(term) {
+        const q=term.toLowerCase().trim();
+        if (!q) { const ss=document.getElementById('search-section'); if(ss)ss.style.display='none'; setActiveTab(currentTab); return; }
+        const results=getAllAudioItems().filter(i=>(i.title||'').toLowerCase().includes(q)||(i.description||'').toLowerCase().includes(q));
+        document.querySelectorAll('.page-section').forEach(s=>s.style.display='none');
+        let ss=document.getElementById('search-section');
+        if (!ss){ss=createSection('search','Search Results','');mainContent.appendChild(ss);}
+        ss.querySelector('h2').textContent=`Results for "${term}"`;
+        ss.style.display='block';
+        renderGrid(document.getElementById('searchGrid'),results);
+    }
+    searchInputDesktop.addEventListener('input',e=>handleSearch(e.target.value));
+    searchInputMobile.addEventListener('input',e=>handleSearch(e.target.value));
+    openMobileSearchBtn.addEventListener('click',()=>{mobileSearchOverlay.classList.remove('hidden');setTimeout(()=>mobileSearchOverlay.classList.add('opacity-100'),10);searchInputMobile.focus();});
+    closeMobileSearchBtn.addEventListener('click',()=>{mobileSearchOverlay.classList.remove('opacity-100');setTimeout(()=>mobileSearchOverlay.classList.add('hidden'),300);handleSearch('');});
+
+    // Delegated content clicks
+    mainContent.addEventListener('click', e => {
+        const playBtn=e.target.closest('.play-btn');
+        if (playBtn) {
+            const item=getAllAudioItems().find(i=>i.title===playBtn.dataset.title);
+            if (item&&item.audioSrc!=='#') {
+                audioPlayer.src=item.audioSrc;
+                audioPlayer.playbackRate=parseFloat(document.querySelector('.speed-btn.active-speed')?.dataset.speed||1);
+                currentTrackTitle.textContent=item.title;
+                scriptContent.textContent=item.script||'No script available.';
+                audioPlayer.play();
+                audioPlayerContainer.classList.add('visible');
+                if(item.script){audioPlayerContainer.classList.add('expanded');toggleScriptIcon.innerHTML=chevronUpPath;}
+                else{audioPlayerContainer.classList.remove('expanded');toggleScriptIcon.innerHTML=chevronDownPath;}
+            }
+        }
+        const ytBtn=e.target.closest('.yt-embed-btn');
+        if (ytBtn) openYtModal(ytBtn.dataset.ytUrl, ytBtn.dataset.ytTitle);
+
+        const readBtn=e.target.closest('.read-article-btn');
+        if (readBtn){const a=scripturesData.find(x=>x.id===readBtn.dataset.articleId);if(a)openArticleModal(a);}
+    });
+
+    // Contact form
+    const contactForm=document.getElementById('contact-form');
+    if(contactForm){
+        contactForm.addEventListener('submit',async e=>{
+            e.preventDefault();
+            const btn=contactForm.querySelector('button[type="submit"]');
+            btn.disabled=true;btn.textContent='Submitting...';
+            try{
+                const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(contactForm)).toString()});
+                if(r.ok){document.getElementById('contact-section-container').innerHTML='<div class="text-center py-16"><h2 class="font-serif text-3xl font-bold text-deep-blue mb-4">Thank You!</h2><p class="max-w-md mx-auto text-gray-600">Your feedback has been received. We appreciate you helping us improve this sanctuary.</p></div>';}
+                else throw 0;
+            }catch{
+                const p=document.createElement('p');p.className='text-center text-red-500 mt-4 text-sm';p.textContent='Sorry, there was an issue. Please try again later.';
+                contactForm.appendChild(p);btn.disabled=false;btn.textContent='Submit Feedback';
+            }
+        });
+    }
+
+    // Audio controls
+    playPauseBtn.addEventListener('click',()=>audioPlayer.paused?audioPlayer.play():audioPlayer.pause());
+    backwardBtn.addEventListener('click',()=>audioPlayer.currentTime-=10);
+    forwardBtn.addEventListener('click',()=>audioPlayer.currentTime+=10);
+    closePlayerBtn.addEventListener('click',()=>{
+        audioPlayer.pause();audioPlayer.src='';
+        audioPlayerContainer.classList.remove('visible','expanded');
+        currentTrackTitle.textContent='Select an audio';
+        resetSpeed();
+    });
+    toggleScriptBtn.addEventListener('click',()=>{
+        audioPlayerContainer.classList.toggle('expanded');
+        toggleScriptIcon.innerHTML=audioPlayerContainer.classList.contains('expanded')?chevronUpPath:chevronDownPath;
+    });
+    audioPlayer.addEventListener('play',()=>playPauseIcon.innerHTML=pauseIconPath);
+    audioPlayer.addEventListener('pause',()=>playPauseIcon.innerHTML=playIconPath);
+    audioPlayer.addEventListener('loadedmetadata',()=>durationEl.textContent=formatTime(audioPlayer.duration));
+    audioPlayer.addEventListener('timeupdate',()=>{
+        currentTimeEl.textContent=formatTime(audioPlayer.currentTime);
+        progressBar.style.width=`${(audioPlayer.currentTime/audioPlayer.duration)*100}%`;
+    });
+    progressBarContainer.addEventListener('click',e=>{audioPlayer.currentTime=(e.offsetX/progressBarContainer.clientWidth)*audioPlayer.duration;});
+
+    // Volume
+    volumeSlider.addEventListener('input',e=>{const v=parseFloat(e.target.value);audioPlayer.volume=v;isMuted=v===0;document.getElementById('volumeIcon').innerHTML=isMuted?volMutePath:volOnPath;});
+    muteBtn.addEventListener('click',()=>{
+        if(isMuted){audioPlayer.volume=prevVolume;volumeSlider.value=prevVolume;isMuted=false;document.getElementById('volumeIcon').innerHTML=volOnPath;}
+        else{prevVolume=audioPlayer.volume;audioPlayer.volume=0;volumeSlider.value=0;isMuted=true;document.getElementById('volumeIcon').innerHTML=volMutePath;}
+    });
+
+    // Speed
+    function resetSpeed(){document.querySelectorAll('.speed-btn').forEach(b=>b.classList.remove('active-speed'));const o=document.querySelector('.speed-btn[data-speed="1"]');if(o)o.classList.add('active-speed');audioPlayer.playbackRate=1;}
+    document.querySelectorAll('.speed-btn').forEach(btn=>{
+        btn.addEventListener('click',()=>{document.querySelectorAll('.speed-btn').forEach(b=>b.classList.remove('active-speed'));btn.classList.add('active-speed');audioPlayer.playbackRate=parseFloat(btn.dataset.speed);});
+    });
+
+    setActiveTab(null);
+});
+</script>
 </body>
 </html>
